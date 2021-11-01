@@ -7,48 +7,65 @@ drop table if exists role;
 drop table if exists user;
 
 
-create table event(
-eventId int not null  primary key auto_increment,
-title varchar(100) not null,
-description varchar(500)
-
+CREATE TABLE category (
+    `group` VARCHAR(35) PRIMARY KEY UNIQUE
 );
 
-create table user(
-userId int primary key auto_increment,
-fname varchar(20),
-lname varchar(20),
-username varchar(100) not null unique,
-email varchar(100) not null unique,
-password_hash varchar(2048) not null,
-disabled boolean not null default 0
+CREATE TABLE event (
+    eventId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description VARCHAR(500),
+    event_date TIMESTAMP NOT NULL,
+    duration INT,
+    CONSTRAINT fk_event_location_address FOREIGN KEY (address)
+        REFERENCES location (address),
+    CONSTRAINT fk_event_category_group FOREIGN KEY (`group`)
+        REFERENCES category (`group`)
 );
 
-create table location(
-loactionId int not null primary key auto_increment,
-title varchar(100),
-city varchar(50) not null,
-address varchar(100) not null,
-zipcode int(10),
-state varchar(2)
+CREATE TABLE app_user_event (
+    app_user_id INT NOT NULL,
+    app_event_id INT NOT NULL,
+    CONSTRAINT pk_app_user_event PRIMARY KEY (app_user_id , app_event_id),
+    CONSTRAINT fk_app_user_event_user_id FOREIGN KEY (userId)
+        REFERENCES user (userId),
+    CONSTRAINT fk_app_user_event_event_id FOREIGN KEY (eventId)
+        REFERENCES event (eventId)
 );
 
-create table role(
-roleId int primary key auto_increment,
-title varchar(20) not null unique
+CREATE TABLE user (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    fname VARCHAR(20),
+    lname VARCHAR(20),
+    username VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(2048) NOT NULL,
+    disabled BOOLEAN NOT NULL DEFAULT 0
 );
 
-create table app_user_role (
-    app_user_id int not null,
-    app_role_id int not null,
-    constraint pk_app_user_role
-        primary key (app_user_id, app_role_id),
-    constraint fk_app_user_role_user_id
-        foreign key (userId)
-         references user(userId),
-	constraint fk_app_user_role_role_id
-         foreign key (roleId)
-         references role(roleId)
+CREATE TABLE location (
+    loactionId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    city VARCHAR(50) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    zipcode INT(10),
+    state VARCHAR(2),
+    resoures varchar(2048)
+);
+
+CREATE TABLE role (
+    roleId INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE app_user_role (
+    app_user_id INT NOT NULL,
+    app_role_id INT NOT NULL,
+    CONSTRAINT pk_app_user_role PRIMARY KEY (app_user_id , app_role_id),
+    CONSTRAINT fk_app_user_role_user_id FOREIGN KEY (userId)
+        REFERENCES user (userId),
+    CONSTRAINT fk_app_user_role_role_id FOREIGN KEY (roleId)
+        REFERENCES role (roleId)
 );
 
 insert into role (`name`) values 
