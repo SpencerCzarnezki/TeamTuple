@@ -90,6 +90,40 @@ public class UserRepository {
         return user;
 
     }
+    public boolean update(User user) {
+
+        String sql = "update `user` set "
+                + "username = ?, "
+                + "disabled = ? "
+                + "where userId = ?;";
+
+        int rowsAffected = jdbcTemplate.update(sql,
+                user.getUserName(),
+                !user.isEnabled(),
+                user.getUserId());
+
+        if (rowsAffected > 0) {
+            setAuthorities(user);
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean changePassword(User user) {
+
+        String sql = "update `user` set "
+                + "password_hash = ? "
+                + "where userId = ?;";
+
+        int rowsAffected = jdbcTemplate.update(sql,
+                user.getPassword(),
+                user.getUserId());
+
+        return rowsAffected > 0;
+    }
+
+
 
     private void setAuthorities(User user) {
 
