@@ -1,3 +1,5 @@
+package learn.models;
+
 import java.util.Objects;
 
 public class Resources {
