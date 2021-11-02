@@ -25,48 +25,54 @@ public class Location {
         return id;
     }
 
-    public void setId(int id) {
+    public Location setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Location setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public Location setCity(String city) {
         this.city = city;
+        return this;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public Location setAddress(String address) {
         this.address = address;
+        return this;
     }
 
     public int getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public Location setZipcode(int zipcode) {
         this.zipcode = zipcode;
+        return this;
     }
 
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public Location setState(String state) {
         this.state = state;
+        return this;
     }
 
     @Override
