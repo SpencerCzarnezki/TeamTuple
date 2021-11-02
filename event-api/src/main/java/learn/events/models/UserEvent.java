@@ -1,3 +1,5 @@
+package learn.events.models;
+
 import java.util.Objects;
 
 public class UserEvent {

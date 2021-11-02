@@ -1,4 +1,4 @@
-package learn.models;
+package learn.events.models;
 
 import java.sql.Timestamp;
 import java.util.Objects;

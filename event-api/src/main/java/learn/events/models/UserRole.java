@@ -1,4 +1,4 @@
-package models;
+package learn.events.models;
 
 import java.util.Objects;
 
