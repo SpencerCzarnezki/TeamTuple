@@ -6,10 +6,11 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class EventMapper implements RowMapper<Event> {
 
     @Override
-    public Event mapRow(ResultSet resultSet, int i)throws SQLException{
+    public Event mapRow(ResultSet resultSet, int i) throws SQLException {
         Event event = new Event();
         event.setId(resultSet.getInt("eventId"));
         event.setTitle(resultSet.getString("title"));
@@ -22,7 +23,6 @@ public class EventMapper implements RowMapper<Event> {
         event.setOrganizerId(resultSet.getInt("organizerId"));
 
         return event;
-
     }
 
 }

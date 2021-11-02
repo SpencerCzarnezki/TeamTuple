@@ -1,9 +1,12 @@
 package learn.events.data;
 
 import learn.events.data.mappers.EventMapper;
+import learn.events.data.mappers.UserEventMapper;
 import learn.events.models.Event;
+import learn.events.models.UserEvent;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -17,19 +20,18 @@ public class EventJdbcTemplateRepository implements EventRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-
     public EventJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
     @Override
     public List<Event> findAll() {
-        final String sql ="select title, `description`, event_date, duration, capacity, eventLocationId, " +
+        final String sql ="select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
                 "category, organizerId, `status` from `event`";
         return jdbcTemplate.query(sql, new EventMapper());
     }
     @Override
     public List<Event> findByCategory(String category){
-        final String sql = "select title, `description`, event_date, duration, capacity, eventLocationId, " +
+        final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
                 "category, organizerId, `status` from `event` where category=?";
         try {
             return jdbcTemplate.query(sql, new EventMapper(), category);
@@ -39,7 +41,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
     @Override
     public List<Event> findByOrganizer(int organizerId){
-        final String sql = "select title, `description`, event_date, duration, capacity, eventLocationId, " +
+        final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
                 "category, organizerId, `status` from `event` where organizerId=?";
         try {
             return jdbcTemplate.query(sql, new EventMapper(), organizerId);
@@ -49,7 +51,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
     @Override
     public List<Event> findByKeyWord(String keyword){
-        final String sql = "select title, `description`, event_date, duration, capacity, eventLocationId, " +
+        final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
                 "category, organizerId, `status` from `event` where (" +
                 "title like '%?%' or `description` like '%?%' )";
         try {
@@ -110,8 +112,23 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
     @Override
     public boolean deleteById(int eventId){
+        jdbcTemplate.update("delete from app_user_event where eventId=?");
        int rowsAffected = jdbcTemplate.update("delete from event where eventId=?", eventId);
+
         return rowsAffected > 0;
+    }
+
+
+
+        //Work in progress
+    
+    private void addUser(Event event){
+        final String sql = "select eu.app_user_id, eu.app_event_id, user.fname, user.lname, user.username" +
+                "from app_user_event eu " +
+                "inner join user u on eu.app_user_id = u.userId " +
+                "where eu.app_event_id = ?";
+        List<UserEvent> userEvents =jdbcTemplate.query(sql, new UserEventMapper(), event.getId());
+        event.setAttendees(userEvents);
     }
 
 
