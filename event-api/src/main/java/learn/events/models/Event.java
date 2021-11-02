@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Event {
-    private String id;
+    private int id;
     private String title;
     private String Description;
     private Timestamp date;
@@ -17,7 +17,7 @@ public class Event {
 
     public Event() {}
 
-    public Event(String id, String title, String description, Timestamp date, int duration, int capacity, int eventLocationId, String category, int organizerId, boolean status) {
+    public Event(int id, String title, String description, Timestamp date, int duration, int capacity, int eventLocationId, String category, int organizerId, boolean status) {
         this.id = id;
         this.title = title;
         Description = description;
@@ -30,11 +30,11 @@ public class Event {
         this.status = status;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
