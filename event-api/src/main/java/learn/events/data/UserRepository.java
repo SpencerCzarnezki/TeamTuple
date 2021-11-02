@@ -49,6 +49,11 @@ public class UserRepository {
                 username).stream()
                 .findFirst()
                 .orElse(null);
+
+        if (user != null) {
+            var authorities = getAuthorities(user.getUserId());
+            user.setAuthorityNames(authorities);
+        }
         return user;
     }
 
@@ -72,11 +77,43 @@ public class UserRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
             PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getUserName());
             return statement;
         }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        user.setUserId(keyHolder.getKey().intValue());
+
+        return user;
+
     }
+
+    private void setAuthorities(User user) {
+
+        jdbcTemplate.update("delete from app_user_role where app_user_id = ?;", user.getUserId());
+
+        for (var name : user.getAuthorityNames()) {
+            String sql = "insert into app_user_role (app_user_id, app_role_id) "
+                    + "values (?, (select app_role_id from app_role where name = ?));";
+            jdbcTemplate.update(sql, user.getUserId(), name);
+        }
+    }
+
+    private List<String> getAuthorities(int appUserId) {
+
+        String sql = "select `role`.roleId, `role`.title "
+                + "from app_user_role "
+                + "inner join `role` on app_role_id = roleId "
+                + "where aur.app_user_id = ?";
+
+        return jdbcTemplate.query(sql,
+                (rs, i) -> rs.getString("name"),
+                appUserId);
+    }
+
 
 
 
