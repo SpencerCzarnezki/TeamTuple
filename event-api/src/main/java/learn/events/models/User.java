@@ -10,7 +10,7 @@ public class User {
     private String userName;
     private String email;
     private String passwordHash;
-    private boolean diabled;
+    private boolean disabled;
 
 
     public User() {
@@ -23,7 +23,7 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.diabled = diabled;
+        this.disabled = diabled;
     }
 
     public String getFname() {
@@ -66,12 +66,12 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    public boolean isDiabled() {
-        return diabled;
+    public boolean isDisabled() {
+        return disabled;
     }
 
-    public void setDiabled(boolean diabled) {
-        this.diabled = diabled;
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 
     public int getUserId() {
@@ -87,11 +87,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && diabled == user.diabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(passwordHash, user.passwordHash);
+        return userId == user.userId && disabled == user.disabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(passwordHash, user.passwordHash);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, fname, lname, userName, email, passwordHash, diabled);
+        return Objects.hash(userId, fname, lname, userName, email, passwordHash, disabled);
     }
 }
