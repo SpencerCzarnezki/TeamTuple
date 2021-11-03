@@ -52,11 +52,13 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
     @Override
     public List<Event> findByKeyWord(String keyword){
+        String keyword2 = "%" + keyword + "%";
+        System.out.println(keyword2);
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
                 "category, organizerId, `status` from `event` where (" +
-                "title like '%?%' or `description` like '%?%' )";
+                "title like  ? or `description` like ? )";
         try {
-            return jdbcTemplate.query(sql, new EventMapper(), keyword);
+            return jdbcTemplate.query(sql, new EventMapper(), keyword2, keyword2);
         } catch (EmptyResultDataAccessException ex){
             return null;
         }
@@ -99,7 +101,8 @@ public class EventJdbcTemplateRepository implements EventRepository {
                     "eventLocationId = ?, " +
                     "category = ?, " +
                     "organizerId = ?, " +
-                    "`status` = ? ";
+                    "`status` = ? " +
+                    "where eventId = ?";
             return jdbcTemplate.update(sql,
                     event.getTitle(),
                     event.getDescription(),
@@ -109,10 +112,13 @@ public class EventJdbcTemplateRepository implements EventRepository {
                     event.getEventLocationId(),
                     event.getCategory(),
                     event.getOrganizerId(),
-                    event.isStatus()) > 0;
+                    event.isStatus(),
+                    event.getId()) > 0;
     }
     @Override
     public boolean deleteById(int eventId){
+
+
         jdbcTemplate.update("delete from app_user_event where eventId=?");
         int rowsAffected = jdbcTemplate.update("delete from event where eventId=?", eventId);
 
