@@ -5,7 +5,7 @@ import learn.events.models.Location;
 
 public class LocationTestHelper {
 
-    public static final int VALID_ID = 10;
+    public static final int VALID_ID = 3;
 
     public static Result makeResult(String... messages) {
         Result result = new Result();
