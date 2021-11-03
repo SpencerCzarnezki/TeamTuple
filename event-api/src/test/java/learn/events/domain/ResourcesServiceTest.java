@@ -3,7 +3,6 @@ package learn.events.domain;
 
 import learn.events.data.DataAccessException;
 import learn.events.data.ResourcesRepository;
-import learn.events.models.Location;
 import learn.events.models.Resources;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static learn.events.TestHelper.*;
-import static learn.events.TestHelper.makeValidLocation;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
