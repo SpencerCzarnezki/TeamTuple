@@ -1,7 +1,9 @@
 package learn.events.domain;
 
 import learn.events.data.EventRepository;
+import learn.events.data.UserEventRepository;
 import learn.events.models.Event;
+import learn.events.models.UserEvent;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -11,11 +13,19 @@ import java.util.List;
 public class EventService {
 
     private final EventRepository repository;
+    private final UserEventRepository userEventRepository;
 
-
-    public EventService(EventRepository repository) {
+    public EventService(EventRepository repository, UserEventRepository userEventRepository) {
         this.repository = repository;
+        this.userEventRepository = userEventRepository;
     }
+//    private final UserRepository userRepository;
+//
+//
+//    public EventService(EventRepository repository, UserRepository userRepository) {
+//        this.repository = repository;
+//        this.userRepository = userRepository;
+//    }
     public List<Event> findAll(){
         return repository.findAll();
     }
@@ -49,8 +59,9 @@ public class EventService {
         if (!result.isSuccess()){
             return result;
         }
-        if (event.getId() < 0 ){
+        if (event.getId() <= 0 ){
             result.addErrorMessage("EventId is required to update event");
+            return result;
         }
         boolean success = repository.update(event);
         if (!success){
@@ -58,6 +69,27 @@ public class EventService {
         }
         return result;
     }
+    public Result<Void> addUser(UserEvent userEvent) {
+        Result<Void>result = validate(userEvent);
+        if (!result.isSuccess()){
+            return result;
+        }
+        if (!userEventRepository.add(userEvent)){
+            result.addErrorMessage("User not added to event");
+        }
+        return result;
+    }
+
+    private  Result<Void> validate(UserEvent userEvent){
+        Result<Void> result =new Result<>();
+        if (userEvent == null){
+
+        }
+        return result;
+    }
+
+
+
 
     private Result<Event> validate(Event event) {
         Result<Event> result= new Result<>();
@@ -81,10 +113,6 @@ public class EventService {
             result.addErrorMessage("Category is required");
             return result;
         }
-        if (event.getCategory() == null || event.getCategory().isBlank()){
-            result.addErrorMessage("Category is required");
-            return result;
-        }
         if (event.getCapacity() <= 0){
             result.addErrorMessage("Capacity must be greater than 0");
             return result;
@@ -93,6 +121,33 @@ public class EventService {
             result.addErrorMessage("Capacity must be greater than 0");
             return result;
         }
+        if (event.getDuration() < 0){
+            result.addErrorMessage("Duration cannot be negative");
+            return result;
+        }
+        List<Event> all = findAll();
+        for (Event e: all){
+            System.out.println(e.getTitle());
+            if (e.getOrganizerId() == event.getOrganizerId() && e.getTitle() == event.getTitle()
+            && e.getEventLocationId() == event.getEventLocationId() && e.getDate() == event.getDate()){
+                result.addErrorMessage("Duplicate Event");
+                return result;
+            }
+        }
+
+
+//        boolean check = false;
+//        List<User> users = userRepository.findAll();
+//        for (User u: users){
+//            if (u.getUserId() == event.getId()){
+//                check = true;
+//            }
+//        }
+//        if (!check){
+//            result.addErrorMessage("User does not exist");
+//            return result;
+//        }
+
 
 
 
