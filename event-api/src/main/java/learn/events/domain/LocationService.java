@@ -5,10 +5,7 @@ import learn.events.data.DataAccessException;
 import learn.events.models.Location;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class LocationService {
@@ -66,6 +63,10 @@ public class LocationService {
 
         return result;
     }
+
+
+
+
 
     private Result<Location> validate(Location location) {
         Result<Location> result = validateNullsAndBlanks(location);

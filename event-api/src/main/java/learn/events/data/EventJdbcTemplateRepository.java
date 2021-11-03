@@ -117,8 +117,10 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
     @Override
     public boolean deleteById(int eventId){
-        jdbcTemplate.update("delete from app_user_event where app_event_id=?", eventId);
-       int rowsAffected = jdbcTemplate.update("delete from event where eventId=?", eventId);
+
+
+        jdbcTemplate.update("delete from app_user_event where eventId=?");
+        int rowsAffected = jdbcTemplate.update("delete from event where eventId=?", eventId);
 
         return rowsAffected > 0;
     }
