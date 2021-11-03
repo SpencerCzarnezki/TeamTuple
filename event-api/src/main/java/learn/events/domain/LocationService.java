@@ -14,11 +14,9 @@ import java.util.Set;
 public class LocationService {
 
     private final LocationRepository repository;
-    private final Validator validator;
 
-    public LocationService(LocationRepository repository, Validator validator) {
+    public LocationService(LocationRepository repository) {
         this.repository = repository;
-        this.validator = validator;
     }
 
     public List<Location> findAll() throws DataAccessException {
@@ -69,22 +67,37 @@ public class LocationService {
         return result;
     }
 
-    public boolean deleteById(int locationId) throws DataAccessException {
-        if (locationId < 0) {
-            return false;
-        }
-        return repository.deleteById(locationId);
-    }
-
     private Result<Location> validate(Location location) {
-        Result<Location> result = new Result();
-        if (location == null) {
-            result.addErrorMessage("location cannot be null");
+        Result<Location> result = validateNulls(location);
+        if (!result.isSuccess()) {
             return result;
         }
-        Set<ConstraintViolation<Location>> violations = validator.validate(location);
-        for (ConstraintViolation<Location> violation : violations) {
-            result.addErrorMessage(violation.getMessage());
+
+        validateFields(location, result);
+
+        validateChildrenExist(location, result);
+
+        return result;
+    }
+
+    private Result<Location> validateNulls(Location location) {
+        Result<Location> result = new Result<>();
+
+        if (location == null) {
+            result.addErrorMessage("Nothing to save.");
+            return result;
+        }
+
+        if (location.getCity() == null) {
+            result.addErrorMessage("Location city is required.");
+        }
+
+        if (location.getAddress() == null) {
+            result.addErrorMessage("Location address is required.");
+        }
+
+        if (location.getState() == null) {
+            result.addErrorMessage("Location state is required.");
         }
         return result;
     }
