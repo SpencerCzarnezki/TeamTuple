@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
+
 public class EventJdbcTemplateRepository implements EventRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -121,7 +122,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
 
 
         //Work in progress
-    
+
     private void addUser(Event event){
         final String sql = "select eu.app_user_id, eu.app_event_id, user.fname, user.lname, user.username" +
                 "from app_user_event eu " +

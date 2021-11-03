@@ -2,11 +2,12 @@ package learn.events.domain;
 
 import learn.events.data.EventRepository;
 import learn.events.models.Event;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Service
 public class EventService {
 
     private final EventRepository repository;
