@@ -2,8 +2,9 @@ package learn.events;
 
 import learn.events.domain.Result;
 import learn.events.models.Location;
+import learn.events.models.Resources;
 
-public class LocationTestHelper {
+public class TestHelper {
 
     public static final int VALID_ID = 3;
 
@@ -23,6 +24,13 @@ public class LocationTestHelper {
                 .setAddress("Address")
                 .setZipcode(12345)
                 .setState("WI");
+    }
+
+    public static Resources makeValidResource(int id) {
+        return new Resources()
+                .setResourceId(id)
+                .setResource("Description")
+                .setLocationId(2);
     }
 }
 

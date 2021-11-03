@@ -1,10 +1,9 @@
 package learn.events.data;
 
-
+import learn.events.data.mappers.LocationMapper;
 import learn.events.models.Location;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -18,30 +17,19 @@ public class LocationMySQLRepository implements LocationRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final RowMapper<Location> mapper = (resultSet, rowNum) -> {
-        Location location = new Location();
-        location.setId(resultSet.getInt("locationId"));
-        location.setTitle(resultSet.getString("title"));
-        location.setCity(resultSet.getString("city"));
-        location.setAddress(resultSet.getString("address"));
-        location.setZipcode(resultSet.getInt("zipcode"));
-        location.setState(resultSet.getString("state"));
-        return location;
-    };
-
     public LocationMySQLRepository(JdbcTemplate jdbcTemplate) {this.jdbcTemplate = jdbcTemplate;}
 
     @Override
     public List<Location> findAll() throws DataAccessException {
         final String sql = "select * from location;";
-        return jdbcTemplate.query(sql, mapper);
+        return jdbcTemplate.query(sql, new LocationMapper());
     }
 
     @Override
     public Location findById(int id) throws DataAccessException {
         final String sql = "select * from location where locationId = ?;";
         try {
-            return jdbcTemplate.queryForObject(sql, mapper, id);
+            return jdbcTemplate.queryForObject(sql, new LocationMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
