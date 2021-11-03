@@ -20,24 +20,27 @@ public class Resources {
         return resourceId;
     }
 
-    public void setResourceId(int resourceId) {
+    public Resources setResourceId(int resourceId) {
         this.resourceId = resourceId;
+        return this;
     }
 
     public String getResource() {
         return resource;
     }
 
-    public void setResource(String resource) {
+    public Resources setResource(String resource) {
         this.resource = resource;
+        return this;
     }
 
     public int getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(int locationId) {
+    public Resources setLocationId(int locationId) {
         this.locationId = locationId;
+        return this;
     }
 
     @Override

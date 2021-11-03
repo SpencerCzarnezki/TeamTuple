@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static learn.events.LocationTestHelper.makeValidLocation;
+import static learn.events.TestHelper.makeValidLocation;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -23,7 +23,7 @@ public class LocationMySQLRepositoryTest {
     }
 
     @Test
-    void shouldFind3Locations() throws DataAccessException {
+    void shouldFind4Locations() throws DataAccessException {
         var locations = repository.findAll();
         assertEquals(4, locations.size());
     }

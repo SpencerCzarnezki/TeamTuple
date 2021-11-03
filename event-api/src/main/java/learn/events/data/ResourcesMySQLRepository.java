@@ -23,13 +23,14 @@ public class ResourcesMySQLRepository implements ResourcesRepository{
 
     @Override
     public List<Resources> findAll() {
-        final String sql = "select resourceId, `resource`, location_id";
+        final String sql = "select * from resources";
         return jdbcTemplate.query(sql, new ResourceMapper());
     }
 
     @Override
     public List<Resources> findByDescription(String description) {
-        final String sql = "select resourceId, `resource`, location_id";
+        final String sql = "select resourceId, `resource`, location_id "
+                + "from `resources` where resource = ?;";
 
         try {
             return jdbcTemplate.query(sql, new ResourceMapper(), description);
@@ -52,8 +53,8 @@ public class ResourcesMySQLRepository implements ResourcesRepository{
     @Override
     public Resources add(Resources resource) {
         final String sql = "insert into resources"
-                + "(resourceId, `resource`, location_id) "
-                + "values (?, ?, ?);";
+                + "(resource, location_id) "
+                + "values (?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
