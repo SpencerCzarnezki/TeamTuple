@@ -35,7 +35,7 @@ class EventServiceTest {
 
     @Test
     void shouldNotAddPastDate(){
-        Event event = 
+
     }
 
 
