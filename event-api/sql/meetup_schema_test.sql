@@ -13,7 +13,7 @@ CREATE TABLE location (
 
 CREATE TABLE resources (
     resourceId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    resource VARCHAR(80) NOT NULL,
+    `resource` VARCHAR(80) NOT NULL,
     location_id INT NOT NULL,
     CONSTRAINT fk_location_resources_resource FOREIGN KEY (location_id)
         REFERENCES location (locationId)
@@ -91,8 +91,8 @@ create procedure set_known_good_state()
         
 			insert into location(title, city, address, zipcode, state)
             values 
-            ("Cabin 1", "Milwaukee", "222 West Street", 53211, "WI"),
-            ("", "Sheboygan", "123 Yooper Lane", null, "WI"),
+            ("Cabin 1", "Milwaukee", "222 West Street", NULL, "WI"),
+            ("Title", "City", "Address", 12345, "WI"),
             ("Classroom 23", "Chicago", "564 8th st", 44543, "IL");
             
 			insert into `user`(fname, lname, username, email, password_hash, disabled)
@@ -108,7 +108,7 @@ create procedure set_known_good_state()
           ("Spanish Class", "Learn Espanol", current_timestamp(), 120, 25, 3, "Learning", 2, 1);
           
           
-          insert into resources values
+          insert into resources (`resource`, location_id) values
           ("free food", 1),
           ("Public Restroom", 2),
           ("Microwave", 2),
