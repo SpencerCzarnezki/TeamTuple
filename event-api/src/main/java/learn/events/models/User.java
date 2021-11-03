@@ -1,6 +1,13 @@
 package learn.events.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class User {
 
@@ -11,6 +18,8 @@ public class User {
     private String email;
     private String passwordHash;
     private boolean disabled;
+    private String password;
+    private List<String> authorities = new ArrayList<>();
 
 
     public User() {
@@ -80,6 +89,51 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return !disabled;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities.stream()
+                .map(a -> new SimpleGrantedAuthority(a))
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAuthorityNames() {
+        return new ArrayList<>(authorities);
+    }
+
+    public void setAuthorityNames(List<String> authorities) {
+        this.authorities = authorities;
+    }
+
+    public boolean hasAuthority(String authority) {
+        return authorities.stream()
+                .anyMatch(a -> a.equals(authority));
     }
 
     @Override
