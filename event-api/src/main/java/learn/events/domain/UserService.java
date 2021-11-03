@@ -105,12 +105,12 @@ public class UserService {
             return result;
         }
 
-        if (user.getUserName() == null || user.getUserName().isBlank()) {
+        if (user.getUsername() == null || user.getUsername().isBlank()) {
             result.addErrorMessage("username is required");
             return result;
         }
 
-        var existing = repository.findByUsername(user.getUserName());
+        var existing = repository.findByUsername(user.getUsername());
         if (existing != null && existing.getUserId() != user.getUserId()) {
             result.addErrorMessage("username is already in use");
             return result;

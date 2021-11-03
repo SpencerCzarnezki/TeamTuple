@@ -2,6 +2,7 @@ package learn.events.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class User {
+public class User implements UserDetails {
 
     private int userId;
     private String fname;
@@ -49,10 +50,6 @@ public class User {
 
     public void setLname(String lname) {
         this.lname = lname;
-    }
-
-    public String getUserName() {
-        return userName;
     }
 
     public void setUserName(String userName) {
@@ -107,6 +104,11 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
     }
 
     public void setPassword(String password) {

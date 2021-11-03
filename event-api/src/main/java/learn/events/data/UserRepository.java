@@ -7,10 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class UserRepository {
                 (rs, i) -> rs.getString("title"));
     }
 
+    @Transactional
     public User findByUsername(String username){
         User user = jdbcTemplate.query("select * from `user` where username = ?;",
                 new UserMapper(),
@@ -70,7 +70,7 @@ public class UserRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
             PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(3, user.getUserName());
+            statement.setString(3, user.getUsername());
             return statement;
         }, keyHolder);
 
@@ -91,7 +91,7 @@ public class UserRepository {
                 + "where userId = ?;";
 
         int rowsAffected = jdbcTemplate.update(sql,
-                user.getUserName(),
+                user.getUsername(),
                 !user.isEnabled(),
                 user.getUserId());
 
