@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import static learn.events.LocationTestHelper.makeValidLocation;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,23 +15,23 @@ public class LocationMySQLRepositoryTest {
     @Autowired
     LocationMySQLRepository repository;
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    KnownGoodStateNic knownGoodState;
 
     @BeforeEach
     void setup() {
-        jdbcTemplate.update("call set_known_good_state();");
+        knownGoodState.set();
     }
 
     @Test
     void shouldFind3Locations() throws DataAccessException {
         var locations = repository.findAll();
-        assertEquals(3, locations.size());
+        assertEquals(4, locations.size());
     }
 
     @Test
-    void shouldFindId2() throws DataAccessException {
-        Location expected = makeValidLocation(2);
-        Location actual = repository.findById(2);
+    void shouldFindId4() throws DataAccessException {
+        Location expected = makeValidLocation(4);
+        Location actual = repository.findById(4);
         assertEquals(expected, actual);
     }
 
@@ -68,17 +67,5 @@ public class LocationMySQLRepositoryTest {
     void shouldNotUpdateMissing() throws DataAccessException {
         Location missing = makeValidLocation(202);
         assertFalse(repository.update(missing));
-    }
-
-    @Test
-    void shouldDelete() throws DataAccessException {
-        assertTrue(repository.deleteById(1));
-        Location game = repository.findById(1);
-        assertNull(game);
-    }
-
-    @Test
-    void shouldNotDeleteMissing() throws DataAccessException {
-        assertFalse(repository.deleteById(543));
     }
 }
