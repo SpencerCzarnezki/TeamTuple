@@ -8,10 +8,11 @@ CREATE TABLE location (
     city VARCHAR(50) NOT NULL,
     address VARCHAR(100) NOT NULL,
     zipcode INT(10),
-    state VARCHAR(2)
+    state VARCHAR(2) NOT NULL
 );
 
 CREATE TABLE resources (
+    resourceId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     resource VARCHAR(80) NOT NULL,
     location_id INT NOT NULL,
     CONSTRAINT fk_location_resources_resource FOREIGN KEY (location_id)
@@ -94,11 +95,11 @@ create procedure set_known_good_state()
             ("", "Sheboygan", "123 Yooper Lane", null, "WI"),
             ("Classroom 23", "Chicago", "564 8th st", 44543, "IL");
             
-		insert into `user`(fname, lname, username, email, password_hash, disabled)
-        values
-        ("John", "Doe", "Jdoe","jode@email.com", "hash", 0),
-         ("Jane", "Doe", "Jadoe","janedoe@email.com", "hash", 0),
-          ("Mike", "Like", "MLike","likemike@fakeemail.com", "hash", 0);
+			insert into `user`(fname, lname, username, email, password_hash, disabled)
+			values
+			("John", "Doe", "Jdoe","jode@email.com", "hash", 0),
+			("Jane", "Doe", "Jadoe","janedoe@email.com", "hash", 0),
+			("Mike", "Like", "MLike","likemike@fakeemail.com", "hash", 0);
           
           insert into `event` (title, `description`, event_date, duration, capacity, eventLocationId, category, organizerId, `status`)
           values

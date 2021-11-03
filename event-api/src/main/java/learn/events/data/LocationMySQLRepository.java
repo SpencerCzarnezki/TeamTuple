@@ -95,9 +95,4 @@ public class LocationMySQLRepository implements LocationRepository {
         return rowsAffected > 0;
     }
 
-    @Override
-    public boolean deleteById(int id) throws DataAccessException {
-        int rowsAffected = jdbcTemplate.update("delete from location where locationId = ?;", id);
-        return rowsAffected > 0;
-    }
 }

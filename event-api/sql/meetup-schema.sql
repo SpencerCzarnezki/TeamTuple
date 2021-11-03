@@ -8,10 +8,11 @@ CREATE TABLE location (
     city VARCHAR(50) NOT NULL,
     address VARCHAR(100) NOT NULL,
     zipcode INT(10),
-    state VARCHAR(2)
+    state VARCHAR(2) NOT NULL
 );
 
 CREATE TABLE resources (
+	resourceId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     resource VARCHAR(80) NOT NULL,
     location_id INT NOT NULL,
     CONSTRAINT fk_location_resources_resource FOREIGN KEY (location_id)

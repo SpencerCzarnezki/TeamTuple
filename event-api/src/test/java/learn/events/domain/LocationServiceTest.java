@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 import static learn.events.LocationTestHelper.*;
@@ -64,7 +65,7 @@ public class LocationServiceTest {
     void addShouldRejectBlankCity() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setCity(" ");
-        Result expected = makeResult("city is required");
+        Result expected = makeResult("Location city is required.");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -73,7 +74,7 @@ public class LocationServiceTest {
     void addShouldRejectNullCity() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setCity(null);
-        Result expected = makeResult("city is required");
+        Result expected = makeResult("Location city is required.");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -82,7 +83,7 @@ public class LocationServiceTest {
     void addShouldRejectBlankAddress() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setAddress(" ");
-        Result expected = makeResult("address is required");
+        Result expected = makeResult("Location address is required.");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -91,7 +92,7 @@ public class LocationServiceTest {
     void addShouldRejectNullAddress() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setAddress(null);
-        Result expected = makeResult("address is required");
+        Result expected = makeResult("Location address is required.");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -100,7 +101,7 @@ public class LocationServiceTest {
     void addShouldRejectEmptyState() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setState(" ");
-        Result expected = makeResult("state is required");
+        Result expected = makeResult("Location state is required.");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -109,7 +110,16 @@ public class LocationServiceTest {
     void addShouldRejectNullState() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setState(null);
-        Result expected = makeResult("state is required");
+        Result expected = makeResult("Location state is required.");
+        Result actual = service.add(location);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addShouldRejectInvalidZipcodes() throws DataAccessException {
+        Location location = makeValidLocation(0);
+        location.setZipcode(1092734);
+        Result expected = makeResult("Invalid US zipcode, must be 5 digits");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -118,19 +128,19 @@ public class LocationServiceTest {
     void addShouldRejectNonStateAbbreviations() throws DataAccessException {
         Location location = makeValidLocation(0);
         location.setState("A");      // this test will fail
-        Result expected = makeResult("state must be 2 characters");
+        Result expected = makeResult("State must be a 2 letter abbreviation");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
 
     @Test
-    void addShouldRejectDuplicateTitle() throws DataAccessException {
+    void addShouldRejectDuplicates() throws DataAccessException {
 
         List<Location> existingGames = List.of(makeValidLocation(1));
         Location location = makeValidLocation(0);
         when(repository.findAll()).thenReturn(existingGames);
 
-        Result expected = makeResult("cannot have duplicate location title");
+        Result expected = makeResult("cannot have duplicate location");
         Result actual = service.add(location);
         assertEquals(expected, actual);
     }
@@ -168,7 +178,7 @@ public class LocationServiceTest {
     void updateShouldRejectBlankCity() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setCity(" ");
-        Result expected = makeResult("city is required");
+        Result expected = makeResult("Location city is required.");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -177,7 +187,7 @@ public class LocationServiceTest {
     void updateShouldRejectNullCity() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setCity(null);
-        Result expected = makeResult("city is required");
+        Result expected = makeResult("Location city is required.");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -186,7 +196,7 @@ public class LocationServiceTest {
     void updateShouldRejectBlankAddress() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setAddress(" ");
-        Result expected = makeResult("address is required");
+        Result expected = makeResult("Location address is required.");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -195,7 +205,7 @@ public class LocationServiceTest {
     void updateShouldRejectNullAddress() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setAddress(null);
-        Result expected = makeResult("address is required");
+        Result expected = makeResult("Location address is required.");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -204,7 +214,16 @@ public class LocationServiceTest {
     void updateShouldRejectBlankState() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setState(" ");
-        Result expected = makeResult("state is required");
+        Result expected = makeResult("Location state is required.");
+        Result actual = service.update(location);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void updateShouldRejectInvalidZipcodes() throws DataAccessException {
+        Location location = makeValidLocation(0);
+        location.setZipcode(1092734);
+        Result expected = makeResult("Invalid US zipcode, must be 5 digits");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -213,7 +232,7 @@ public class LocationServiceTest {
     void updateShouldRejectNullState() throws DataAccessException {
         Location location = makeValidLocation(VALID_ID);
         location.setState(null);
-        Result expected = makeResult("state is required");
+        Result expected = makeResult("Location state is required.");
         Result actual = service.update(location);
         assertEquals(expected, actual);
     }
@@ -238,17 +257,4 @@ public class LocationServiceTest {
     }
 
 
-
-    @Test
-    void shouldDeleteExisting() throws DataAccessException {
-        when(repository.deleteById(VALID_ID)).thenReturn(true);
-        boolean success = service.deleteById(VALID_ID);
-        assertTrue(success);
-    }
-
-    @Test
-    void shouldNotDeleteMissing() throws DataAccessException {
-        boolean success = service.deleteById(VALID_ID + 100);
-        assertFalse(success);
-    }
 }
