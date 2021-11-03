@@ -1,6 +1,8 @@
 package learn.events.models;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Event {
@@ -14,6 +16,16 @@ public class Event {
     private String category;
     private int organizerId;
     private boolean status;
+
+    public List<UserEvent> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(List<UserEvent> attendees) {
+        this.attendees = attendees;
+    }
+
+    public List<UserEvent> attendees =new ArrayList<>();
 
     public Event() {}
 
