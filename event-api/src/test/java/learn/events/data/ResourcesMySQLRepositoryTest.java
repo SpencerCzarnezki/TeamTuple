@@ -1,7 +1,5 @@
 package learn.events.data;
 
-import learn.events.models.Event;
-import learn.events.models.Location;
 import learn.events.models.Resources;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static learn.events.TestHelper.makeValidLocation;
 import static learn.events.TestHelper.makeValidResource;
 import static org.junit.jupiter.api.Assertions.*;
 
