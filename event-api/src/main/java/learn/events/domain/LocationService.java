@@ -5,20 +5,15 @@ import learn.events.data.DataAccessException;
 import learn.events.models.Location;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class LocationService {
 
     private final LocationRepository repository;
-    private final Validator validator;
 
-    public LocationService(LocationRepository repository, Validator validator) {
+    public LocationService(LocationRepository repository) {
         this.repository = repository;
-        this.validator = validator;
     }
 
     public List<Location> findAll() throws DataAccessException {
@@ -69,22 +64,72 @@ public class LocationService {
         return result;
     }
 
-    public boolean deleteById(int locationId) throws DataAccessException {
-        if (locationId < 0) {
-            return false;
-        }
-        return repository.deleteById(locationId);
-    }
+
+
+
 
     private Result<Location> validate(Location location) {
-        Result<Location> result = new Result();
+        Result<Location> result = validateNullsAndBlanks(location);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if(!validateNoDuplicates(location)) {
+            result.addErrorMessage("cannot have duplicate location");
+            return result;
+        }
+
+        validateFields(location, result);
+
+        return result;
+    }
+
+    private boolean validateNoDuplicates(Location location) {
+        try {
+            List<Location> locations = repository.findAll();
+
+            return locations.stream()
+                    .noneMatch(l -> l.getTitle().equalsIgnoreCase(location.getTitle())
+                            && l.getId() != location.getId());
+
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void validateFields(Location location, Result<Location> result) {
+        if (location.getState().length() != 2) {
+            result.addErrorMessage("State must be a 2 letter abbreviation");
+        }
+
+        if (Integer.toString(location.getZipcode()).length() != 5) {
+            result.addErrorMessage("Invalid US zipcode, must be 5 digits");
+        }
+
+        if (location.getTitle().length() > 100) {
+            result.addErrorMessage("title is too large");
+        }
+    }
+
+    private Result<Location> validateNullsAndBlanks(Location location) {
+        Result<Location> result = new Result<>();
+
         if (location == null) {
             result.addErrorMessage("location cannot be null");
             return result;
         }
-        Set<ConstraintViolation<Location>> violations = validator.validate(location);
-        for (ConstraintViolation<Location> violation : violations) {
-            result.addErrorMessage(violation.getMessage());
+
+        if (location.getCity() == null || location.getCity().isBlank()) {
+            result.addErrorMessage("Location city is required.");
+        }
+
+        if (location.getAddress() == null || location.getAddress().isBlank()) {
+            result.addErrorMessage("Location address is required.");
+        }
+
+        if (location.getState() == null || location.getState().isBlank()) {
+            result.addErrorMessage("Location state is required.");
         }
         return result;
     }

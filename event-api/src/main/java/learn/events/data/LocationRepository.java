@@ -13,6 +13,4 @@ public interface LocationRepository {
 
     boolean update(Location location) throws DataAccessException;
 
-    boolean deleteById(int id) throws DataAccessException;
-
 }
