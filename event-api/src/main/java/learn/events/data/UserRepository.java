@@ -1,32 +1,24 @@
 package learn.events.data;
 
 
+import learn.events.data.mappers.UserMapper;
 import learn.events.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
-
+@Repository
 public class UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final RowMapper<User> mapper =(rs,i)->{
-        User user = new User();
-        user.setUserId(rs.getInt("userId"));
-        user.setFname(rs.getString("fname"));
-        user.setLname(rs.getString("lname"));
-        user.setUserName(rs.getString("username"));
-        user.setEmail(rs.getString("email"));
-        user.setPasswordHash(rs.getString("password_hash"));
-        user.setDisabled(rs.getBoolean("disabled"));
-        return user;
-    };
+
 
 
     public UserRepository(JdbcTemplate jdbcTemplate) { this.jdbcTemplate = jdbcTemplate; }
@@ -34,7 +26,7 @@ public class UserRepository {
 
     public List<User> findAll(){
         return jdbcTemplate.query("select userId, fname, lname, username,email,password_hash,disabled, " +
-                "from `user`;",mapper);
+                "from `user`;", new UserMapper());
     }
 
 
@@ -43,9 +35,10 @@ public class UserRepository {
                 (rs, i) -> rs.getString("title"));
     }
 
+    @Transactional
     public User findByUsername(String username){
         User user = jdbcTemplate.query("select * from `user` where username = ?;",
-                mapper,
+                new UserMapper(),
                 username).stream()
                 .findFirst()
                 .orElse(null);
@@ -60,7 +53,7 @@ public class UserRepository {
     public User findByUserId(int id) {
         User user = jdbcTemplate.query(
                         "select * from `user` where userId = ?;",
-                        mapper,
+                        new UserMapper(),
                         id).stream()
                 .findFirst()
                 .orElse(null);
@@ -77,7 +70,7 @@ public class UserRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
             PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(3, user.getUserName());
+            statement.setString(3, user.getUsername());
             return statement;
         }, keyHolder);
 
@@ -98,7 +91,7 @@ public class UserRepository {
                 + "where userId = ?;";
 
         int rowsAffected = jdbcTemplate.update(sql,
-                user.getUserName(),
+                user.getUsername(),
                 !user.isEnabled(),
                 user.getUserId());
 
