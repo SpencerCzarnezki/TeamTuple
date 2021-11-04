@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements UserRepositoryInterface {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -24,17 +24,20 @@ public class UserRepository {
     public UserRepository(JdbcTemplate jdbcTemplate) { this.jdbcTemplate = jdbcTemplate; }
 
 
+    @Override
     public List<User> findAll(){
         return jdbcTemplate.query("select userId, fname, lname, username,email,password_hash,disabled " +
                 "from `user`;", new UserMapper());
     }
 
 
+    @Override
     public List<String> findAllRoles() {
         return jdbcTemplate.query("select * from `role`;",
                 (rs, i) -> rs.getString("title"));
     }
 
+    @Override
     @Transactional
     public User findByUsername(String username){
         User user = jdbcTemplate.query("select * from `user` where username = ?;",
@@ -50,6 +53,7 @@ public class UserRepository {
         return user;
     }
 
+    @Override
     public User findByUserId(int id) {
         User user = jdbcTemplate.query(
                         "select * from `user` where userId = ?;",
@@ -63,6 +67,7 @@ public class UserRepository {
     }
 
 
+    @Override
     public User add(User user){
 
         final String sql = "insert into `user` (fname, lname, username, email, password_hash,disabled) values (?,?,?,?,?,?);";
@@ -88,6 +93,7 @@ public class UserRepository {
         return user;
 
     }
+    @Override
     public boolean update(User user) {
 
         String sql = "update `user` set "
@@ -114,6 +120,7 @@ public class UserRepository {
         return false;
     }
 
+    @Override
     public boolean changePassword(User user) {
 
         String sql = "update `user` set "
