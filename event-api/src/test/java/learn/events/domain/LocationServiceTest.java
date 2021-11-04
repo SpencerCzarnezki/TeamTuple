@@ -135,9 +135,9 @@ public class LocationServiceTest {
     @Test
     void addShouldRejectDuplicates() throws DataAccessException {
 
-        List<Location> existingGames = List.of(makeValidLocation(1));
+        List<Location> existingLocations = List.of(makeValidLocation(1));
         Location location = makeValidLocation(0);
-        when(repository.findAll()).thenReturn(existingGames);
+        when(repository.findAll()).thenReturn(existingLocations);
 
         Result expected = makeResult("cannot have duplicate location");
         Result actual = service.add(location);

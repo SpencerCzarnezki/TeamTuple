@@ -127,19 +127,24 @@ class EventServiceTest {
         Result<Event> actual = service.update(event);
         assertFalse(actual.isSuccess());
     }
-//    @Test
-//    void shouldNotAddOrganizerAsAttendee(){
-//        Event event = makeEvent();
-//        EventUser eventUser = new EventUser();
-//        User user = makeUser();
-//        user.setUserId(2);
-//        service.update(event);
-//        eventUser.setEventId(2);
-//
-//        eventUser.setUser(user);
-//        Result<Void> actual =service.addUser(eventUser);
-//        assertFalse(actual.isSuccess());
-//    }
+    @Test
+    void shouldNotAddOrganizerAsAttendee(){
+        Event event = makeEvent();
+        event.setId(2);
+        when(repository.findById(2)).thenReturn(event);
+        EventUser eventUser = new EventUser();
+        eventUser.setEventId(2);
+        User user = makeUser();
+        user.setUserId(2);
+
+
+        service.add(event);
+
+
+        eventUser.setUser(user);
+        Result<Void> actual =service.addUser(eventUser);
+        assertFalse(actual.isSuccess());
+    }
 
 
 

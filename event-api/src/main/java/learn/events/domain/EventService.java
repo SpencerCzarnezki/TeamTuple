@@ -90,6 +90,18 @@ public class EventService {
             result.addErrorMessage("User cannot be null");
             return result;
         }
+        boolean check = false;
+        Event event = repository.findById(eventUser.getEventId());
+        List<User> users = userRepository.findAll();
+        for (User u: users){
+            if (u.getUserId() == event.getOrganizerId()){
+                check = true;
+            }
+        }
+        if (check){
+            result.addErrorMessage("Organizer Cannot join own event");
+            return result;
+        }
         return result;
     }
 
@@ -140,18 +152,8 @@ public class EventService {
             }
         }
 
-        //need to test
-        boolean check = false;
-        List<User> users = userRepository.findAll();
-        for (User u: users){
-            if (u.getUserId() == event.getOrganizerId()){
-                check = true;
-            }
-        }
-        if (check){
-            result.addErrorMessage("Organizer Cannot join own event");
-            return result;
-        }
+        //need to test!
+
 
 
 
