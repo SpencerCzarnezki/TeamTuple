@@ -7,6 +7,8 @@ import java.util.List;
 public interface EventRepository {
     List<Event> findAll();
 
+    Event findById(int eventId);
+
     List<Event> findByCategory(String category);
 
     List<Event> findByOrganizer(int organizerId);

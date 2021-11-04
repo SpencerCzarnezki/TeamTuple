@@ -12,9 +12,9 @@ public class UserEventMapper implements RowMapper<UserEvent> {
     public UserEvent mapRow(ResultSet resultSet, int i) throws SQLException {
         UserEvent userEvent = new UserEvent();
         userEvent.setUserId(resultSet.getInt("app_user_id"));
-        userEvent.setEventId(resultSet.getInt("app_event_id"));
 
-
+        EventMapper eventMapper = new EventMapper();
+        userEvent.setEvent(eventMapper.mapRow(resultSet, i));
 
         return userEvent;
     }

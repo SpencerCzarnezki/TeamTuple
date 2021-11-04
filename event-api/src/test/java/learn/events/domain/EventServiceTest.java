@@ -2,6 +2,8 @@ package learn.events.domain;
 
 import learn.events.data.EventRepository;
 import learn.events.models.Event;
+import learn.events.models.EventUser;
+import learn.events.models.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,9 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
-import static learn.events.LocationTestHelper.makeResult;
+import static learn.events.TestHelper.makeResult;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -126,6 +127,19 @@ class EventServiceTest {
         Result<Event> actual = service.update(event);
         assertFalse(actual.isSuccess());
     }
+//    @Test
+//    void shouldNotAddOrganizerAsAttendee(){
+//        Event event = makeEvent();
+//        EventUser eventUser = new EventUser();
+//        User user = makeUser();
+//        user.setUserId(2);
+//        service.update(event);
+//        eventUser.setEventId(2);
+//
+//        eventUser.setUser(user);
+//        Result<Void> actual =service.addUser(eventUser);
+//        assertFalse(actual.isSuccess());
+//    }
 
 
 
@@ -142,14 +156,7 @@ class EventServiceTest {
 
 
 
-//    @Test
-//    void shouldNotAddWithInvalidUser(){
-//        Event event = makeEvent();
-//        event.setOrganizerId(200);
-//        Result expected = makeResult("User does not exist");
-//        Result<Event> actual = service.add(event);
-//        assertEquals(expected.getMessages(),actual.getMessages());
-//    }
+
 
 
 
@@ -167,6 +174,17 @@ class EventServiceTest {
         event.setEventLocationId(1);
         event.setCapacity(500);
         return event;
+    }
+    private User makeUser(){
+        User user = new User();
+        user.setUserId(4);
+        user.setFname("Tina");
+        user.setLname("Smith");
+        user.setUserName("TSmith");
+        user.setEmail("Tsmith@email.com");
+        user.setPasswordHash("ghdgkjdkf");
+        user.setDisabled(true);
+        return user;
     }
 
 }

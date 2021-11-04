@@ -1,9 +1,11 @@
 package learn.events.domain;
 
 import learn.events.data.EventRepository;
-import learn.events.data.UserEventRepository;
+import learn.events.data.EventUserRepository;
+import learn.events.data.UserRepository;
 import learn.events.models.Event;
-import learn.events.models.UserEvent;
+import learn.events.models.EventUser;
+import learn.events.models.User;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -13,19 +15,14 @@ import java.util.List;
 public class EventService {
 
     private final EventRepository repository;
-    private final UserEventRepository userEventRepository;
+    private final EventUserRepository userEventRepository;
+    private final UserRepository userRepository;
 
-    public EventService(EventRepository repository, UserEventRepository userEventRepository) {
+    public EventService(EventRepository repository, EventUserRepository userEventRepository, UserRepository userRepository) {
         this.repository = repository;
         this.userEventRepository = userEventRepository;
+        this.userRepository = userRepository;
     }
-//    private final UserRepository userRepository;
-//
-//
-//    public EventService(EventRepository repository, UserRepository userRepository) {
-//        this.repository = repository;
-//        this.userRepository = userRepository;
-//    }
     public List<Event> findAll(){
         return repository.findAll();
     }
@@ -69,21 +66,29 @@ public class EventService {
         }
         return result;
     }
-    public Result<Void> addUser(UserEvent userEvent) {
-        Result<Void>result = validate(userEvent);
+    public Result<Void> addUser(EventUser eventUser) {
+        Result<Void>result = validate(eventUser);
         if (!result.isSuccess()){
             return result;
         }
-        if (!userEventRepository.add(userEvent)){
+        if (!userEventRepository.add(eventUser)){
             result.addErrorMessage("User not added to event");
         }
         return result;
     }
+    public boolean deleteUserByKey(int userId, int eventId){
+        return userEventRepository.deleteByKey(userId, eventId);
+    }
 
-    private  Result<Void> validate(UserEvent userEvent){
+    private  Result<Void> validate(EventUser eventUser){
         Result<Void> result =new Result<>();
-        if (userEvent == null){
-
+        if (eventUser == null){
+            result.addErrorMessage("EventUser cannot be null");
+            return result;
+        }
+        if (eventUser.getUser() == null ){
+            result.addErrorMessage("User cannot be null");
+            return result;
         }
         return result;
     }
@@ -135,18 +140,18 @@ public class EventService {
             }
         }
 
-
-//        boolean check = false;
-//        List<User> users = userRepository.findAll();
-//        for (User u: users){
-//            if (u.getUserId() == event.getId()){
-//                check = true;
-//            }
-//        }
-//        if (!check){
-//            result.addErrorMessage("User does not exist");
-//            return result;
-//        }
+        //need to test
+        boolean check = false;
+        List<User> users = userRepository.findAll();
+        for (User u: users){
+            if (u.getUserId() == event.getOrganizerId()){
+                check = true;
+            }
+        }
+        if (check){
+            result.addErrorMessage("Organizer Cannot join own event");
+            return result;
+        }
 
 
 

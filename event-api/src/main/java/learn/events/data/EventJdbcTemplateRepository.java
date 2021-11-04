@@ -1,8 +1,10 @@
 package learn.events.data;
 
 import learn.events.data.mappers.EventMapper;
+import learn.events.data.mappers.EventUserMapper;
 import learn.events.data.mappers.UserEventMapper;
 import learn.events.models.Event;
+import learn.events.models.EventUser;
 import learn.events.models.UserEvent;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,6 +32,19 @@ public class EventJdbcTemplateRepository implements EventRepository {
                 "category, organizerId, `status` from `event`";
         return jdbcTemplate.query(sql, new EventMapper());
     }
+    @Override
+    public Event findById(int eventId){
+        final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
+                "category, organizerId, `status` from `event` where eventId=?";
+        Event result = jdbcTemplate.query(sql, new EventMapper(), eventId).stream().findFirst().orElse(null);
+
+        if (result != null){
+                addUser(result);
+        }
+        return result;
+    }
+
+
     @Override
     public List<Event> findByCategory(String category){
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
@@ -124,16 +139,14 @@ public class EventJdbcTemplateRepository implements EventRepository {
     }
 
 
-
-        //Work in progress
-
     private void addUser(Event event){
-        final String sql = "select eu.app_user_id, eu.app_event_id, user.fname, user.lname, user.username" +
-                "from app_user_event eu " +
-                "inner join user u on eu.app_user_id = u.userId " +
-                "where eu.app_event_id = ?";
-        List<UserEvent> userEvents =jdbcTemplate.query(sql, new UserEventMapper(), event.getId());
-        event.setAttendees(userEvents);
+        final String sql = "select eu.app_user_id, eu.app_event_id, u.fname, u.lname, u.username" +
+                " from app_user_event eu " +
+                "inner join `user` u on eu.app_user_id = u.userId " +
+                "where eu.app_event_id = ?;";
+        final String sql2 = "select * from app_user_event eu inner join `user` u on eu.app_user_id = u.userId where eu.app_event_id = ?;";
+        List<EventUser> eventUsers =jdbcTemplate.query(sql2, new EventUserMapper(), event.getId());
+        event.setAttendees(eventUsers);
     }
 
 
