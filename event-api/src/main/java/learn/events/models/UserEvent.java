@@ -4,14 +4,17 @@ import java.util.Objects;
 
 public class UserEvent {
     private int userId;
-    private int eventId;
+
+
+    private Event event;
+
 
     public UserEvent() {
     }
 
-    public UserEvent(int userId, int eventId) {
+    public UserEvent(int userId) {
         this.userId = userId;
-        this.eventId = eventId;
+
     }
 
     public int getUserId() {
@@ -22,12 +25,13 @@ public class UserEvent {
         this.userId = userId;
     }
 
-    public int getEventId() {
-        return eventId;
+
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override
@@ -35,11 +39,11 @@ public class UserEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEvent userEvent = (UserEvent) o;
-        return userId == userEvent.userId && eventId == userEvent.eventId;
+        return userId == userEvent.userId && Objects.equals(event, userEvent.event);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, eventId);
+        return Objects.hash(userId, event);
     }
 }

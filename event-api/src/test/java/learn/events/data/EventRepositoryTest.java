@@ -33,6 +33,18 @@ class EventRepositoryTest {
         assertEquals(3,events.size());
     }
     @Test
+    void shouldFindById(){
+        Event event = repository.findById(1);
+        assertEquals("Meet Up", event.getTitle());
+    }
+    @Test
+    void shouldNotFindById(){
+        Event event = repository.findById(4);
+        assertNull(event);
+    }
+
+
+    @Test
     void shouldFindByCategory(){
         List<Event> events=repository.findByCategory("Games");
         assertEquals(1, events.size());

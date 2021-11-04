@@ -1,10 +1,7 @@
 package learn.events.data;
 
 
-import learn.events.domain.Result;
-import learn.events.models.User;
-import learn.events.models.UserEvent;
-import learn.events.models.UserRole;
+import learn.events.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-class UserEventRepositoryTest {
+class EventUserRepositoryTest {
 
     @Autowired
-    UserEventRepository repository;
+    EventUserRepository repository;
 
     @Autowired
     KnownGoodStateNic knownGoodState;
@@ -29,16 +26,14 @@ class UserEventRepositoryTest {
     }
     @Test
     void shouldAdd(){
-        UserEvent userEvent = new UserEvent();
-        userEvent.setUserId(2);
-        userEvent.setEventId(1);
-        assertTrue(repository.add(userEvent));
+      EventUser eventUser = makeEvent();
+      assertTrue(repository.add(eventUser));
     }
     @Test
     void shouldNotAdd(){
-        UserEvent userEvent = new UserEvent();
-        userEvent.setUserId(3);
+        EventUser userEvent = makeEvent();
         userEvent.setEventId(1);
+
         try{
             repository.add(userEvent);
         } catch (DuplicateKeyException ex){
@@ -50,6 +45,23 @@ class UserEventRepositoryTest {
         assertTrue(repository.deleteByKey(3,2));
         assertFalse(repository.deleteByKey(4,1));
     }
+
+    private EventUser makeEvent(){
+
+        EventUser eventUser = new EventUser();
+        eventUser.setEventId(3);
+        User user = new User();
+        user.setUserId(1);
+        user.setUserName("name");
+        user.setEmail("email@email.com");
+        user.setFname("Name");
+        user.setLname("Last");
+        user.setPasswordHash("hash");
+        eventUser.setUser(user);
+
+        return eventUser;
+    }
+
 
 
 

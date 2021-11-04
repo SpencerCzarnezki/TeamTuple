@@ -1,24 +1,24 @@
 package learn.events.data;
 
-import learn.events.models.UserEvent;
+import learn.events.models.EventUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserEventJdbcRepository implements UserEventRepository {
+public class EventUserJdbcRepository implements EventUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UserEventJdbcRepository(JdbcTemplate jdbcTemplate) {
+    public EventUserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
-    public boolean add(UserEvent userEvent){
+    public boolean add(EventUser eventUser){
 
         final String sql ="insert into app_user_event (app_user_id, app_event_id) values " +
                 "(?, ?);";
-        return jdbcTemplate.update(sql, userEvent.getUserId(), userEvent.getEventId()) > 0;
+        return jdbcTemplate.update(sql, eventUser.getUser().getUserId(), eventUser.getEventId()) > 0;
     }
 
     @Override

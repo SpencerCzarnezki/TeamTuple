@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Event {
     private int id;
     private String title;
-    private String Description;
+    private String description;
     private Timestamp date;
     private int duration;
     private int capacity;
@@ -17,22 +17,26 @@ public class Event {
     private int organizerId;
     private boolean status;
 
-    public List<UserEvent> getAttendees() {
+
+    private List<EventUser> attendees =new ArrayList<>();
+
+
+    public List<EventUser> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(List<UserEvent> attendees) {
+    public void setAttendees(List<EventUser> attendees) {
         this.attendees = attendees;
     }
 
-    public List<UserEvent> attendees =new ArrayList<>();
+
 
     public Event() {}
 
     public Event(int id, String title, String description, Timestamp date, int duration, int capacity, int eventLocationId, String category, int organizerId, boolean status) {
         this.id = id;
         this.title = title;
-        Description = description;
+        this.description = description;
         this.date = date;
         this.duration = duration;
         this.capacity = capacity;
@@ -59,11 +63,11 @@ public class Event {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public Timestamp getDate() {
@@ -127,11 +131,11 @@ public class Event {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Event event = (Event) o;
-        return duration == event.duration && capacity == event.capacity && eventLocationId == event.eventLocationId && organizerId == event.organizerId && status == event.status && Objects.equals(id, event.id) && Objects.equals(title, event.title) && Objects.equals(Description, event.Description) && Objects.equals(date, event.date) && Objects.equals(category, event.category);
+        return duration == event.duration && capacity == event.capacity && eventLocationId == event.eventLocationId && organizerId == event.organizerId && status == event.status && Objects.equals(id, event.id) && Objects.equals(title, event.title) && Objects.equals(description, event.description) && Objects.equals(date, event.date) && Objects.equals(category, event.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, Description, date, duration, capacity, eventLocationId, category, organizerId, status);
+        return Objects.hash(id, title, description, date, duration, capacity, eventLocationId, category, organizerId, status);
     }
 }
