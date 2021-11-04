@@ -143,11 +143,11 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && disabled == user.disabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(passwordHash, user.passwordHash);
+        return userId == user.userId && disabled == user.disabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(passwordHash, user.passwordHash) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, fname, lname, userName, email, passwordHash, disabled);
+        return Objects.hash(userId, fname, lname, userName, email, passwordHash, disabled, password, authorities);
     }
 }

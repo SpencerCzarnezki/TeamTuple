@@ -25,9 +25,11 @@ public class UserService {
         return repository.findAllRoles();
     }
 
-    public User findByAppUserId(int id) {
+    public User findByUserId(int id) {
         return repository.findByUserId(id);
     }
+
+    public User findByUsername(String username){ return repository.findByUsername(username);}
 
     public Result<User> add(User user) {
 
