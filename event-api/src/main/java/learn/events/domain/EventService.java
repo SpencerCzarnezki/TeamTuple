@@ -140,7 +140,7 @@ public class EventService {
             }
         }
 
-        //need to test
+        //need to test!
         boolean check = false;
         List<User> users = userRepository.findAll();
         for (User u: users){
