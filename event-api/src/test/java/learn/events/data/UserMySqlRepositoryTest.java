@@ -43,6 +43,12 @@ public class UserMySqlRepositoryTest {
     }
 
     @Test
+    void shouldFindById() throws DataAccessException{
+        var user = repository.findByUserId(1);
+        assertEquals(user.getUsername(),"Jdoe");
+    }
+
+    @Test
     void shouldAdd() throws DataAccessException{
         User user = new User();
         user.setUserId(4);
