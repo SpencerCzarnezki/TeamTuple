@@ -21,6 +21,7 @@ public class EventMapper implements RowMapper<Event> {
         event.setEventLocationId(resultSet.getInt("eventLocationId"));
         event.setCategory(resultSet.getString("category"));
         event.setOrganizerId(resultSet.getInt("organizerId"));
+        event.setStatus(resultSet.getBoolean("status"));
 
         return event;
     }
