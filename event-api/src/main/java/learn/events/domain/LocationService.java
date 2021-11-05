@@ -27,6 +27,13 @@ public class LocationService {
         return repository.findById(locationId);
     }
 
+    public List<Location> findByCity(String city) throws DataAccessException {
+        if (city.isBlank()) {
+            return null;
+        }
+        return repository.findByCity(city);
+    }
+
     public Result<Location> add(Location location) throws DataAccessException {
 
         Result<Location> result = validate(location);

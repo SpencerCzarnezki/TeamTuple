@@ -42,6 +42,14 @@ public class LocationServiceTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void shouldFindValidCity() throws DataAccessException {
+        List<Location> expected = List.of(makeValidLocation(2).setCity("Other City"));
+        when(repository.findByCity("Other City")).thenReturn(List.of(makeValidLocation(2).setCity("Other City")));
+        List<Location> actual = service.findByCity("Other City");
+        assertEquals(expected, actual);
+    }
+
 
 
     @Test

@@ -36,6 +36,16 @@ public class LocationMySQLRepository implements LocationRepository {
     }
 
     @Override
+    public List<Location> findByCity(String city) throws DataAccessException {
+        final String sql = "select * from location where city = ?;";
+        try {
+            return jdbcTemplate.query(sql, new LocationMapper(), city);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+
+    @Override
     public Location add(Location location) throws DataAccessException {
         final String sql = "insert into location"
                 + "(title, city, address, zipcode, state) "

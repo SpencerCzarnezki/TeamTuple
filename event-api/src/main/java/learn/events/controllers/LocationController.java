@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/location")
+@CrossOrigin(origins = {"http://localhost:3000"})
+@RequestMapping("/api/location")
 public class LocationController {
 
     private final LocationService service;
@@ -36,6 +37,15 @@ public class LocationController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(location);
+    }
+
+    @GetMapping("/{city}")
+    public ResponseEntity<List<Location>> findByCity(@PathVariable String city) throws DataAccessException {
+        List<Location> locations = service.findByCity(city);
+        if (locations == null || locations.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return ResponseEntity.ok(locations);
     }
 
     @PostMapping

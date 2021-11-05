@@ -1,10 +1,13 @@
 package learn.events.data;
 
+import learn.events.models.Event;
 import learn.events.models.Location;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static learn.events.TestHelper.makeValidLocation;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +41,17 @@ public class LocationMySQLRepositoryTest {
     @Test
     void shouldNotFindId372() throws DataAccessException {
         assertNull(repository.findById(372));
+    }
+
+    @Test
+    void shouldFindByCity() throws DataAccessException {
+        List<Location> events = repository.findByCity("Milwaukee");
+        assertEquals(1, events.size());
+    }
+    @Test
+    void shouldNotFindByCity() throws DataAccessException {
+        List<Location> events = repository.findByCity("Fake City");
+        assertEquals(0, events.size());
     }
 
     @Test
