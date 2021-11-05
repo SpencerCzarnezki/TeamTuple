@@ -1,5 +1,7 @@
 package learn.events.security;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,14 +16,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @EnableWebSecurity
+@ConditionalOnWebApplication
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtConverter converter;
+    private final String[] origins;
 
-    public SecurityConfig(JwtConverter converter) {
+    public SecurityConfig(JwtConverter converter, @Value("${bg.allowed_origins}") String allowedOrigins) {
         this.converter = converter;
+        if (allowedOrigins == null || allowedOrigins.isBlank()) {
+            origins = new String[0];
+        } else {
+            origins = allowedOrigins.split("\\s*,\\s*");
+        }
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 

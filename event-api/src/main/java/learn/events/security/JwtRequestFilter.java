@@ -27,21 +27,11 @@ public class JwtRequestFilter extends BasicAuthenticationFilter {
                                     HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
 
-        Cookie jwtCookie = null;
-        if (request.getCookies() != null) {
-            for (Cookie c : request.getCookies()) {
-                if (c.getName().equals("jwt")) {
-                    jwtCookie = c;
-                }
-            }
-        }
+        String authorization = request.getHeader("Authorization");
+        if (authorization != null && authorization.startsWith("Bearer ")) {
 
-        if (jwtCookie != null) {
-
-            User user = converter.getUserFromToken(jwtCookie.getValue());
+            User user = converter.getUserFromToken(authorization.substring(7));
             if (user == null) {
-                jwtCookie.setMaxAge(0);
-                response.addCookie(jwtCookie);
                 response.setStatus(403);
             } else {
                 var token = new UsernamePasswordAuthenticationToken(
