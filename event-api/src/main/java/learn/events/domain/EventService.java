@@ -146,7 +146,7 @@ public class EventService {
         for (Event e: all){
             System.out.println(e.getTitle());
             if (e.getOrganizerId() == event.getOrganizerId() && e.getTitle() == event.getTitle()
-            && e.getEventLocationId() == event.getEventLocationId() && e.getDate() == event.getDate()){
+            && e.getEventLocationId() == event.getEventLocationId() && e.getDate().equals(event.getDate())){
                 result.addErrorMessage("Duplicate Event");
                 return result;
             }
