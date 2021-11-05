@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtConverter converter;
     private final String[] origins;
 
-    public SecurityConfig(JwtConverter converter, @Value("${bg.allowed_origins}") String allowedOrigins) {
+    public SecurityConfig(JwtConverter converter, @Value("http://localhost:3000") String allowedOrigins) {
         this.converter = converter;
         if (allowedOrigins == null || allowedOrigins.isBlank()) {
             origins = new String[0];
