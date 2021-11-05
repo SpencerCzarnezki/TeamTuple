@@ -39,7 +39,7 @@ public class LocationController {
         return ResponseEntity.ok(location);
     }
 
-    @GetMapping("/{city}")
+    @GetMapping("/city/{city}")
     public ResponseEntity<List<Location>> findByCity(@PathVariable String city) throws DataAccessException {
         List<Location> locations = service.findByCity(city);
         if (locations == null || locations.isEmpty()) {
