@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static learn.events.TestHelper.makeResult;
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +41,7 @@ class EventServiceTest {
     @Test
     void shouldNotAddPastDate(){
         Event event= makeEvent();
-        event.setDate(Timestamp.valueOf(LocalDateTime.now()));
+        event.setDate(Timestamp.valueOf(LocalDateTime.of(2017,12,12,12,00)));
         Result<Event> actual = service.add(event);
         Result expected = makeResult("Date must be in the future");
         assertFalse(actual.isSuccess());
@@ -148,16 +149,16 @@ class EventServiceTest {
 
 
 
-//    @Test
-//    void shouldNotAddDuplicate(){
-//        List<Event> events = List.of(makeEvent());
-//        Event event = makeEvent();
-//        when(repository.findAll()).thenReturn(events);
-//
-//        Result expected = makeResult("Duplicate Event");
-//        Result<Event> actual = service.add(event);
-//        assertEquals(expected.getMessages(),actual.getMessages());
-//    }
+    @Test
+    void shouldNotAddDuplicate(){
+        List<Event> events = List.of(makeEvent());
+        Event event = makeEvent();
+        when(repository.findAll()).thenReturn(events);
+
+        Result expected = makeResult("Duplicate Event");
+        Result<Event> actual = service.add(event);
+        assertEquals(expected.getMessages(),actual.getMessages());
+    }
 
 
 

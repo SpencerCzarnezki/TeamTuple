@@ -49,9 +49,9 @@ class EventUserRepositoryTest {
     private EventUser makeEvent(){
 
         EventUser eventUser = new EventUser();
-        eventUser.setEventId(3);
+        eventUser.setEventId(1);
         User user = new User();
-        user.setUserId(1);
+        user.setUserId(2);
         user.setUserName("name");
         user.setEmail("email@email.com");
         user.setFname("Name");
