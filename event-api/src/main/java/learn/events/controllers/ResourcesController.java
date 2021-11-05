@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/resources")
+@CrossOrigin(origins = {"http://localhost:3000"})
+@RequestMapping("/api/resources")
 public class ResourcesController {
 
     private final ResourcesService service;
