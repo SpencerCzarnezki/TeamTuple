@@ -25,7 +25,7 @@ public class EventController {
     public List<Event> findAll(){
         return eventService.findAll();
     }
-    @GetMapping
+    @GetMapping("/{category}")
     public ResponseEntity<List<Event>> findByCategory(@PathVariable String category){
         List<Event> event = eventService.findByCategory(category);
         if (event == null || event.isEmpty()){
@@ -41,16 +41,16 @@ public class EventController {
             }
         return ResponseEntity.ok(event);
     }
-    @GetMapping
-    public ResponseEntity<List<Event>> findByOrganizer(@PathVariable int organizerId){
-        List<Event> event = eventService.findByOrganizer(organizerId);
-        if (event == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(event);
-    }
+//    @GetMapping({"/"})
+//    public ResponseEntity<List<Event>> findByOrganizer(@PathVariable int organizerId){
+//        List<Event> event = eventService.findByOrganizer(organizerId);
+//        if (event == null){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return ResponseEntity.ok(event);
+//    }
 
-    @GetMapping
+    @GetMapping("/{keyword}")
     public ResponseEntity<List<Event>> findByKeyWord(@PathVariable String keyword){
         List<Event> event = eventService.findByKeyWord(keyword);
         if (event == null || event.isEmpty()){
