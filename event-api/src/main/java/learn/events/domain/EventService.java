@@ -32,6 +32,7 @@ public class EventService {
     public List<Event> findByKeyWord(String keyword){
         return repository.findByKeyWord(keyword);
     }
+    public Event findById(int eventId) {return repository.findById(eventId);}
     public List<Event> findByOrganizer(int organizerId){
         return  repository.findByOrganizer(organizerId);
     }

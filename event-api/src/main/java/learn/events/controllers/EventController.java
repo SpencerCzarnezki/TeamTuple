@@ -33,6 +33,23 @@ public class EventController {
         }
         return ResponseEntity.ok(event);
     }
+    @GetMapping("/{eventId}")
+    public ResponseEntity<Event> findById(@PathVariable int eventId){
+            Event event = eventService.findById(eventId);
+            if (event == null){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        return ResponseEntity.ok(event);
+    }
+    @GetMapping
+    public ResponseEntity<List<Event>> findByOrganizer(@PathVariable int organizerId){
+        List<Event> event = eventService.findByOrganizer(organizerId);
+        if (event == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(event);
+    }
+
     @GetMapping
     public ResponseEntity<List<Event>> findByKeyWord(@PathVariable String keyword){
         List<Event> event = eventService.findByKeyWord(keyword);
