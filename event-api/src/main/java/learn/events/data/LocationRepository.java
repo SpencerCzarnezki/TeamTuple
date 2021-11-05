@@ -9,6 +9,8 @@ public interface LocationRepository {
 
     Location findById(int id) throws DataAccessException;
 
+    List <Location> findByCity(String city) throws DataAccessException;
+
     Location add(Location location) throws DataAccessException;
 
     boolean update(Location location) throws DataAccessException;
