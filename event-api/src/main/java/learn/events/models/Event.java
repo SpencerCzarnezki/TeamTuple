@@ -17,6 +17,16 @@ public class Event {
     private int organizerId;
     private boolean status;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    private String imageUrl;
+
 
     private List<EventUser> attendees =new ArrayList<>();
 
