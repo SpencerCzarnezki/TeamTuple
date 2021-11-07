@@ -5,6 +5,7 @@ import learn.events.data.DataAccessException;
 import learn.events.domain.LocationService;
 import learn.events.domain.Result;
 import learn.events.models.Location;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@ConditionalOnWebApplication
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/location")
 public class LocationController {
