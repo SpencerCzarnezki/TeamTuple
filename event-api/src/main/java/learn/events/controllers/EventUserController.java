@@ -3,11 +3,13 @@ package learn.events.controllers;
 import learn.events.domain.EventService;
 import learn.events.domain.Result;
 import learn.events.models.EventUser;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@ConditionalOnWebApplication
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/event/user")
 public class EventUserController {
