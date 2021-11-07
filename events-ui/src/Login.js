@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
 import { login } from "./services/auth-api";
 
@@ -11,7 +11,7 @@ function Login() {
     });
     const [hasError, setHasError] = useState(false);
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const authContext = useContext(AuthContext);
 
     // event handlers
@@ -26,7 +26,7 @@ function Login() {
         login(candidate)
             .then(principal => {
                 authContext.login(principal);
-                history.push("/");
+                navigate("/");
             }).catch(() => setHasError(true));
     }
 
