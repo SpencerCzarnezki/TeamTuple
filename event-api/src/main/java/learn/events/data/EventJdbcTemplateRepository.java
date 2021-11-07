@@ -29,13 +29,13 @@ public class EventJdbcTemplateRepository implements EventRepository {
     @Override
     public List<Event> findAll() {
         final String sql ="select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
-                "category, organizerId, `status` from `event`";
+                "category, organizerId, `status`, imageUrl from `event`";
         return jdbcTemplate.query(sql, new EventMapper());
     }
     @Override
     public Event findById(int eventId){
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
-                "category, organizerId, `status` from `event` where eventId=?";
+                "category, organizerId, `status`, imageUrl from `event` where eventId=?";
         Event result = jdbcTemplate.query(sql, new EventMapper(), eventId).stream().findFirst().orElse(null);
 
         if (result != null){
@@ -48,7 +48,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
     @Override
     public List<Event> findByCategory(String category){
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
-                "category, organizerId, `status` from `event` where category=?";
+                "category, organizerId, `status`, imageUrl from `event` where category=?";
         try {
             return jdbcTemplate.query(sql, new EventMapper(), category);
         } catch (EmptyResultDataAccessException ex){
@@ -58,7 +58,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
     @Override
     public List<Event> findByOrganizer(int organizerId){
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
-                "category, organizerId, `status` from `event` where organizerId=?";
+                "category, organizerId, `status`, imageUrl from `event` where organizerId=?";
         try {
             return jdbcTemplate.query(sql, new EventMapper(), organizerId);
         } catch (EmptyResultDataAccessException ex){
@@ -68,9 +68,8 @@ public class EventJdbcTemplateRepository implements EventRepository {
     @Override
     public List<Event> findByKeyWord(String keyword){
         String keyword2 = "%" + keyword + "%";
-        System.out.println(keyword2);
         final String sql = "select eventId, title, `description`, event_date, duration, capacity, eventLocationId, " +
-                "category, organizerId, `status` from `event` where (" +
+                "category, organizerId, `status`, imageUrl from `event` where (" +
                 "title like  ? or `description` like ? )";
         try {
             return jdbcTemplate.query(sql, new EventMapper(), keyword2, keyword2);
@@ -82,7 +81,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
     @Override
     public Event add(Event event){
         final String sql = "insert into `event` (title, `description`, event_date, duration, capacity, eventLocationId," +
-                "category, organizerId, `status`) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "category, organizerId, `status`, imageUrl) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder= new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(con -> {
@@ -96,6 +95,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
             ps.setString(7, event.getCategory());
             ps.setInt(8, event.getOrganizerId());
             ps.setBoolean(9,event.isStatus());
+            ps.setString(10,event.getImageUrl());
             return ps;
 
         }, keyHolder);
@@ -117,6 +117,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
                     "category = ?, " +
                     "organizerId = ?, " +
                     "`status` = ? " +
+                    "imageUrl = ? " +
                     "where eventId = ?";
             return jdbcTemplate.update(sql,
                     event.getTitle(),
@@ -128,6 +129,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
                     event.getCategory(),
                     event.getOrganizerId(),
                     event.isStatus(),
+                    event.getImageUrl(),
                     event.getId()) > 0;
     }
     @Override

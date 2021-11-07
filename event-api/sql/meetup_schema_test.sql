@@ -40,6 +40,7 @@ CREATE TABLE `event` (
     category VARCHAR(35) NOT NULL,
     organizerId INT,
     `status` BOOLEAN NOT NULL,
+	imageUrl varchar(512) null,
     CONSTRAINT fk_event_location_address FOREIGN KEY (eventLocationId)
         REFERENCES location (locationId),
     CONSTRAINT fk_event_category_group FOREIGN KEY (organizerId)

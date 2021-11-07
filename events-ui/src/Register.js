@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createUser } from "./services/user-api";
 
 function Register() {
@@ -11,7 +11,7 @@ function Register() {
     });
     const [err, setErr] = useState();
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const onChange = (evt) => {
         const clone = { ...user };
@@ -25,12 +25,12 @@ function Register() {
             setErr("passwords do not match");
         } else {
             createUser(user)
-                .then(() => history.push("/login"))
+                .then(() => navigate("/login"))
                 .catch(err => {
                     if (err.status === 400) {
                         setErr(err.messages[0]);
                     } else {
-                        history.push("/error", err.toString());
+                        navigate("/error", err.toString());
                     }
                 });
         }

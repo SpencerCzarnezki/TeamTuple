@@ -1,10 +1,21 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
+import { findByEventId } from "./services/api";
 
-function Event({ event }) {
 
+
+function Event() {
+    const[event, setEvent] = useState([]);
     const auth = useContext(AuthContext);
+    const { eventId } = useParams();
+
+    useEffect(() => {
+        if(eventId){
+            findByEventId(eventId).then(event => setEvent(event))
+            .catch((error) => error.toString());
+        }
+    }, [eventId])
 
     return (
         <div className="col">
@@ -41,14 +52,14 @@ function Event({ event }) {
                         <div className="col">{event.category}</div>
                     </div> */}
                 </div>
-                {auth.credentials && auth.credentials.hasAuthority("USER", "ADMIN") &&
+                {/* {auth.credentials && auth.credentials.hasAuthority("USER", "ADMIN") &&
                     <div className="card-footer text-center">
                         {auth.credentials.hasAuthority("ADMIN") &&
                             <Link to={`/delete/${event.id}`} className="btn btn-danger me-1">Delete</Link>}
                         {auth.credentials.hasAuthority("ADMIN") &&
-                            <Link to={`/edit/${event.id}`} className="btn btn-secondary">Edit</Link>}
-                    </div>
-                }
+                            <Link to={`/edit/${event.id}`} className="btn btn-secondary">Edit</Link>} */}
+                    {/* </div>
+                } */}
             </div>
         </div>
     );
