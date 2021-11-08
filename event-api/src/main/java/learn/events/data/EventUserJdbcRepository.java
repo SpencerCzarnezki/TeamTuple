@@ -1,8 +1,15 @@
 package learn.events.data;
 
+import learn.events.data.mappers.EventMapper;
+import learn.events.data.mappers.EventUserMapper;
 import learn.events.models.EventUser;
+import learn.events.models.User;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class EventUserJdbcRepository implements EventUserRepository {
@@ -12,6 +19,8 @@ public class EventUserJdbcRepository implements EventUserRepository {
     public EventUserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    
 
     @Override
     public boolean add(EventUser eventUser){

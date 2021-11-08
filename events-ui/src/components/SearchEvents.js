@@ -2,7 +2,7 @@ import { Label, SearchBox } from "@fluentui/react";
 import { MDBRow } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { findAll, findAllEvents, findByCategory, findByEventKeyWord, findByKeyWord } from "../services/api";
+import { findAllEvents, findByCategory, findByEventKeyWord, findByKeyWord } from "../services/api";
 import EventCard from "./EventCard";
 
 
@@ -16,10 +16,14 @@ function SearchEvents(){
 
     useEffect(() => {
 
-        if(keyword.length > 0){
+        if(keyword.length == 0){
+            findAllEvents().then(events => setEvents(events))
+           
+        }
+        else if(keyword.length > 0){
             
         findByEventKeyWord(keyword).then(events => setEvents(events))
-        .catch(err  => emptyResult);
+        // .catch(err  => emptyResult);
     }
 
 
@@ -47,8 +51,8 @@ function SearchEvents(){
         
         <div className="input-group m-3" style={{width : 500}}>
             <div>
-               
-        <input type="search" className="form-control" value={keyword} onChange={onChange} id="keysearch" placeholder="Search Keyword" aria-autocomplete="false"></input>
+
+        <input type="search" className="form-control" value={keyword} onChange={onChange} id="keysearch" placeholder="Search Keyword" ></input>
         </div>
         </div>
       
