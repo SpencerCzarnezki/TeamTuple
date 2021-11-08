@@ -27,7 +27,7 @@ function App() {
       <MDBNavbar expand="lg" light bgColor="light" >
         <MDBContainer fluid>
         <MDBNavbarBrand><img src="logo.png"className="float-left" height='60'  /></MDBNavbarBrand>
-        <MDBNavbarNav>
+        <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
           <MDBNavbarItem>
             <MDBNavbarLink  href="/">
               Home

@@ -32,3 +32,10 @@ export async function findByCategory(category){
     }
     throw new Error("Could not fetch Events");
 }
+export async function findByLocationId(locationId){
+    const response = await fetch(`http://localhost:8080/api/location/${locationId}`)
+    if(response.status === 200){
+        return response.json();
+    }
+    throw new Error("Could not fetch Location");
+}
