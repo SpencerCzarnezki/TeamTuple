@@ -1,8 +1,10 @@
+import { getResourceUrl } from "@fluentui/utilities";
 import { MDBInput } from "mdb-react-ui-kit";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { findByEventId, saveEvent, } from "../services/api";
+import AuthContext from "../contexts/AuthContext";
+import { addResource, findByEventId, saveEvent, } from "../services/api";
 import {addLocation, findAllLocations } from "../services/location-api";
 const emptyEvent = {
     "title": "",
@@ -12,7 +14,7 @@ const emptyEvent = {
     "capacity" : "",
     "eventLocationId" : "",
     "category" : "",
-    "organizerId" : "1",
+    "organizerId" : "",
     "imageUrl" : ""
 
 }
@@ -24,6 +26,10 @@ const emptyLocation = {
     "zipcode": "",
     "state": ""
 }
+const emptyResource = {
+    "resource" : "",
+    "locationId": ""
+}
 
 
 
@@ -33,6 +39,8 @@ function AddEvent(){
     const[locationId, setLocationId] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+    const[resource, setResource] = useState(emptyResource);
 
     function onChange(evt){
         const nextEvent = {...event};
@@ -60,6 +68,20 @@ function AddEvent(){
         setLocation(nextLocation);
 
     }
+    function onChangeResource(evt){
+        const nextResource = {...resource};
+        let value = evt.target.value;
+        if(evt.target.type === "number"){
+            value = parseInt(value, 10);
+            if(isNaN(value)){
+                value = evt.target.value;
+            }
+        }
+        nextResource[evt.target.name] = value;
+        setResource(nextResource);
+    }
+
+
     useEffect(() => {
         if(id) {
             findByEventId(id).then(event => setEvent(event))
@@ -71,12 +93,24 @@ function AddEvent(){
     
     function onSubmit(evt){
         evt.preventDefault();
-        addLocation(location).then(json => console.log(json) ).catch((err) => navigate("/NotFound", console.log(err)));
+        addLocation(location)
+        .then(json => {
+            console.log(json);
+            const nextEvent = {...event};
+            nextEvent.eventLocationId = json.id;
+            const nextResource = {...resource};
+            nextResource.locationId = json.id;
+            console.log(nextResource);
+            addResource(nextResource);
+            console.log("Add Event ", authContext.user);
+            nextEvent.organizerId = authContext.user.id;
+            saveEvent(nextEvent).then(() => navigate("/"));
+        })
+        .catch((err) => navigate("/NotFound", console.log(err)));
         console.log(location);
        
         
         // event.eventLocationId = locationId.id;
-        saveEvent(event).then(() => navigate("/"))
         
     }
     let headertitle = "Add an Event";
@@ -102,7 +136,7 @@ function AddEvent(){
                 </div>
                 <div className="m-2">
                     <label className="m-1" required>Start Date and Time:  </label>
-              <input type="datetime-local"></input>
+              <input type="datetime-local" id="date" name="date" value={event.date} onChange={onChange}></input>
                 </div>
                 <div className="m-2">
               <MDBInput label="Event Duration (Minutes)" id="duration" name="duration" type="number" size="lg" className="col form-control" required
@@ -113,7 +147,7 @@ function AddEvent(){
                 value={event.capacity} onChange={onChange}></MDBInput>
                 </div>
                 <div className="m-2">
-              <MDBInput label="Image Url" id="image" name="image" type="url" size="lg" className="col form-control" 
+              <MDBInput label="Image Url" id="imageUrl" name="imageUrl" type="url" size="lg" className="col form-control" 
                 value={event.imageUrl} onChange={onChange}></MDBInput>
                 </div>
               </div>
@@ -138,6 +172,10 @@ function AddEvent(){
                 <div className="m-2">
               <MDBInput label="Zip Code" id="zipcode" name="zipcode" type="number" size="lg" className="col form-control" 
                 value={location.zipcode} onChange={onChangeLocation} min={0} max={99999}></MDBInput>
+                </div>
+                <div className="m-2">
+                <MDBInput label="Amenities" id="resource" name="resource" type="text" textarea size="lg" className="col form-control"
+                value={resource.resource} onChange={onChangeResource}></MDBInput>
                 </div>
               </div>
               <Link to="/">Cancel</Link>

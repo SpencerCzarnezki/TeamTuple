@@ -4,6 +4,7 @@ package learn.events.data;
 import learn.events.data.mappers.UserMapper;
 import learn.events.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -56,8 +57,8 @@ public class UserRepository implements UserRepositoryInterface {
     @Override
     public User findByUserId(int id) {
         User user = jdbcTemplate.query(
-                        "select * from `user` where userId = ?;",
-                        new UserMapper(),
+                        "select fname, lname, username from `user` where userId = ?;",
+                        mapper,
                         id).stream()
                 .findFirst()
                 .orElse(null);
@@ -65,12 +66,19 @@ public class UserRepository implements UserRepositoryInterface {
         return user;
 
     }
+    private final RowMapper<User> mapper =(resultSet, i) -> {
+        User user = new User();
+        user.setFname(resultSet.getString("fname"));
+        user.setLname(resultSet.getString("lname"));
+        user.setUserName(resultSet.getString("username"));
+        return user;
+    };
 
 
     @Override
     public User add(User user){
 
-        final String sql = "insert into `user` (fname, lname, username, email,disabled) values (?,?,?,?,?);";
+        final String sql = "insert into `user` (fname, lname, username, email, password_hash, disabled) values (?,?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
@@ -79,8 +87,8 @@ public class UserRepository implements UserRepositoryInterface {
             statement.setString(2, user.getLname());
             statement.setString(3, user.getUsername());
             statement.setString(4, user.getEmail());
-            //statement.setString(5,user.getPasswordHash());
-            statement.setBoolean(5,!user.isEnabled());
+            statement.setString(5,user.getPassword());
+            statement.setBoolean(6,!user.isEnabled());
             return statement;
         }, keyHolder);
 

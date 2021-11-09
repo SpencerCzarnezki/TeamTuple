@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
 import AuthContext from "./contexts/AuthContext";
-import { refresh } from "./services/auth-api";
+import { logout, refresh } from "./services/auth-api";
 import AddEvent from "./components/AddEvent";
 
 function App() {
@@ -27,14 +27,16 @@ function App() {
     refresh().then(loginName => setUser(loginName))
     .catch(() => setUser())
     .finally(() => setInitialized(true));
-  })
+  }, []);
 
   const authorization = {
     user,
     login: (loginName) => setUser(loginName),
-    logout: () => setUser()
+    logout: () => {
+      logout().finally(() => setUser());
+    }
   };
-
+  console.log(user);
 
 
 
@@ -56,11 +58,17 @@ function App() {
                 Search Events
               </MDBNavbarLink>
             </MDBNavbarItem>
-
+            <MDBNavbarItem>
+          <MDBNavbarLink href="/add">Add Event</MDBNavbarLink>
+        </MDBNavbarItem>
           </MDBNavbarNav>
+      <MDBNavbarNav right fullWidth={false}>
+
+      </MDBNavbarNav>
+
       {user ?
     <MDBNavbarNav right fullWidth={false}>
-      <MDBNavbarItem>{user.fname} {user.lname}</MDBNavbarItem>
+      <MDBNavbarItem>{user.id}</MDBNavbarItem>
     <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
           Logout 
         </button>
@@ -85,10 +93,7 @@ function App() {
 
         </MDBContainer>
       </MDBNavbar>
-      <div>
-      {user ?
-     <Link to="/agents" className="float-end btn btn-lg btn-dark m-2">Agents</Link> : ""}
-      </div>
+  
 
 
 

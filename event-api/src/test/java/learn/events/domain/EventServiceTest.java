@@ -188,7 +188,7 @@ class EventServiceTest {
         user.setLname("Smith");
         user.setUserName("TSmith");
         user.setEmail("Tsmith@email.com");
-        user.setPasswordHash("ghdgkjdkf");
+        user.setPassword("ghdgkjdkf");
         user.setDisabled(true);
         return user;
     }
