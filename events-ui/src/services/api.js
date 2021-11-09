@@ -8,6 +8,7 @@ export async function findAllEvents(){
     throw new Error("Could not fetch events");
 }
 
+
 export async function findByEventKeyWord(keyword){
 
     const response = await fetch(`${url}/keyword/${keyword}`);
@@ -39,3 +40,45 @@ export async function findByLocationId(locationId){
     }
     throw new Error("Could not fetch Location");
 }
+function makeFetchInit(method, event){
+    return {
+        method: method,
+        headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+        },
+        body: JSON.stringify(event)
+    };
+}
+
+async function addEvent(event){
+    const first = makeFetchInit("POST", event);
+    const response = await fetch(url, first);
+    if(response.status === 201){
+        return response.json();
+    }
+    throw new Error("Could not add event");
+}
+async function updateEvent(event){
+    const update = makeFetchInit("PUT", event);
+    const response = await fetch(`${url}/${event.eventId}`, update);
+    if (response.status !== 204){
+        throw new Error("Could not update event"); 
+    }
+}
+export async function saveEvent(event){
+    return event.eventId > 0 ? updateEvent(event) : addEvent(event); 
+}
+async function addEventUser(event){
+    const first = makeFetchInit("POST", event);
+    const response = await fetch(`${url}/user`, first);
+    if(response.status === 201){
+        return response.json();
+    }
+    throw new Error("Could not add event");
+}   
+
+
+
+
+

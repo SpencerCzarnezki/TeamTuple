@@ -1,37 +1,44 @@
 GET http://localhost:8080/api/event HTTP/1.1
 
 ###
+GET http://localhost:8080/api/event/1 HTTP/1.1
+
+
+###
 POST http://localhost:8080/api/event HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 {
-    "title": "Name",
-    "description" : "Description",
+    "title": "Milwaukee Bucks Game",
+    "description" : "Bucks game against Pistons",
     "date" : "2022-01-01T01:00:00.0000",
     "duration" : 60,
     "capacity" : 50,
     "eventLocationId" : 1,
     "category" : "sports",
     "organizerId" : 1,
-    "status" : true
+    "status" : true,
+    "imageUrl" : "https://www.milwaukeedowntown.com/sites/default/files/homepage/slideshow/dtskyline3.jpg"
+
 }
 ###
-PUT http://localhost:8080/api/event/5 HTTP/1.1
+PUT http://localhost:8080/api/event/1 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 {
-    "id" : 5,
-    "title": "New Name",
-    "description" : "empty",
-    "date" : "2023-01-01T01:00:00.0000",
-    "duration" : 120,
-    "capacity" : 10,
-    "eventLocationId" : 1,
-    "category" : "sports2",
-    "organizerId" : 1,
-    "status" : false
+     "id": 5,
+    "title": "Milwaukee Bucks New Game",
+    "description": "Bucks game against Pistons",
+    "date": "2022-01-01T01:00:00.000+00:00",
+    "duration": 60,
+    "capacity": 50,
+    "eventLocationId": 2,
+    "category": "sports",
+    "organizerId": 1,
+    "status": true,
+    "imageUrl": "https://www.milwaukeedowntown.com/sites/default/files/homepage/slideshow/dtskyline3.jpg"
 }
 ###
 DELETE http://localhost:8080/api/event/6 HTTP/1.1
@@ -45,7 +52,7 @@ GET http://localhost:8080/api/event/category/new Category HTTP/1.1
 
 ###
 
-GET http://localhost:8080/api/event/keyword/pty HTTP/1.1
+GET http://localhost:8080/api/event/keyword/ptyfdfdf HTTP/1.1
 
 ###
 GET http://localhost:8080/api/location/2 HTTP/1.1
@@ -53,7 +60,58 @@ GET http://localhost:8080/api/location/2 HTTP/1.1
 ###
 GET http://localhost:8080/api/location/city/ HTTP/1.1
 
+###
+PUT http://localhost:8080/api/location/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "id": 2,
+  "title": "High School",
+  "city": "Cudahy",
+  "address": "4950 S Lake Dr",
+  "zipcode": 12345,
+  "state": "WI"
+}
+
+###
+PUT http://localhost:8080/api/location/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
 
 
+###
+GET http://localhost:8080/user/2 HTTP/1.1
 
+###
+POST http://localhost:8080/user/create HTTP/1.1
+Content-Type: application/json
+Accept: application/json
 
+{
+        "fname": "Steve",
+        "lname": "Johnson",
+        "email": "stevejohnson@fakeemail.com",
+        "password": "password1!",
+        "passwordHash": "hash",
+        "userName": "username"
+
+}
+
+###
+POST http://localhost:8080/api/event/user/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "User": {
+        "userId" : 4,
+        "fname": "Steve",
+        "lname": "Johnson",
+        "email": "stevejohnson@fakeemail.com",
+        "password": "password1!",
+        "passwordHash": "hash",
+        "userName": "username"
+    }
+    
+}

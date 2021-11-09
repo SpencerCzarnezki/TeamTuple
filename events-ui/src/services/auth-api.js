@@ -1,4 +1,4 @@
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "http://localhost:8080";
 
 function hasAuthority(...authorities) {
     for (const authority of authorities) {
