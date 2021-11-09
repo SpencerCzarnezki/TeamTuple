@@ -70,7 +70,7 @@ public class UserRepository implements UserRepositoryInterface {
     @Override
     public User add(User user){
 
-        final String sql = "insert into `user` (fname, lname, username, email, password_hash,disabled) values (?,?,?,?,?,?);";
+        final String sql = "insert into `user` (fname, lname, username, email,disabled) values (?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(conn -> {
@@ -79,8 +79,8 @@ public class UserRepository implements UserRepositoryInterface {
             statement.setString(2, user.getLname());
             statement.setString(3, user.getUsername());
             statement.setString(4, user.getEmail());
-            statement.setString(5,user.getPasswordHash());
-            statement.setBoolean(6,!user.isEnabled());
+            //statement.setString(5,user.getPasswordHash());
+            statement.setBoolean(5,!user.isEnabled());
             return statement;
         }, keyHolder);
 
