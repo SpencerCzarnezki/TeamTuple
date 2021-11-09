@@ -1,5 +1,5 @@
 import { CommandBarBase, ContextualMenu, Link, Nav } from "@fluentui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Router, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
@@ -14,71 +14,103 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
 import AuthContext from "./contexts/AuthContext";
+import { refresh } from "./services/auth-api";
+import AddEvent from "./components/AddEvent";
 
 function App() {
 
 
+  const [user, setUser] = useState();
+  const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
+    refresh().then(loginName => setUser(loginName))
+    .catch(() => setUser())
+    .finally(() => setInitialized(true));
+  })
+
+  const authorization = {
+    user,
+    login: (loginName) => setUser(loginName),
+    logout: () => setUser()
+  };
 
 
-  
+
+
 
   return (
-   <BrowserRouter>
+    <AuthContext.Provider value={authorization}>
+    <BrowserRouter>
       <MDBNavbar expand="lg" light bgColor="light" >
         <MDBContainer fluid>
-        <MDBNavbarBrand><img src="logo.png"className="float-left" height='60'  /></MDBNavbarBrand>
-        <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
-          <MDBNavbarItem>
-            <MDBNavbarLink  href="/">
-              Home
-            </MDBNavbarLink>
-          </MDBNavbarItem>
-          <MDBNavbarItem>
-            <MDBNavbarLink  href="/search">
-              Search Events
-            </MDBNavbarLink>
-          </MDBNavbarItem>
+          <MDBNavbarBrand><img src="logo.png" className="float-left" height='60' /></MDBNavbarBrand>
+          <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/">
+                Home
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/search">
+                Search Events
+              </MDBNavbarLink>
+            </MDBNavbarItem>
 
-        </MDBNavbarNav>
-        <MDBNavbarNav right fullWidth={false}>
-          <MDBNavbarItem>
-            <MDBNavbarLink  href="/register">
-              Register
-            </MDBNavbarLink>
-          </MDBNavbarItem>
-          <MDBNavbarItem>
-            <MDBNavbarLink  href="/login">
-              Login
-            </MDBNavbarLink>
-          </MDBNavbarItem>
-        </MDBNavbarNav>
+          </MDBNavbarNav>
+      {user ?
+    <MDBNavbarNav right fullWidth={false}>
+      <MDBNavbarItem>{user.fname} {user.lname}</MDBNavbarItem>
+    <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
+          Logout 
+        </button>
+        </MDBNavbarNav> :
+
+
+          <MDBNavbarNav right fullWidth={false}>
+            
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/register">
+                Register
+              </MDBNavbarLink>
+            </MDBNavbarItem> 
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/login">
+                Login
+              </MDBNavbarLink> 
+            </MDBNavbarItem> 
+            
+          </MDBNavbarNav>   
+            }
 
         </MDBContainer>
       </MDBNavbar>
       <div>
+      {user ?
+     <Link to="/agents" className="float-end btn btn-lg btn-dark m-2">Agents</Link> : ""}
       </div>
 
 
 
 
-    <Routes>
-      <Route path="/" element = {<Homepage/>} />
-      <Route path="/event/:eventId" element={<Event />} />
-      <Route path="/login" element={<Login /> } />
-      <Route path="/search" element={<SearchEvents />} />
-      <Route path="/register" element={ <Register /> } />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/event/:eventId" element={<Event />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/search" element={<SearchEvents />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/add" element={<AddEvent />} />
+
+
+        <Route path="*" element={<ErrorPage />} />
 
 
 
-      <Route path="*" element={<ErrorPage />} />
-    
-      
-   
-     </Routes>
-   </BrowserRouter>
-      
-    
+      </Routes>
+    </BrowserRouter>
 
+
+</AuthContext.Provider>
 
 
 
