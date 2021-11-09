@@ -17,7 +17,7 @@ public class User implements UserDetails {
     private String lname;
     private String userName;
     private String email;
-    private String passwordHash;
+
     private boolean disabled;
     private String password;
     private List<String> authorities = new ArrayList<>();
@@ -32,7 +32,7 @@ public class User implements UserDetails {
         this.lname = lname;
         this.userName = userName;
         this.email = email;
-        this.passwordHash = passwordHash;
+
         this.disabled = diabled;
     }
 
@@ -62,14 +62,6 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
     }
 
     public boolean isDisabled() {
@@ -143,11 +135,11 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && disabled == user.disabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(passwordHash, user.passwordHash) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities);
+        return userId == user.userId && disabled == user.disabled && Objects.equals(fname, user.fname) && Objects.equals(lname, user.lname) && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, fname, lname, userName, email, passwordHash, disabled, password, authorities);
+        return Objects.hash(userId, fname, lname, userName, email, disabled, password, authorities);
     }
 }
