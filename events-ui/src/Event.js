@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
-import { findByEventId, findByLocationId } from "./services/api";
+import { findByEventId, findByLocationId, findResourcesByLocationId } from "./services/api";
 import { MDBRow } from "mdb-react-ui-kit";
+import { findUserById } from "./services/user-api";
 
 
 function setMapUrl(address, city) {
@@ -18,6 +19,8 @@ function Event() {
     const [url, setUrl] = useState([]);
     const auth = useContext(AuthContext);
     const { eventId } = useParams();
+    const [user, setUser] = useState([]);
+    const [resources, setResource] = useState([]);
 
     // function onClick()
 
@@ -36,9 +39,13 @@ function Event() {
                 const array = event.attendees;
                 console.log(array);
             }
-
+            findUserById(event.organizerId).then(user => setUser(user))
+            .catch((error) => error.toString());
+            findResourcesByLocationId(event.eventLocationId).then(resources => setResource(resources))
+            .catch((error) => error.toString());
+            console.log(resources);
         }
-    }, [eventId, location, event])
+    }, [eventId, location, event, user, resources])
 
     return (
         <div className="col w-auto">
@@ -61,15 +68,24 @@ function Event() {
                         <div className="col"><strong>Description:</strong> </div>
                         <div className="col">{event.description}</div>
                     </div>
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col"><strong>Location:</strong> </div>
-                        <div className="col">{event.duration}</div>
-                    </div> */}
+                        <div className="col">{location.address}, {location.city}, {location.state}, {location.zipcode}</div>
+                    </div>
                     <div className="row">
                         <div className="col"><strong>Number of available spots:</strong> </div>
                         <div className="col">{event.capacity}</div>
                     </div>
-
+                    <div className="row">
+                        <div className="col"><strong>Organizer: </strong> </div>
+                        <div className="col">{user.fname} {user.lname}</div>
+                    </div>
+                    <div className="row">
+                        <div className="col"><strong>Amenities: </strong> </div>
+                        <div className="col">
+                            {resources.resource && resources.resource.forEach(r =><div resource={r} key={r.resourceId} />)} 
+                            </div>
+                    </div>
         
                 </div>
 

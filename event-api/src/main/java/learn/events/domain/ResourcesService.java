@@ -24,6 +24,9 @@ public class ResourcesService {
     public List<Resources> findByDescription(String description) throws DataAccessException {
         return repository.findByDescription(description);
     }
+    public List<Resources> findResourcesByLocationId(int locationId) throws DataAccessException{
+        return repository.findResourcesByLocationId(locationId);
+    }
 
     public Resources findById(int resourceId) throws DataAccessException {
         if (resourceId < 0) {

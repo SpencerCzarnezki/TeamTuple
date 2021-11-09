@@ -33,7 +33,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/find/{id}")
     public ResponseEntity<Object> findByUserId(@PathVariable int id) {
         var user = service.findByUserId(id);
         user.setPassword("");

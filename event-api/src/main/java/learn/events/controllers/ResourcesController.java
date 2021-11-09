@@ -31,9 +31,18 @@ public class ResourcesController {
         return service.findAll();
     }
 
-    @GetMapping("/{description}")
-    public ResponseEntity<Resources> getById(@PathVariable String description) throws DataAccessException {
+    @GetMapping("/description/{description}")
+    public ResponseEntity<Resources> getByDescription(@PathVariable String description) throws DataAccessException {
         List<Resources> resources = service.findByDescription(description);
+        if (resources != null && resources.get(0) == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(resources.get(0));
+    }
+
+    @GetMapping("/amenities/{locationId}")
+    public ResponseEntity<Resources> getByLocationId(@PathVariable int locationId) throws DataAccessException {
+        List<Resources> resources = service.findResourcesByLocationId(locationId);
         if (resources != null && resources.get(0) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -9,6 +9,8 @@ public interface ResourcesRepository {
 
     List<Resources> findByDescription(String description);
 
+    List<Resources> findResourcesByLocationId(int locationId);
+
     Resources findById(int id);
 
     Resources add(Resources resource);
