@@ -34,7 +34,7 @@ function Login() {
         <form onSubmit={onSubmit}>
             <h2 className="m-4">Login</h2>
             <div className="m-4 mb-2 w-25">
-                <MDBInput label="Email" id="username" name="username" type="email" size="lg" className="form-control" required
+                <MDBInput label="Username" id="username" name="username" type="text" size="lg" className="form-control" required
                 value={candidate.username} onChange={onChange}></MDBInput>
             </div>
             <div className=" m-4 mb-2 w-25">

@@ -23,6 +23,9 @@ export async function addLocation(location){
     const response = await fetch(`http://localhost:8080/api/location`, first);
     if(response.status === 201){
         return response.json();
+    } else if(response.status === 400){
+        const errors = await response.json();
+        console.log(errors);
     }
     throw new Error("Could not add location");
 }
