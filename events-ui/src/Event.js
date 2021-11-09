@@ -93,7 +93,7 @@ function Event() {
                 } */}
             </div>
 
-            <div className="flex-center w-100">
+            <div className="flex-center md-6">
                 <iframe src={url} width="1275" height="450" frameborder="0" style={{ border: 0 }} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
