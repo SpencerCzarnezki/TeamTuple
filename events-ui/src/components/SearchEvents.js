@@ -13,7 +13,7 @@ function SearchEvents() {
 
     useEffect(() => {
 
-        if (keyword.length == 0 && category.length == 0) {
+        if (keyword.length === 0 && category.length === 0) {
             findAllEvents().then(events => setEvents(events));
 
 
