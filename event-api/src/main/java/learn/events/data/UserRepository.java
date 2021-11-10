@@ -98,9 +98,17 @@ public class UserRepository implements UserRepositoryInterface {
 
         user.setUserId(keyHolder.getKey().intValue());
 
+        addRole(user);
+
         return user;
 
     }
+    private void addRole(User user) {
+        String sql2 = "insert into app_user_role (app_user_id, app_role_id) "
+                + "values (?, (select roleId from `role` where title = ?));";
+        jdbcTemplate.update(sql2, user.getUserId(), "USER");
+    }
+
     @Override
     public boolean update(User user) {
 
@@ -150,7 +158,7 @@ public class UserRepository implements UserRepositoryInterface {
 
         for (var name : user.getAuthorityNames()) {
             String sql = "insert into app_user_role (app_user_id, app_role_id) "
-                    + "values (?, (select app_role_id from app_role where name = ?));";
+                    + "values (?, (select app_role_id from `role` where title = ?));";
             jdbcTemplate.update(sql, user.getUserId(), name);
         }
     }

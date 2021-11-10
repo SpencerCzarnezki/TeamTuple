@@ -5,7 +5,10 @@ import { createUser } from "./services/user-api";
 function Register() {
 
     const [user, setUser] = useState({
-        username: "",
+        fname: "",
+        lname: "",
+        userName: "",
+        email: "",
         password: "",
         confirmPassword: ""
     });
@@ -24,6 +27,7 @@ function Register() {
         if (user.password !== user.confirmPassword) {
             setErr("passwords do not match");
         } else {
+            console.log(user);
             createUser(user)
                 .then(() => navigate("/login"))
                 .catch(err => {
@@ -40,9 +44,24 @@ function Register() {
         <form onSubmit={onSubmit}>
             <h2>Register</h2>
             <div className="mb-2">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input type="text" id="username" name="username" className="form-control" required
-                    value={user.username} onChange={onChange} />
+                <label htmlFor="fname" className="form-label">First Name</label>
+                <input type="text" id="fname" name="fname" className="form-control"
+                    value={user.fname} onChange={onChange} />
+            </div>
+            <div className="mb-2">
+                <label htmlFor="lname" className="form-label">Last Name</label>
+                <input type="text" id="lname" name="lname" className="form-control"
+                    value={user.lname} onChange={onChange} />
+            </div>
+            <div className="mb-2">
+                <label htmlFor="userName" className="form-label">Username</label>
+                <input type="text" id="userName" name="userName" className="form-control" required
+                    value={user.userName} onChange={onChange} />
+            </div>
+            <div className="mb-2">
+                <label htmlFor="email" className="form-label">Email Address</label>
+                <input type="text" id="email" name="email" className="form-control"
+                    value={user.email} onChange={onChange} />
             </div>
             <div className="mb-2">
                 <label htmlFor="name" className="form-label">Password</label>
