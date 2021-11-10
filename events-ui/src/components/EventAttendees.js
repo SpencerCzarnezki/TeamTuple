@@ -1,4 +1,5 @@
 import userEvent from "@testing-library/user-event";
+import { MDBIcon } from "mdb-react-ui-kit";
 import Event from "../Event";
 
 function EventAttendees({attendees}){
@@ -6,7 +7,7 @@ function EventAttendees({attendees}){
     if(attendees.length !== 0){
          return(
             <div>
-                {attendees && attendees.user.fname} {attendees && attendees.user.lname}, {attendees && attendees.user.username} 
+               <MDBIcon fas icon="user" /> {attendees && attendees.user.fname} {attendees && attendees.user.lname}, {attendees && attendees.user.username} 
             </div>
          );
             

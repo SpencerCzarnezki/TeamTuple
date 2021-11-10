@@ -41,12 +41,12 @@ public class ResourcesController {
     }
 
     @GetMapping("/amenities/{locationId}")
-    public ResponseEntity<Resources> getByLocationId(@PathVariable int locationId) throws DataAccessException {
+    public ResponseEntity<List<Resources>> getByLocationId(@PathVariable int locationId) throws DataAccessException {
         List<Resources> resources = service.findResourcesByLocationId(locationId);
         if (resources != null && resources.get(0) == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok(resources.get(0));
+        return ResponseEntity.ok(resources);
     }
 
     @GetMapping("/{id}")

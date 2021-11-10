@@ -12,10 +12,11 @@ import Event from "./Event";
 import SearchEvents from "./components/SearchEvents";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
+import { MDBContainer, MDBFooter, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
 import AuthContext from "./contexts/AuthContext";
 import { logout, refresh } from "./services/auth-api";
 import AddEvent from "./components/AddEvent";
+import Category from "./components/Category";
 
 function App() {
 
@@ -44,31 +45,35 @@ function App() {
   return (
     <AuthContext.Provider value={authorization}>
     <BrowserRouter>
-      <MDBNavbar expand="lg" light bgColor="light" >
+      <MDBNavbar expand="md" light bgColor="light" >
         <MDBContainer fluid>
-          <MDBNavbarBrand><img src="logo.png" className="float-left" height='60' /></MDBNavbarBrand>
+          <MDBNavbarBrand><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
           <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
             <MDBNavbarItem>
-              <MDBNavbarLink href="/">
+              <MDBNavbarLink href="/" className="ms-3 m-2">
+                <h5>
                 Home
+                </h5>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href="/search">
+              <MDBNavbarLink href="/search" className="ms-3 m-2">
+                <h5>
                 Search Events
+                </h5>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-          <MDBNavbarLink href="/add">Add Event</MDBNavbarLink>
+        
         </MDBNavbarItem>
           </MDBNavbarNav>
-      <MDBNavbarNav right fullWidth={false}>
-
+      <MDBNavbarNav right  fullWidth={true} className="">
+            <button href="/add" className="btn btn-lg btn-primary">Add Event</button>
       </MDBNavbarNav>
 
       {user ?
-    <MDBNavbarNav right fullWidth={false}>
-      <MDBNavbarItem>{user.id}</MDBNavbarItem>
+    <MDBNavbarNav right fullWidth={true}>
+      <MDBNavbarItem className="text-success m-2"><MDBIcon color="black" fas icon="user-circle" />{user.username} </MDBNavbarItem>
     <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
           Logout 
         </button>
@@ -93,6 +98,7 @@ function App() {
 
         </MDBContainer>
       </MDBNavbar>
+
   
 
 
@@ -105,10 +111,12 @@ function App() {
         <Route path="/search" element={<SearchEvents />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add" element={<AddEvent />} />
-
+        <Route path="/category" element={<Category />} />
 
         <Route path="*" element={<ErrorPage />} />
-
+        <MDBFooter bgColor="dark" className='text-center text-lg-left'>
+        <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}><a>Test</a></div>
+      </MDBFooter>
 
 
       </Routes>

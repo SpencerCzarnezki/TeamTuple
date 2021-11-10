@@ -23,7 +23,7 @@ function SearchEvents() {
         else if (keyword.length > 0) {
 
             findByEventKeyWord(keyword).then(events => setEvents(events))
-            // .catch(err  => emptyResult);
+            .catch(err  => emptyResult);
         }
 
 

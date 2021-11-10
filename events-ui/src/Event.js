@@ -3,13 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
 import { findByEventId, findByLocationId, findResourcesByLocationId } from "./services/api";
-import { MDBRow } from "mdb-react-ui-kit";
+import { MDBIcon, MDBRow } from "mdb-react-ui-kit";
 import { findUserById } from "./services/user-api";
+import Resource from "./components/Resource";
+import { addAUserToEvent, leaveEvent } from "./services/event-join-api";
 
 
 function setMapUrl(address, city) {
     const map = "https://maps.google.com/maps?q=" + address + " " + city + "k&t=&z=13&ie=UTF8&iwloc=&output=embed";
     return map;
+}
+const emptyEventUser = {
+
+    "eventId": "",
+    "userId": ""
 }
 
 
@@ -21,8 +28,33 @@ function Event() {
     const { eventId } = useParams();
     const [user, setUser] = useState([]);
     const [resources, setResource] = useState([]);
+    const [eventUser, setEventUser] = useState(emptyEventUser);
+    const [checkJoined, setCheckJoined] = useState(false);
+    const [totalAttendees, setTotalAttendees] = useState(0);
 
-    // function onClick()
+    function onClick(){
+        const nextEventUser = {...eventUser};
+        nextEventUser.eventId = event.id;
+        nextEventUser.userId = auth.user.id;
+        setEventUser(nextEventUser);
+        console.log(nextEventUser);
+        addAUserToEvent(nextEventUser).then(window.location.reload(true))
+        .catch((err) =>  console.log(err));
+        
+
+
+    };
+    function onLeave(){
+        leaveEvent(event.id, auth.user.id).then(window.location.reload(true))
+        .catch((err) =>  console.log(err));
+        
+    };
+
+    // if(event.attendees !== 0){
+    //     let nextEventAttendee = {...totalAttendees};
+    //     nextEventAttendee = nextEventAttendee.length;
+    //     setTotalAttendees(nextEventAttendee);
+    // }
 
     useEffect(() => {
         if (url.indexOf('h') !== 0) {
@@ -41,10 +73,27 @@ function Event() {
             }
             findUserById(event.organizerId).then(user => setUser(user))
             .catch((error) => error.toString());
+
             findResourcesByLocationId(event.eventLocationId).then(resources => setResource(resources))
             .catch((error) => error.toString());
-            console.log(resources);
+            
+            console.log(event.attendees);
+        };
+        console.log(auth);
+        if(event.attendees && auth.user){
+            const attendeeList = event.attendees;
+            for(let x = 0; x < event.attendees.length; x++){
+                console.log(event.attendees[x].user.userId);
+                console.log(auth.user.id);
+                if(event.attendees[x].user.userId == auth.user.id){
+                    let nextCheck = {...checkJoined};
+                    nextCheck = true;
+                    setCheckJoined(nextCheck);
+                }
+            }
         }
+
+
     }, [eventId, location, event, user, resources])
 
     return (
@@ -74,16 +123,19 @@ function Event() {
                     </div>
                     <div className="row">
                         <div className="col"><strong>Number of available spots:</strong> </div>
-                        <div className="col">{event.capacity}</div>
+                        <div className="col"> {event.attendees && event.attendees.length}/{event.capacity}</div>
                     </div>
                     <div className="row">
                         <div className="col"><strong>Organizer: </strong> </div>
                         <div className="col">{user.fname} {user.lname}</div>
                     </div>
                     <div className="row">
-                        <div className="col"><strong>Amenities: </strong> </div>
+                        <div className="col"><strong>Amenities: </strong>
+                        
+                         </div>
                         <div className="col">
-                            {resources.resource && resources.resource.forEach(r =><div resource={r} key={r.resourceId} />)} 
+                            {resources && resources.map((r) => <Resource resources={r} key={r.resourceId} />)}
+                          
                             </div>
                     </div>
         
@@ -91,13 +143,20 @@ function Event() {
 
             </div>
             <MDBRow className="m-2">
-                <div> Attendees: 
-                {event.attendees && event.attendees.map(a => <EventAttendees attendees={a} key={a.eventId} />)}
+                <div><MDBIcon fas icon="users" /> Attendees: 
+                {event.attendees && event.attendees.map((a) => <EventAttendees attendees={a} key={a.user.userId} />)}
+                {console.log(event)}
+                {console.log(resources)}
                 </div>
             </MDBRow>
-            <div>
-                <button type="button" className="btn btn-primary btn-lg m-2" onClick>Join Event</button>
+            {auth.user ? <div>
+            {checkJoined ?  <div>
+            <button type="button" className="btn btn-primary btn-lg m-2" onClick={onLeave}>Leave Event</button>
             </div>
+            : <div>
+                <button type="button" className="btn btn-primary btn-lg m-2" onClick={onClick}>Join Event</button>
+            </div> 
+            } </div> :""} 
             <div>
                 {/* {auth.credentials && auth.credentials.hasAuthority("USER", "ADMIN") &&
                     <div className="card-footer text-center">
