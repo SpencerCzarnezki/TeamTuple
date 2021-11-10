@@ -82,7 +82,7 @@ function App() {
               </div> :
                 <div></div>}
 
-              {user ? <div>
+              {auth.credentials.hasAuthority("ADMIN") ? <div>
                 <MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink href="/adminevents" className="ms-3 m-2">
@@ -104,7 +104,7 @@ function App() {
             </div> :
               <div></div>}
 
-            {auth.credentials.hasAuthority("ADMIN") ?
+            {user ?
               <MDBNavbarNav right fullWidth={true}>
                 <MDBNavbarItem className="text-success m-2"><MDBIcon color="black" fas icon="user-circle" />{user.username} </MDBNavbarItem>
                 <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
