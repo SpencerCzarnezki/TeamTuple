@@ -64,6 +64,13 @@ function App() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/myevents" className="ms-3 m-2">
+                <h5>
+                My Events
+                </h5>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
         
         </MDBNavbarItem>
           </MDBNavbarNav>
@@ -112,6 +119,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/add" element={<AddEvent />} />
         <Route path="/category" element={<Category />} />
+        <Route path ="/myevents" element ={<MyEventsList/>}/>
+        <Route path ="/confirmd" element={<ConfirmDelete/>}/>
 
         <Route path="*" element={<ErrorPage />} />
         <MDBFooter bgColor="dark" className='text-center text-lg-left'>
