@@ -3,6 +3,18 @@ GET http://localhost:8080/api/event HTTP/1.1
 ###
 GET http://localhost:8080/api/event/1 HTTP/1.1
 
+###
+GET http://localhost:8080/api/resources/amenities/2 HTTP/1.1
+
+###
+POST http://localhost:8080/api/resources HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "resource": "Free Food",
+    "locationId": 10
+}
 
 ###
 POST http://localhost:8080/api/event HTTP/1.1
@@ -10,10 +22,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "title": "Milwaukee Bucks Game",
+    "title": "New Milwaukee Bucks Game",
     "description" : "Bucks game against Pistons",
-    "date" : "2022-01-01T01:00:00.0000",
-    "duration" : 60,
+    "date" : "2022-01-01T01:00",
+    "duration" : 120,
     "capacity" : 50,
     "eventLocationId" : 1,
     "category" : "sports",
@@ -55,7 +67,7 @@ GET http://localhost:8080/api/event/category/new Category HTTP/1.1
 GET http://localhost:8080/api/event/keyword/ptyfdfdf HTTP/1.1
 
 ###
-GET http://localhost:8080/api/location/2 HTTP/1.1
+GET http://localhost:8080/api/location HTTP/1.1
 
 ###
 GET http://localhost:8080/api/location/city/ HTTP/1.1
@@ -81,7 +93,7 @@ Accept: application/json
 
 
 ###
-GET http://localhost:8080/user/2 HTTP/1.1
+GET http://localhost:8080/user/find/7 HTTP/1.1
 
 ###
 POST http://localhost:8080/user/create HTTP/1.1
@@ -89,12 +101,11 @@ Content-Type: application/json
 Accept: application/json
 
 {
-        "fname": "Steve",
+        "fname": "John",
         "lname": "Johnson",
-        "email": "stevejohnson@fakeemail.com",
+        "email": "jjohnson@fakeemail.com",
         "password": "password1!",
-        "passwordHash": "hash",
-        "userName": "username"
+        "userName": "JohnJ",
 
 }
 
@@ -104,14 +115,31 @@ Content-Type: application/json
 Accept: application/json
 
 {
+    "eventId" : "user",
     "User": {
         "userId" : 4,
-        "fname": "Steve",
+        "fname": "Billy",
         "lname": "Johnson",
-        "email": "stevejohnson@fakeemail.com",
+        "email": "billyjohnson@fakeemail.com",
         "password": "password1!",
-        "passwordHash": "hash",
-        "userName": "username"
+        "passwordHash" : "cGFzc3dvcmQxIQo=",
+        "userName": "BillyJ"
     }
     
 }
+
+###
+GET http://localhost:8080/api/event/user/find/event/20 HTTP/1.1
+
+###
+POST http://localhost:8080/api/event/user/add HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "eventId": 20,
+    "userId" : 7
+
+}
+###
+DELETE http://localhost:8080/api/event/user/delete/user/7 HTTP/1.1
