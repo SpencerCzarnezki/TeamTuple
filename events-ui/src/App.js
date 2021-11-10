@@ -19,6 +19,7 @@ import AddEvent from "./components/AddEvent";
 import Category from "./components/Category";
 import MyEventsList from "./components/MyEventsList";
 import ConfirmDelete from "./components/ConfirmDelete";
+import AdminEventsList from "./components/AdminEventsList";
 
 function App() {
 
@@ -81,6 +82,19 @@ function App() {
               </div> :
                 <div></div>}
 
+              {auth.credentials.hasAuthority("ADMIN") ? <div>
+                <MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/adminevents" className="ms-3 m-2">
+                      <h5>
+                        Admin Events
+                      </h5>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                </MDBNavbarItem>
+              </div> :
+                <div></div>}
+
             </MDBNavbarNav>
 
             {user ? <div>
@@ -133,6 +147,8 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/myevents" element={<MyEventsList />} />
           <Route path="/confirmd" element={<ConfirmDelete />} />
+          <Route path="/adminevents" element={<AdminEventsList />} />
+
 
           <Route path="*" element={<ErrorPage />} />
           <MDBFooter bgColor="dark" className='text-center text-lg-left'>
