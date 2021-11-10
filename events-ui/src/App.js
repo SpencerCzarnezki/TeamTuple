@@ -28,8 +28,8 @@ function App() {
 
   useEffect(() => {
     refresh().then(loginName => setUser(loginName))
-    .catch(() => setUser())
-    .finally(() => setInitialized(true));
+      .catch(() => setUser())
+      .finally(() => setInitialized(true));
   }, []);
 
   const authorization = {
@@ -46,95 +46,105 @@ function App() {
 
   return (
     <AuthContext.Provider value={authorization}>
-    <BrowserRouter>
-      <MDBNavbar expand="md" light bgColor="light" >
-        <MDBContainer fluid>
-          <MDBNavbarBrand><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
-          <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/" className="ms-3 m-2">
-                <h5>
-                Home
-                </h5>
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/search" className="ms-3 m-2">
-                <h5>
-                Search Events
-                </h5>
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/myevents" className="ms-3 m-2">
-                <h5>
-                My Events
-                </h5>
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-        
-        </MDBNavbarItem>
-          </MDBNavbarNav>
-      <MDBNavbarNav right  fullWidth={true} className="">
-            <MDBNavbarLink href="/add" className="btn btn-lg btn-primary">Add Event</MDBNavbarLink>
-      </MDBNavbarNav>
+      <BrowserRouter>
+        <MDBNavbar expand="md" light bgColor="light" >
+          <MDBContainer fluid>
+            <MDBNavbarBrand><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
+            <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/" className="ms-3 m-2">
+                  <h5>
+                    Home
+                  </h5>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              {user ? <div>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/search" className="ms-3 m-2">
+                    <h5>
+                      Search Events
+                    </h5>
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </div> :
+                <div></div>}
+              {user ? <div>
+                <MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/myevents" className="ms-3 m-2">
+                      <h5>
+                        My Events
+                      </h5>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                </MDBNavbarItem>
+              </div> :
+                <div></div>}
 
-      {user ?
-    <MDBNavbarNav right fullWidth={true}>
-      <MDBNavbarItem className="text-success m-2"><MDBIcon color="black" fas icon="user-circle" />{user.username} </MDBNavbarItem>
-    <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
-          Logout 
-        </button>
-        </MDBNavbarNav> :
+            </MDBNavbarNav>
+
+            {user ? <div>
+              <MDBNavbarNav right fullWidth={true} className="">
+                <MDBNavbarLink href="/add" className="btn btn-lg btn-primary">Add Event</MDBNavbarLink>
+              </MDBNavbarNav>
+            </div> :
+              <div></div>}
+
+            {user ?
+              <MDBNavbarNav right fullWidth={true}>
+                <MDBNavbarItem className="text-success m-2"><MDBIcon color="black" fas icon="user-circle" />{user.username} </MDBNavbarItem>
+                <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
+                  Logout
+                </button>
+              </MDBNavbarNav> :
 
 
-          <MDBNavbarNav right fullWidth={false}>
-            
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/register">
-                Register
-              </MDBNavbarLink>
-            </MDBNavbarItem> 
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/login">
-                Login
-              </MDBNavbarLink> 
-            </MDBNavbarItem> 
-            
-          </MDBNavbarNav>   
+              <MDBNavbarNav right fullWidth={false}>
+
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/register">
+                    Register
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/login">
+                    Login
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+
+              </MDBNavbarNav>
             }
 
-        </MDBContainer>
-      </MDBNavbar>
-
-  
+          </MDBContainer>
+        </MDBNavbar>
 
 
 
 
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/event/:eventId" element={<Event />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/search" element={<SearchEvents />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/add" element={<AddEvent />} />
-        <Route path="/category" element={<Category />} />
-        <Route path ="/myevents" element ={<MyEventsList/>}/>
-        <Route path ="/confirmd" element={<ConfirmDelete/>}/>
-
-        <Route path="*" element={<ErrorPage />} />
-        <MDBFooter bgColor="dark" className='text-center text-lg-left'>
-        <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}><a>Test</a></div>
-      </MDBFooter>
 
 
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/event/:eventId" element={<Event />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/search" element={<SearchEvents />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/add" element={<AddEvent />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/myevents" element={<MyEventsList />} />
+          <Route path="/confirmd" element={<ConfirmDelete />} />
+
+          <Route path="*" element={<ErrorPage />} />
+          <MDBFooter bgColor="dark" className='text-center text-lg-left'>
+            <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}><a>Test</a></div>
+          </MDBFooter>
 
 
-</AuthContext.Provider>
+        </Routes>
+      </BrowserRouter>
+
+
+    </AuthContext.Provider>
 
 
 
