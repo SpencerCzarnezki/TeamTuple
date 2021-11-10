@@ -17,7 +17,8 @@ function SearchEvents() {
     useEffect(() => {
 
         if (keyword.length == 0) {
-            findAllEvents().then(events => setEvents(events))
+            findAllEvents().then(events => setEvents(events));
+          
 
         }
         else if (keyword.length > 0) {
@@ -26,6 +27,7 @@ function SearchEvents() {
             .catch(err  => emptyResult);
         }
 
+  console.log(events);
 
     }, [keyword]);
 

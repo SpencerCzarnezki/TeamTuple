@@ -17,6 +17,8 @@ import AuthContext from "./contexts/AuthContext";
 import { logout, refresh } from "./services/auth-api";
 import AddEvent from "./components/AddEvent";
 import Category from "./components/Category";
+import MyEventsList from "./components/MyEventsList";
+import ConfirmDelete from "./components/ConfirmDelete";
 
 function App() {
 

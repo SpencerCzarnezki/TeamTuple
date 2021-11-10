@@ -1,29 +1,29 @@
 import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router";
-import { findAllEvents, findByEventId } from "./services/api";
+import { findAllEvents, findByEventId } from "../services/api";
 import EventCard from "./EventCard";
 import AuthContext from "../contexts/AuthContext";
+import { useNavigate } from "react-router";
 
 
-function MyGamesList() {
-
+function MyEventsList() {
+    const authContext = useContext(AuthContext);
     const navigate = useNavigate();
     const [EventCards, setEvents] = useState([]);
-    const history = useHistory();
-    const AuthContext = useContext(AuthContext);
-
+    const history = useNavigate();
+ 
     useEffect(() => {
-        findAllEvents().then(result => setEvents(result))
+        findAllEvents().then(result => setEvents(result)) 
             .catch((err) => {
                 if (err === 403) {
-                    AuthContext.logout();
-                    history.push("/login");
+                    authContext.logout();
+                    history("/login");
 
                 } else {
-                    history.push("/error", err.toString());
+                    history("/error", err.toString());
 
                 }
-            }, [AuthContext, history]);
+                
+            }, [authContext, history]);
 
     })
 
@@ -31,14 +31,28 @@ function MyGamesList() {
 
         
         let myEvents =[];
-        let UId = AuthContext.user.id;
+        // let UId = authContext.user.id;
 
-        if(!EventCards.length==0){
+        if(authContext.user &&  !EventCards.length==0){
+            // console.log(EventCards);
+            // for(let x = 0; x< EventCards.length; x++){
+            //    let eventAttendees = EventCards[x];
+            // //    console.log(eventAttendees);
+            //    if(eventAttendees.length !== 0){
+            //    for(let y = 0; y < eventAttendees.length; y++){
+            //             console.log(eventAttendees);
+            //        if(eventAttendees[y].id == authContext.user.id){
+            //             myEvents.push(EventCards[x]);
+            //        }
+            //    }
+            // }
+            // }
+
             EventCards.forEach(event => {
             let eventAttendees = event.attendees;
             eventAttendees.forEach(attendee => {
-                if(attendee.id == UId){
-                    myEvents.add(event);
+                if(attendee.id ==  authContext.user.id){
+                    myEvents.push(event);
                 }
 
             })
@@ -52,12 +66,12 @@ function MyGamesList() {
 
     function myOrganizedEvents(){
         let orgEvents =[];
-        let uId = AuthContext.user.id;
+        // let uId = authContext.user.id;
 
-        if(!EventCards.length==0){
+        if(authContext.user && !EventCards.length==0){
             EventCards.forEach(event =>{
-                if(event.organizerId == uId){
-                    orgEvents.add(event);
+                if(event.organizerId ==  authContext.user.id){
+                    orgEvents.push(event);
 
                 }
             })
@@ -86,3 +100,4 @@ function MyGamesList() {
 
     );
 }
+export default MyEventsList;
