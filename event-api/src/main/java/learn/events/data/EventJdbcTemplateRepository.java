@@ -116,7 +116,7 @@ public class EventJdbcTemplateRepository implements EventRepository {
                     "eventLocationId = ?, " +
                     "category = ?, " +
                     "organizerId = ?, " +
-                    "`status` = ? " +
+                    "`status` = ?, " +
                     "imageUrl = ? " +
                     "where eventId = ?";
             return jdbcTemplate.update(sql,

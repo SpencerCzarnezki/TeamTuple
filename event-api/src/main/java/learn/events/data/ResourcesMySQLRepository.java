@@ -39,6 +39,17 @@ public class ResourcesMySQLRepository implements ResourcesRepository{
         }
     }
 
+    //needs testing
+    @Override
+    public List<Resources> findResourcesByLocationId(int locationId){
+        final String sql = "select * from resources where location_id =?;";
+        try {
+            return jdbcTemplate.query(sql, new ResourceMapper(), locationId);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+
     @Override
     public Resources findById(int id) {
         final String sql = "select * from resources where resourceId = ?;";

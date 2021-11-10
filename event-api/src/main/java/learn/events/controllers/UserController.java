@@ -3,6 +3,7 @@ package learn.events.controllers;
 
 import learn.events.domain.UserService;
 import learn.events.models.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@ConditionalOnWebApplication
 public class UserController {
 
     private final UserService service;
@@ -31,7 +33,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/find/{id}")
     public ResponseEntity<Object> findByUserId(@PathVariable int id) {
         var user = service.findByUserId(id);
         user.setPassword("");

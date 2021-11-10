@@ -1,4 +1,4 @@
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "http://localhost:8080";
 
 export async function createUser(user) {
     const init = {
@@ -64,10 +64,9 @@ export async function findUserById(id) {
         method: "GET",
         headers: {
             "Accept": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("BG_TOKEN")}`
         }
     }
-    const response = await fetch(`${baseUrl}/user/${id}`, init);
+    const response = await fetch(`${baseUrl}/user/find/${id}`, init);
     if (response.status === 200) {
         return await response.json();
     } else {

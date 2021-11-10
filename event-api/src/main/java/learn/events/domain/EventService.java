@@ -135,6 +135,10 @@ public class EventService {
             result.addErrorMessage("Capacity must be greater than 0");
             return result;
         }
+        if (event.getAttendees().size() >= event.getCapacity()){
+            result.addErrorMessage("Capacity is full");
+            return result;
+        }
         if (event.getOrganizerId() < 0){
             result.addErrorMessage("Capacity must be greater than 0");
             return result;
@@ -152,6 +156,7 @@ public class EventService {
                 return result;
             }
         }
+
 
         //need to test!
 

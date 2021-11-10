@@ -1,4 +1,4 @@
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "http://localhost:8080";
 
 function hasAuthority(...authorities) {
     for (const authority of authorities) {
@@ -14,8 +14,11 @@ function makeCredentials(body) {
     localStorage.setItem("BG_TOKEN", jwt);
     const sections = jwt.split(".");
     const envelope = JSON.parse(atob(sections[1]));
+    const envelope2 = JSON.parse(atob(sections[1]));
+    console.log(envelope);
     const credentials = {
         username: envelope.sub,
+        id : envelope2.id,
         authorities: envelope.authorities.split(",")
     };
 

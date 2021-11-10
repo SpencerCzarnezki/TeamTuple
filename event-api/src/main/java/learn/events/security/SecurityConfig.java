@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/meetup").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, "/meetup/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/meetup/*").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET, "/user/find/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/user/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/user/update").hasAuthority("ADMIN")
                 .and()
@@ -58,10 +59,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {

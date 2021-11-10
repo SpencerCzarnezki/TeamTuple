@@ -1,3 +1,4 @@
+import { MDBInput } from "mdb-react-ui-kit";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
@@ -14,7 +15,6 @@ function Login() {
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
 
-    // event handlers
     const onChange = (evt) => {
         const clone = { ...candidate };
         clone[evt.target.name] = evt.target.value;
@@ -32,22 +32,22 @@ function Login() {
 
     return (
         <form onSubmit={onSubmit}>
-            <h2>Login</h2>
-            <div className="mb-2">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input type="text" id="username" name="username" className="form-control" required
-                    value={candidate.username} onChange={onChange} />
+            <h2 className="m-4">Login</h2>
+            <div className="m-4 mb-2 w-25">
+                <MDBInput label="Username" id="username" name="username" type="text" size="lg" className="form-control" required
+                value={candidate.username} onChange={onChange}></MDBInput>
             </div>
-            <div className="mb-2">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input type="password" id="password" name="password" className="form-control" required
-                    value={candidate.password} onChange={onChange} />
+            <div className=" m-4 mb-2 w-25">
+            <MDBInput label="Password" id="password" name="password" type="password" size="lg" className="form-control" required
+                value={candidate.password} onChange={onChange}></MDBInput>
+
+
             </div>
             <div>
-                <Link to="/" className="btn btn-secondary me-2">Cancel</Link>
-                <button type="submit" className="btn btn-primary">Log In</button>
+                <Link to="/" className="btn btn-outline-primary me-2 m-4">Cancel</Link>
+                <button type="submit" className="btn btn-primary m-4">Log In</button>
             </div>
-            {hasError && <div className="alert alert-danger">Bad credentials...</div>}
+            {hasError && <div className="alert alert-danger m-4">Bad credentials...</div>}
         </form>
     );
 }

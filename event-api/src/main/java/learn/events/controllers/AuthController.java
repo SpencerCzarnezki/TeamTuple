@@ -2,6 +2,7 @@ package learn.events.controllers;
 
 import learn.events.models.User;
 import learn.events.security.JwtConverter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
 @RestController
+@ConditionalOnWebApplication
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -75,6 +77,13 @@ public class AuthController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+
+
+
+
+
+
 }
 
 
