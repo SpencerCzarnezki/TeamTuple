@@ -4,7 +4,7 @@ import EventCard from "./EventCard";
 import AuthContext from "../contexts/AuthContext";
 import { useNavigate } from "react-router";
 
-function MyEventsList() {
+function AdminEventsList() {
     const authContext = useContext(AuthContext);
     const [EventCards, setEvents] = useState([]);
     
@@ -80,4 +80,4 @@ function MyEventsList() {
 
     );
  }
-export default MyEventsList;
+export default AdminEventsList;
