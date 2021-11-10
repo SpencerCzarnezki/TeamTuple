@@ -29,7 +29,7 @@ function SearchEvents() {
             .catch(err => emptyResult);
         }
 
-        console.log(events);
+     
 
     }, [keyword, category]);
 

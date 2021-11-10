@@ -87,7 +87,7 @@ function Event() {
             const attendeeList = event.attendees;
             for (let x = 0; x < event.attendees.length; x++) {
                 console.log(event.attendees[x].user.userId);
-                console.log(auth.user.id);
+                console.log(auth.user.authorities);
                 if (event.attendees[x].user.userId == auth.user.id) {
                     let nextCheck = { ...checkJoined };
                     nextCheck = true;
@@ -162,15 +162,14 @@ function Event() {
                 } </div> : ""}
             <div>
 
+                <div>
+                    {auth.user.authorities[0] === 'ADMIN' &&
+                    <div className="btn btn-primary btn-lg m-2">
 
-
-                {/* <div className="btn btn-primary btn-lg m-2">
-                    {auth.hasAuthority("ADMIN") &&
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>}
-                    {auth.hasAuthority("ADMIN") &&
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>} 
-                </div> */}
-
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>
+                    </div>}
+                </div>
             </div>
 
             <div className="flex-center md-6">
