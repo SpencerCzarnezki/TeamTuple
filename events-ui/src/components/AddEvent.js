@@ -1,4 +1,3 @@
-import { getResourceUrl } from "@fluentui/utilities";
 import { MDBInput } from "mdb-react-ui-kit";
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router";

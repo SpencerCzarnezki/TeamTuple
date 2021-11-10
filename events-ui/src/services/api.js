@@ -71,6 +71,15 @@ export async function saveEvent(event){
     return event.eventId > 0 ? updateEvent(event) : addEvent(event);
      
 }
+
+export async function deleteEvent(event){
+    const del = makeFetchInit("DELETE", event);
+    const response = await fetch(`${url}/${event.eventId}`, del);
+    if (response.status !== 202){
+        throw new Error("Could not delete event"); 
+    }
+}
+
 async function addEventUser(event){
     const first = makeFetchInit("POST", event);
     const response = await fetch(`${url}/user`, first);

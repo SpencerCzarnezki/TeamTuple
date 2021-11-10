@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
-import { findByEventId, findByLocationId, findResourcesByLocationId } from "./services/api";
+import { findByEventId, findByLocationId, findResourcesByLocationId, deleteEvent } from "./services/api";
 import { MDBIcon, MDBRow } from "mdb-react-ui-kit";
 import { findUserById } from "./services/user-api";
 import Resource from "./components/Resource";
@@ -25,6 +25,7 @@ function Event() {
     const [location, setLocation] = useState([]);
     const [url, setUrl] = useState([]);
     const auth = useContext(AuthContext);
+    const navigate = useNavigate();
     const { eventId } = useParams();
     const [user, setUser] = useState([]);
     const [resources, setResource] = useState([]);
@@ -32,29 +33,31 @@ function Event() {
     const [checkJoined, setCheckJoined] = useState(false);
     const [totalAttendees, setTotalAttendees] = useState(0);
 
-    function onClick(){
-        const nextEventUser = {...eventUser};
+    function onJoin() {
+        const nextEventUser = { ...eventUser };
         nextEventUser.eventId = event.id;
         nextEventUser.userId = auth.user.id;
         setEventUser(nextEventUser);
         console.log(nextEventUser);
         addAUserToEvent(nextEventUser).then(window.location.reload(true))
-        .catch((err) =>  console.log(err));
-        
+            .catch((err) => console.log(err));
+
 
 
     };
-    function onLeave(){
+    function onLeave() {
         leaveEvent(event.id, auth.user.id).then(window.location.reload(true))
-        .catch((err) =>  console.log(err));
-        
+            .catch((err) => console.log(err));
+
     };
 
-    // if(event.attendees !== 0){
-    //     let nextEventAttendee = {...totalAttendees};
-    //     nextEventAttendee = nextEventAttendee.length;
-    //     setTotalAttendees(nextEventAttendee);
-    // }
+    function onDelete() {
+        deleteEvent(event).then(() => navigate("/search"));
+    }
+
+    function onAccept() {
+
+    }
 
     useEffect(() => {
         if (url.indexOf('h') !== 0) {
@@ -72,21 +75,21 @@ function Event() {
                 console.log(array);
             }
             findUserById(event.organizerId).then(user => setUser(user))
-            .catch((error) => error.toString());
+                .catch((error) => error.toString());
 
             findResourcesByLocationId(event.eventLocationId).then(resources => setResource(resources))
-            .catch((error) => error.toString());
-            
+                .catch((error) => error.toString());
+
             console.log(event.attendees);
         };
         console.log(auth);
-        if(event.attendees && auth.user){
+        if (event.attendees && auth.user) {
             const attendeeList = event.attendees;
-            for(let x = 0; x < event.attendees.length; x++){
+            for (let x = 0; x < event.attendees.length; x++) {
                 console.log(event.attendees[x].user.userId);
                 console.log(auth.user.id);
-                if(event.attendees[x].user.userId == auth.user.id){
-                    let nextCheck = {...checkJoined};
+                if (event.attendees[x].user.userId == auth.user.id) {
+                    let nextCheck = { ...checkJoined };
                     nextCheck = true;
                     setCheckJoined(nextCheck);
                 }
@@ -131,41 +134,43 @@ function Event() {
                     </div>
                     <div className="row">
                         <div className="col"><strong>Amenities: </strong>
-                        
-                         </div>
+
+                        </div>
                         <div className="col">
                             {resources && resources.map((r) => <Resource resources={r} key={r.resourceId} />)}
-                          
-                            </div>
+
+                        </div>
                     </div>
-        
+
                 </div>
 
             </div>
             <MDBRow className="m-2">
-                <div><MDBIcon fas icon="users" /> Attendees: 
-                {event.attendees && event.attendees.map((a) => <EventAttendees attendees={a} key={a.user.userId} />)}
-                {console.log(event)}
-                {console.log(resources)}
+                <div><MDBIcon fas icon="users" /> Attendees:
+                    {event.attendees && event.attendees.map((a) => <EventAttendees attendees={a} key={a.user.userId} />)}
+                    {console.log(event)}
+                    {console.log(resources)}
                 </div>
             </MDBRow>
             {auth.user ? <div>
-            {checkJoined ?  <div>
-            <button type="button" className="btn btn-primary btn-lg m-2" onClick={onLeave}>Leave Event</button>
-            </div>
-            : <div>
-                <button type="button" className="btn btn-primary btn-lg m-2" onClick={onClick}>Join Event</button>
-            </div> 
-            } </div> :""} 
+                {checkJoined ? <div>
+                    <button type="button" className="btn btn-primary btn-lg m-2" onClick={onLeave}>Leave Event</button>
+                </div>
+                    : <div>
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onJoin}>Join Event</button>
+                    </div>
+                } </div> : ""}
             <div>
-                {/* {auth.credentials && auth.credentials.hasAuthority("USER", "ADMIN") &&
-                    <div className="card-footer text-center">
-                        {auth.credentials.hasAuthority("ADMIN") &&
-                            <Link to={`/delete/${event.id}`} className="btn btn-danger me-1">Delete</Link>}
-                        {auth.credentials.hasAuthority("ADMIN") &&
-                            <Link to={`/edit/${event.id}`} className="btn btn-secondary">Edit</Link>} */}
-                {/* </div>
-                } */}
+
+
+
+                {/* <div className="btn btn-primary btn-lg m-2">
+                    {auth.hasAuthority("ADMIN") &&
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>}
+                    {auth.hasAuthority("ADMIN") &&
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>} 
+                </div> */}
+
             </div>
 
             <div className="flex-center md-6">

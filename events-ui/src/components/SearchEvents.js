@@ -1,35 +1,37 @@
-import { Label, SearchBox } from "@fluentui/react";
 import { MDBRow } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { findAllEvents, findByCategory, findByEventKeyWord, findByKeyWord } from "../services/api";
+import { findAllEvents, findByCategory, findByEventKeyWord} from "../services/api";
 import EventCard from "./EventCard";
 
 
 
 function SearchEvents() {
-    const navigate = useNavigate();
     const [events, setEvents] = useState([]);
     const [keyword, setKeyword] = useState('');
-    const [search, setSearch] = useState('');
+    const [category, setCategory] = useState('');
 
 
     useEffect(() => {
 
-        if (keyword.length == 0) {
+        if (keyword.length == 0 && category.length == 0) {
             findAllEvents().then(events => setEvents(events));
-          
+
 
         }
         else if (keyword.length > 0) {
 
             findByEventKeyWord(keyword).then(events => setEvents(events))
-            .catch(err  => emptyResult);
+                .catch(err => emptyResult);
         }
 
-  console.log(events);
+        if(category.length > 0) {
+            findByCategory(category).then(events => setEvents(events))
+            .catch(err => emptyResult);
+        }
 
-    }, [keyword]);
+        console.log(events);
+
+    }, [keyword, category]);
 
     const emptyResult = (
         <div>No Results</div>
@@ -45,6 +47,10 @@ function SearchEvents() {
         setKeyword(ev.target.value);
     }
 
+    function onChangeCategory(evt) {
+        setCategory(evt.target.value);
+    }
+
 
     return (
         <form onSubmit={onSubmit}>
@@ -58,6 +64,12 @@ function SearchEvents() {
                 </div>
             </div>
 
+            <div className="input-group m-3" style={{ width: 500 }}>
+                <div>
+
+                    <input type="search" className="form-control" value={category} onChange={onChangeCategory} id="categorysearch" placeholder="Search Category" ></input>
+                </div>
+            </div>
 
             <MDBRow className="">
                 {events.map(e => <EventCard event={e} key={e.eventId} />)}
