@@ -7,6 +7,16 @@ export async function findAllUserEvents(){
     }
     throw new Error("Could not fetch user events");
 }
+
+export async function findEventIdsByUserId(userId){
+    const response = await fetch(`${url}/find/user/${userId}`);
+    if(response.status === 200){
+        return response.json();
+    }
+    throw new Error("Could not fetch eventIds");
+}
+
+
 function makeFetchInit(method, event){
     return {
         method: method,
@@ -36,3 +46,5 @@ export async function leaveEvent(eventId, userId){
     throw new Error("Could not delete user from event");
 
 }
+
+
