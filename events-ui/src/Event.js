@@ -52,7 +52,8 @@ function Event() {
     };
 
     function onDelete() {
-        deleteEvent(event).then(() => navigate("/search"));
+        // deleteEvent(event.id).then(() => );
+        navigate("/confirmd");
     }
 
     function onAccept() {
@@ -163,8 +164,8 @@ function Event() {
             <div>
 
                 <div>
-                    {auth.user.authorities[0] === 'ADMIN' &&
-                    <div className="btn btn-primary btn-lg m-2">
+                    {auth.user && auth.user.authorities[0] === 'ADMIN' &&
+                    <div>
 
                         <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
                         <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>
