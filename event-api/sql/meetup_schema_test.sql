@@ -13,7 +13,7 @@ CREATE TABLE location (
 
 CREATE TABLE resources (
     resourceId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `resource` VARCHAR(80) NOT NULL,
+    `resource` VARCHAR(200) NOT NULL,
     location_id INT NOT NULL,
     CONSTRAINT fk_location_resources_resource FOREIGN KEY (location_id)
         REFERENCES location (locationId)

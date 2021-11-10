@@ -20,7 +20,7 @@ public class User implements UserDetails {
 
     private boolean disabled;
     private String password;
-    private List<String> authorities = new ArrayList<>();
+    private List<String> authorities = List.of("USER");
 
 
     public User() {

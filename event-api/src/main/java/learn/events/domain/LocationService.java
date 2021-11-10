@@ -95,9 +95,20 @@ public class LocationService {
         try {
             List<Location> locations = repository.findAll();
 
-            return locations.stream()
-                    .noneMatch(l -> l.getTitle().equalsIgnoreCase(location.getTitle())
-                            && l.getId() != location.getId());
+
+            boolean holder1 = locations.stream()
+                    .noneMatch(l -> l.getTitle().equalsIgnoreCase(location.getTitle()));
+            boolean holder2 = locations.stream()
+                    .noneMatch(l -> l.getAddress().equalsIgnoreCase(location.getAddress()));
+
+            if(!holder1 && !holder2) {
+                return false;
+            }
+
+            if((!holder1 && holder2) || (holder1 && !holder2) || (holder1 && holder2)) {
+                return true;
+            }
+
 
         } catch (DataAccessException e) {
             e.printStackTrace();
