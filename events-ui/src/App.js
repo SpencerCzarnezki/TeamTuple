@@ -68,7 +68,7 @@ function App() {
         </MDBNavbarItem>
           </MDBNavbarNav>
       <MDBNavbarNav right  fullWidth={true} className="">
-            <button href="/add" className="btn btn-lg btn-primary">Add Event</button>
+            <MDBNavbarLink href="/add" className="btn btn-lg btn-primary">Add Event</MDBNavbarLink>
       </MDBNavbarNav>
 
       {user ?
