@@ -12,7 +12,7 @@ import Event from "./Event";
 import SearchEvents from "./components/SearchEvents";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import { MDBContainer, MDBFooter, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
+import { MDBBtn, MDBContainer, MDBFooter, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
 import AuthContext from "./contexts/AuthContext";
 import { logout, refresh } from "./services/auth-api";
 import AddEvent from "./components/AddEvent";
@@ -46,35 +46,38 @@ function App() {
 
 
   return (
+    <div style={{backgroundColor:"#1d1f47", overflow:"hidden", boxSizing:"border-box"}}>
     <AuthContext.Provider value={authorization}>
       <BrowserRouter>
-        <MDBNavbar expand="md" light bgColor="light" >
+        <MDBNavbar expand="sm" dark bgColor="dark" sticky >
           <MDBContainer fluid>
-            <MDBNavbarBrand><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
+            <MDBNavbarBrand className="" href="/" ><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
             <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
               <MDBNavbarItem>
-                <MDBNavbarLink href="/" className="ms-3 m-2">
-                  <h5>
+                <MDBNavbarLink href="/" className="ms-3 m-1">
+                  <h5><strong>
                     Home
+                    </strong>
                   </h5>
                 </MDBNavbarLink>
               </MDBNavbarItem>
-              {user ? <div>
+  
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/search" className="ms-3 m-2">
-                    <h5>
+                  <MDBNavbarLink href="/search" className="ms-3 m-1">
+                    <h5><strong>
                       Search Events
+                      </strong>
                     </h5>
                   </MDBNavbarLink>
                 </MDBNavbarItem>
-              </div> :
-                <div></div>}
+            
               {user ? <div>
                 <MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink href="/myevents" className="ms-3 m-2">
-                      <h5>
+                    <MDBNavbarLink href="/myevents" className="ms-3 m-1">
+                      <h5><strong>
                         My Events
+                        </strong>
                       </h5>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -85,9 +88,11 @@ function App() {
               {user && user.authorities[0] === 'ADMIN' ? <div>
                 <MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink href="/adminevents" className="ms-3 m-2">
+                    <MDBNavbarLink href="/adminevents" className="ms-3 m-1">
                       <h5>
+                      <strong>
                         Admin Events
+                        </strong>
                       </h5>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -98,36 +103,52 @@ function App() {
             </MDBNavbarNav>
 
             {user ? <div>
-              <MDBNavbarNav right fullWidth={true} className="">
-                <MDBNavbarLink href="/add" className="btn btn-lg btn-primary">Add Event</MDBNavbarLink>
+              <MDBNavbarNav right fullWidth={false} className="">
+                <MDBBtn href="/add" className="btn btn-md btn-primary m-1">Add</MDBBtn>
               </MDBNavbarNav>
             </div> :
               <div></div>}
 
             {user ?
-              <MDBNavbarNav right fullWidth={true}>
-                <MDBNavbarItem className="text-success m-2"><MDBIcon color="black" fas icon="user-circle" />{user.username} </MDBNavbarItem>
-                <button type="button" className="btn btn-lg btn-danger" onClick={authorization.logout}>
+              <MDBNavbarNav left fullWidth={false}>
+                <MDBNavbarItem className="text-success m-1" ><MDBIcon color="white" fas icon="user-circle" className=""> {user.username} </MDBIcon>  </MDBNavbarItem>
+              
+           
+                <MDBNavbarItem>
+                <MDBBtn type="button" className="btn btn-md btn-danger m-1" onClick={authorization.logout}>
                   Logout
-                </button>
-              </MDBNavbarNav> :
+                </MDBBtn>
+                </MDBNavbarItem>
+             </MDBNavbarNav>
+              
+              :
 
 
               <MDBNavbarNav right fullWidth={false}>
 
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/register">
+                  <MDBBtn href="/register" className="btn btn-md btn m-2" color="info">
                     Register
-                  </MDBNavbarLink>
+                  </MDBBtn>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/login">
+                  <MDBBtn href="/login" className="btn btn-md btn-primary m-2">
                     Login
-                  </MDBNavbarLink>
+                  </MDBBtn>
                 </MDBNavbarItem>
+
 
               </MDBNavbarNav>
             }
+          <MDBNavbarNav right fullWidth={false}>
+          <MDBNavbarItem>
+                  
+                  <MDBBtn className='m-1' style={{ backgroundColor: '#ed302f' }} href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
+        <MDBIcon fab icon='youtube' />
+      </MDBBtn>
+                </MDBNavbarItem>
+          </MDBNavbarNav>
+
 
           </MDBContainer>
         </MDBNavbar>
@@ -137,13 +158,13 @@ function App() {
 
 
 
-        <Routes>
+        <Routes >
           <Route path="/" element={<Homepage />} />
           <Route path="/event/:eventId" element={<Event />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login"  element={<Login />} />
           <Route path="/search" element={<SearchEvents />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/add" element={<AddEvent />} />
+          <Route path="/add"  element={<AddEvent />} />
           <Route path="/category" element={<Category />} />
           <Route path="/myevents" element={<MyEventsList />} />
           <Route path="/confirmd/:id" element={<ConfirmDelete />} />
@@ -165,7 +186,7 @@ function App() {
 
 
 
-
+</div>
 
 
   );

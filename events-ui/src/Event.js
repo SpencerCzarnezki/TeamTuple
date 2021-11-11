@@ -31,16 +31,20 @@ function Event() {
     const [resources, setResource] = useState([]);
     const [eventUser, setEventUser] = useState(emptyEventUser);
     const [checkJoined, setCheckJoined] = useState(false);
-
+    const [joinError, setJoinError] = useState(false);
     function onJoin() {
         const nextEventUser = { ...eventUser };
         nextEventUser.eventId = event.id;
         nextEventUser.userId = auth.user.id;
         setEventUser(nextEventUser);
-        console.log(nextEventUser);
+        
+        if((auth.user.id != event.id) && (event.attendees.length < event.capacity)){
+            console.log("Find this one", event);
         addAUserToEvent(nextEventUser).then(window.location.reload(true))
             .catch((err) => console.log(err));
-
+        } else{
+            setJoinError(true);
+        }
 
 
     };
@@ -58,7 +62,8 @@ function Event() {
     function onAccept() {
         const nextEvent = {...event};
         nextEvent.status = true;
-        updateEvent(nextEvent);
+        updateEvent(nextEvent).then(window.location.reload(true))
+        .catch(err => err.toString());
     }
 
     useEffect(() => {
@@ -162,6 +167,8 @@ function Event() {
                         <button type="button" className="btn btn-primary btn-lg m-2" onClick={onJoin}>Join Event</button>
                     </div>
                 } </div> : ""}
+
+                {joinError && <div className="bg-danger text-white" >Cannot Join Event</div>}
             <div>
 
                 <div>
