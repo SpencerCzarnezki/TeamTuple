@@ -158,7 +158,7 @@ public class UserRepository implements UserRepositoryInterface {
 
         for (var name : user.getAuthorityNames()) {
             String sql = "insert into app_user_role (app_user_id, app_role_id) "
-                    + "values (?, (select app_role_id from `role` where title = ?));";
+                    + "values (?, (select roleId from `role` where title = ?));";
             jdbcTemplate.update(sql, user.getUserId(), name);
         }
     }

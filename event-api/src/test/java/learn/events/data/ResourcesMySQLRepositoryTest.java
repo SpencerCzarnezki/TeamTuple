@@ -25,8 +25,7 @@ public class ResourcesMySQLRepositoryTest {
     }
 
     @Test
-    void shouldFind4Resources() throws DataAccessException {
-        Resources expected = makeValidResource(5);
+    void shouldFind4Resources(){
         var resources = repository.findAll();
         assertEquals(4, resources.size());
     }
@@ -38,19 +37,19 @@ public class ResourcesMySQLRepositoryTest {
     }
 
     @Test
-    void shouldFindId5() throws DataAccessException {
+    void shouldFindId5(){
         Resources expected = makeValidResource(5);
         Resources actual = repository.findById(5);
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldNotFindId188() throws DataAccessException {
+    void shouldNotFindId188(){
         assertNull(repository.findById(188));
     }
 
     @Test
-    void shouldAdd() throws DataAccessException {
+    void shouldAdd(){
         Resources expected = makeValidResource(5);
         Resources in = makeValidResource(0);
         Resources actual = repository.add(in);
@@ -61,14 +60,14 @@ public class ResourcesMySQLRepositoryTest {
     }
 
     @Test
-    void shouldDelete() throws DataAccessException {
+    void shouldDelete(){
         assertTrue(repository.deleteById(1));
         Resources resource = repository.findById(1);
         assertNull(resource);
     }
 
     @Test
-    void shouldNotDeleteMissing() throws DataAccessException {
+    void shouldNotDeleteMissing(){
         assertFalse(repository.deleteById(25));
     }
 
