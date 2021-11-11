@@ -51,7 +51,8 @@ public class EventUserBridgeJdbcRepository implements EventUserBridgeRepository 
         int rowsAffected = jdbcTemplate.update(sql,
                 eventUserBridge.getUserId(),
                 eventUserBridge.getEventId());
-        return rowsAffected <= 0;
+
+        return rowsAffected > 0;
     }
     @Override
     public boolean deleteAllEventAttendeesByEventId(int id){
@@ -65,7 +66,7 @@ public class EventUserBridgeJdbcRepository implements EventUserBridgeRepository 
     }
     @Override
     public boolean deleteOneUserFromOneEvent(int userId, int eventId){
-        int rowsAffected = jdbcTemplate.update("delete from app_user_event where app_user_id = ? and app_event_id = ?;", eventId);
+        int rowsAffected = jdbcTemplate.update("delete from app_user_event where app_user_id = ? and app_event_id = ?;",userId, eventId);
         return rowsAffected > 0;
     }
 

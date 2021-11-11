@@ -39,5 +39,23 @@ class EventUserBridgeRepositoryTest {
         assertNotNull(eventUserBridges);
     }
 
+    @Test
+    void shouldAdd(){
+        EventUserBridge expected = new EventUserBridge(2,2);
+
+        assertTrue(repository.add(expected));
+    }
+
+    @Test 
+    void shouldDeleteByBothIds(){
+        assertTrue(repository.deleteOneUserFromOneEvent(1,2));
+    }
+    @Test
+    void shouldDeleteAllUsersByEventId(){
+        assertTrue(repository.deleteAllEventAttendeesByEventId(1));
+    }
+
+
+
 
 }
