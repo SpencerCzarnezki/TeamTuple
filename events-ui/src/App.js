@@ -82,7 +82,7 @@ function App() {
               </div> :
                 <div></div>}
 
-              {auth.credentials.hasAuthority("ADMIN") ? <div>
+              {user && user.authorities[0] === 'ADMIN' ? <div>
                 <MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink href="/adminevents" className="ms-3 m-2">
@@ -146,7 +146,7 @@ function App() {
           <Route path="/add" element={<AddEvent />} />
           <Route path="/category" element={<Category />} />
           <Route path="/myevents" element={<MyEventsList />} />
-          <Route path="/confirmd" element={<ConfirmDelete />} />
+          <Route path="/confirmd/:id" element={<ConfirmDelete />} />
           <Route path="/adminevents" element={<AdminEventsList />} />
 
 

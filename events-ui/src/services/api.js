@@ -59,9 +59,9 @@ async function addEvent(event) {
     }
     throw new Error("Could not add event");
 }
-async function updateEvent(event) {
+export async function updateEvent(event) {
     const update = makeFetchInit("PUT", event);
-    const response = await fetch(`${url}/${event.eventId}`, update);
+    const response = await fetch(`${url}/${event.id}`, update);
     if (response.status !== 204) {
         throw new Error("Could not update event");
     }

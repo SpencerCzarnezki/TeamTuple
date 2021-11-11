@@ -12,7 +12,7 @@ function MyEventsList() {
     const [EventCards, setEvents] = useState([]);
     const [event, setEvent] = useState([]);
     const history = useNavigate();
-    let myEvents =[];
+    let myEvents = [];
     useEffect(() => {
         findAllEvents().then(result => setEvents(result))
             .catch((err) => {
@@ -26,13 +26,13 @@ function MyEventsList() {
                 }
 
             });
-            if(authContext.user){
+        if (authContext.user) {
             findEventIdsByUserId(authContext.user.id).then(eventUserKeys => {
                 const promises = [];
-                for (const userKey of eventUserKeys){
+                for (const userKey of eventUserKeys) {
                     promises.push(findByEventId(userKey.eventId));
                 }
-                Promise.all(promises).then(events => setEvent(events) );
+                Promise.all(promises).then(events => setEvent(events));
                 console.log(event);
 
 
@@ -45,63 +45,84 @@ function MyEventsList() {
                 // setEventIds(eventId.eventId);
                 //   eventIds.forEach(id => {  myEvents.push(findByEventId(id.eventId))});
                 //     console.log(eventId[0].eventId);
-             
-                    
-                 
-            
+
+
+
+
             });
         }
-            
 
 
 
-     
-                      
-                    
-                
-            
-        
-
-    },  [authContext, history]);
-
-  
 
 
 
-    function myOrganizedEvents() {
+
+
+
+
+
+    }, [authContext, history]);
+
+
+    function myPendingOrganizedEvents() {
         let orgEvents = [];
         // let uId = authContext.user.id;
 
-        if (authContext.user && !EventCards.length == 0) {
-            EventCards.forEach(event => {
-                if (event.organizerId == authContext.user.id) {
-                    orgEvents.push(event);
 
-                }
-            })
+        if (authContext.user && !EventCards.length == 0) {
+
+            const holder = EventCards.filter(e => e.status === false);
+            const yourPendingEvents = holder.filter(e => e.organizerId === authContext.user.id);
+
+            orgEvents = yourPendingEvents;
         }
 
         return orgEvents;
-
-
-
     }
 
-    let orgEvents = myOrganizedEvents(EventCards);
+
+    function myAcceptedOrganizedEvents() {
+        let orgEvents = [];
+        // let uId = authContext.user.id;
+
+
+        if (authContext.user && !EventCards.length == 0) {
+
+            const holder2 = EventCards.filter(e => e.status === true);
+            const yourAcceptedEvents = holder2.filter(e => e.organizerId === authContext.user.id);
+            orgEvents = yourAcceptedEvents;
+        }
+
+        return orgEvents;
+    }
+
+    let orgAEvents = myAcceptedOrganizedEvents(EventCards);
+    let orgPEvents = myPendingOrganizedEvents(EventCards);
 
     return (
         <div>
             <div className="m-2">
-            <h1 className="m-4">My Events</h1>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
-                {event.map(e => <EventCard event={e} key={e.id} />)}
-            </div>
+                <h1 className="m-4">My Events</h1>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
+                    {event.map(e => <EventCard event={e} key={e.id} />)}
+                </div>
             </div>
             <div className="m-2">
-            <h1 className="m-4">Organized </h1>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
-                {orgEvents.map(e => <EventCard event={e} key={e.id} />)}
+                <h1 className="m-4">Organized: Accepted Events </h1>
+                <div>
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
+                        {orgAEvents.map(e => <EventCard event={e} key={e.id} />)}
+                    </div>
+                </div>
             </div>
+            <div className="m-2">
+                <h1 className="m-4">Organized: Pending Events </h1>
+                <div>
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
+                        {orgPEvents.map(e => <EventCard event={e} key={e.id} />)}
+                    </div>
+                </div>
             </div>
         </div>
 

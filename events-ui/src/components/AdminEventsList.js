@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 function AdminEventsList() {
     const authContext = useContext(AuthContext);
     const [EventCards, setEvents] = useState([]);
-    
+
     const history = useNavigate();
     useEffect(() => {
         findAllEvents().then(result => setEvents(result))
@@ -22,37 +22,38 @@ function AdminEventsList() {
                 }
 
             });
-           
-    },  [authContext, history]);
 
-  
+    }, [authContext, history]);
+
+
 
 
 
     function pendingEvents() {
         let pendingEventsList = [];
-        EventCards.forEach(event =>  {
+        EventCards.forEach(event => {
 
-            if(event.staus === 0){
+            if (event.status === false) {
                 pendingEventsList.push(event);
             }
-            
+
         });
         return pendingEventsList;
-       
+
     }
 
     function approvedEvents() {
-        let aprovedEventsList = [];
-        EventCards.forEach(event =>  {
+        let approvedEventsList = [];
+        EventCards.forEach(event => {
 
-            if(event.staus === 1){
-                aprovedEventsList.push(event);
+            console.log(event.status);
+            if (event.status === true) {
+                approvedEventsList.push(event);
             }
-            
+
         });
-        return aprovedEventsList;
-       
+        return approvedEventsList;
+
     }
 
 
@@ -65,19 +66,19 @@ function AdminEventsList() {
     return (
         <div>
             <div className="m-2">
-            <h1 className="m-4">Pending Events</h1>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
-                {aEvents.map(e => <EventCard event={e} key={e.id} />)}
-            </div>
+                <h1 className="m-4">Approved Events</h1>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
+                    {aEvents.map(e => <EventCard event={e} key={e.id} />)}
+                </div>
             </div>
             <div className="m-2">
-            <h1 className="m-4">Approved Events </h1>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
-                {pEvents.map(e => <EventCard event={e} key={e.id} />)}
-            </div>
+                <h1 className="m-4">Pending Events </h1>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
+                    {pEvents.map(e => <EventCard event={e} key={e.id} />)}
+                </div>
             </div>
         </div>
 
     );
- }
+}
 export default AdminEventsList;
