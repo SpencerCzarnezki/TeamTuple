@@ -1,14 +1,14 @@
-function Resource({resources}){
-    if(resources.length !== 0){
-         return(
+function Resource({ resources }) {
+    if (resources.length !== 0) {
+        return (
             <div>
                 {resources && resources.resource}
             </div>
-         );
-            
+        );
+
     }
     return (
-        <div style={{style: "italics"}}>No Attendees</div>
+        <div style={{ style: "italics" }}>No Attendees</div>
     );
 }
 export default Resource;

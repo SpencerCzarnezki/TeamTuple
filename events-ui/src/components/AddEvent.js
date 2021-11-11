@@ -85,13 +85,11 @@ function AddEvent() {
         if (id) {
             findByEventId(id).then(event => {
                 setEvent(event);
-                console.log(event);
                 if (event.eventLocationId) {
                     findByLocationId(event.eventLocationId).then(location => {
                         setLocation(location);
                         findResourcesByLocationId(location.id).then(res => {
                             setResource(res[0]);
-                            console.log(res);
                         })
                             .catch((error => error));
                     }).catch((error => navigate("/NotFound", error.ToString)));
@@ -101,8 +99,7 @@ function AddEvent() {
 
 
         }
-        setLocation(location);
-    }, [id, navigate, location]);
+    }, [id, navigate]);
 
 
 
@@ -127,11 +124,9 @@ function AddEvent() {
                 }
 
                 findResourcesByLocationId(event.eventLocationId).then(a => {
-                    console.log(a);
                     deleteResource(a[0].resourceId).catch((err) => navigate("/NotFound", console.log(err)));
 
                     const nextResource = { ...resource };
-                    console.log(nextResource);
                     nextResource.resourceId = 0;
 
                     if (nextResource.resource.length !== 0) {
@@ -140,7 +135,6 @@ function AddEvent() {
 
                 }).catch(a => {
                     const nextResource = { ...resource };
-                    console.log(nextResource);
                     nextResource.resourceId = 0;
                     nextResource.locationId = event.eventLocationId;
 
@@ -154,7 +148,6 @@ function AddEvent() {
             else {
                 saveLocation(location)
                     .then(json => {
-                        console.log(json);
                         const nextEvent = { ...event };
                         const nextResource = { ...resource };
                         if (json != null) {
@@ -163,13 +156,18 @@ function AddEvent() {
                         }
 
 
-                        console.log(nextResource.resource);
-
                         if (nextResource.resource.length !== 0) {
-                            addResource(nextResource);
+                            if (nextResource.resourceId === undefined) {
+                                addResource(nextResource);
+                            } else {
+                                const holder = { ...resource };
+                                deleteResource(nextResource.resourceId).catch((err) => navigate("/NotFound", console.log(err)));
+                                holder.resourceId = 0;
+                                addResource(holder);
+                            }
+
                         }
 
-                        console.log("Add Event ", authContext.user);
                         if (nextEvent.organizerId === authContext.user.id || nextEvent.organizerId === "") {
                             nextEvent.organizerId = authContext.user.id;
                         }

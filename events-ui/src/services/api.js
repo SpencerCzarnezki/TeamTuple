@@ -67,13 +67,11 @@ export async function updateEvent(event) {
     }
 }
 export async function saveEvent(event) {
-    console.log(event);
     return event.id > 0 ? updateEvent(event) : addEvent(event);
-
 }
 
 export async function deleteEvent(id) {
-    const response = await fetch(`${url}/${id}`, {method:"DELETE"});
+    const response = await fetch(`${url}/${id}`, { method: "DELETE" });
     if (response.status !== 204) {
         throw new Error("Could not delete event");
     }
@@ -103,7 +101,7 @@ export async function findResourcesByLocationId(id) {
     throw new Error("Could not fetch resources");
 }
 export async function deleteResource(id) {
-    const response = await fetch(`http://localhost:8080/api/resources/${id}`, {method:"DELETE"});
+    const response = await fetch(`http://localhost:8080/api/resources/${id}`, { method: "DELETE" });
     if (response.status !== 204) {
         throw new Error("Could not delete event");
     }

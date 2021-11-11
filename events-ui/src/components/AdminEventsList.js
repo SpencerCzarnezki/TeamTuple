@@ -26,9 +26,6 @@ function AdminEventsList() {
     }, [authContext, history]);
 
 
-
-
-
     function pendingEvents() {
         let pendingEventsList = [];
         EventCards.forEach(event => {
@@ -46,7 +43,6 @@ function AdminEventsList() {
         let approvedEventsList = [];
         EventCards.forEach(event => {
 
-            console.log(event.status);
             if (event.status === true) {
                 approvedEventsList.push(event);
             }
@@ -55,9 +51,6 @@ function AdminEventsList() {
         return approvedEventsList;
 
     }
-
-
-
 
 
     let pEvents = pendingEvents(EventCards);
