@@ -31,7 +31,6 @@ function MyEventsList() {
                         promises.push(findByEventId(userKey.eventId));
                     }
                     Promise.all(promises).then(events => setEvent(events));
-                    console.log(event);
                 }
 
             }).catch(err => err.toString());
@@ -41,7 +40,6 @@ function MyEventsList() {
 
     function myPendingOrganizedEvents() {
         let orgEvents = [];
-        // let uId = authContext.user.id;
 
 
         if (authContext.user) {
@@ -57,7 +55,6 @@ function MyEventsList() {
 
     function myAcceptedOrganizedEvents() {
         let orgEvents = [];
-        // let uId = authContext.user.id;
 
         if (authContext.user) {
 

@@ -15,10 +15,9 @@ function makeCredentials(body) {
     const sections = jwt.split(".");
     const envelope = JSON.parse(atob(sections[1]));
     const envelope2 = JSON.parse(atob(sections[1]));
-    console.log(envelope);
     const credentials = {
         username: envelope.sub,
-        id : envelope2.id,
+        id: envelope2.id,
         authorities: envelope.authorities.split(",")
     };
 

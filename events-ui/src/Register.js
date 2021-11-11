@@ -28,7 +28,6 @@ function Register() {
         if (user.password !== user.confirmPassword) {
             setErr("passwords do not match");
         } else {
-            console.log(user);
             createUser(user)
                 .then(() => navigate("/login"))
                 .catch(err => {
@@ -45,7 +44,7 @@ function Register() {
         <form onSubmit={onSubmit} className="text-white m-3 ">
             <h2 className="m-3">Register</h2>
             <div className="mb-2 m-3 w-25">
-                <MDBInput type="text"  label="First Name" contrast id="fname" name="fname" className=" w-50"
+                <MDBInput type="text" label="First Name" contrast id="fname" name="fname" className=" w-50"
                     value={user.fname} onChange={onChange} />
             </div>
             <div className="mb-2 m-3 w-25">
@@ -69,10 +68,10 @@ function Register() {
                     value={user.confirmPassword} onChange={onChange} />
             </div>
             {err && <div className="alert alert-danger">{err}</div>}
-            <div className=""> 
+            <div className="">
                 <Link to="/" className="btn btn-secondary m-3">Cancel</Link>
                 <MDBBtn type="submit" className="btn btn-primary  m-3">Save</MDBBtn>
-               
+
             </div>
         </form>
     );
