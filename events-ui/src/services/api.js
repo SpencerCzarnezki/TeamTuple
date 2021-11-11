@@ -68,7 +68,7 @@ export async function updateEvent(event) {
 }
 export async function saveEvent(event) {
     console.log(event);
-    return event.eventId > 0 ? updateEvent(event) : addEvent(event);
+    return event.id > 0 ? updateEvent(event) : addEvent(event);
 
 }
 

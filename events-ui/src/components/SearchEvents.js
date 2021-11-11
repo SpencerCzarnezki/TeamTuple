@@ -1,4 +1,4 @@
-import { MDBRow } from "mdb-react-ui-kit";
+import { MDBContainer, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
 import { findAllEvents, findByCategory, findByEventKeyWord} from "../services/api";
 import EventCard from "./EventCard";
@@ -17,7 +17,6 @@ function SearchEvents() {
             findAllEvents().then(events => {
                 const holder = events.filter(e => e.status === true);
                 
-                console.log(holder);
                 setEvents(holder);
             });
 
@@ -25,12 +24,23 @@ function SearchEvents() {
         }
         else if (keyword.length > 0) {
 
-            findByEventKeyWord(keyword).then(events => setEvents(events))
+            findByEventKeyWord(keyword).then(events => {
+                const holder = events.filter(e => e.status === true);
+                setEvents(holder);        
+            })
                 .catch(err => emptyResult);
         }
 
         if(category.length > 0) {
-            findByCategory(category).then(events => setEvents(events))
+            findByCategory(category).then(events =>  {
+                const holder = events.filter(e => e.status === true);
+
+
+
+                setEvents(holder);
+            
+            
+            })
             .catch(err => emptyResult);
         }
 
@@ -58,21 +68,22 @@ function SearchEvents() {
 
 
     return (
-        <form onSubmit={onSubmit}>
+        <MDBContainer fluid>
+        <form onSubmit={onSubmit} color="">
             <div>Search</div>
 
 
             <div className="input-group m-3" style={{ width: 500 }}>
                 <div>
 
-                    <input type="search" className="form-control" value={keyword} onChange={onChange} id="keysearch" placeholder="Search Keyword" ></input>
+                    <MDBInput type="search" label="Search Keyword" contrast className="form-control text-white" value={keyword} onChange={onChange} id="keysearch" ></MDBInput>
                 </div>
             </div>
 
             <div className="input-group m-3" style={{ width: 500 }}>
                 <div>
 
-                    <input type="search" className="form-control" value={category} onChange={onChangeCategory} id="categorysearch" placeholder="Search Category" ></input>
+                    <MDBInput type="search" label="Search Category" className="form-control" value={category} onChange={onChangeCategory} id="categorysearch" contrast></MDBInput>
                 </div>
             </div>
 
@@ -81,6 +92,7 @@ function SearchEvents() {
             </MDBRow>
 
         </form>
+    </MDBContainer>
     );
 
 }

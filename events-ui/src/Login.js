@@ -1,4 +1,4 @@
-import { MDBInput } from "mdb-react-ui-kit";
+import { MDBBtn, MDBInput } from "mdb-react-ui-kit";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
@@ -31,21 +31,21 @@ function Login() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <h2 className="m-4">Login</h2>
+        <form onSubmit={onSubmit} className="text-white">
+            <h2 className="m-5 ">Login</h2>
             <div className="m-4 mb-2 w-25">
-                <MDBInput label="Username" id="username" name="username" type="text" size="lg" className="form-control" required
+                <MDBInput label="Username" contrast id="username" name="username" type="text" size="lg" className="form-control" required
                 value={candidate.username} onChange={onChange}></MDBInput>
             </div>
             <div className=" m-4 mb-2 w-25">
-            <MDBInput label="Password" id="password" name="password" type="password" size="lg" className="form-control" required
+            <MDBInput label="Password" id="password" contrast name="password" type="password" size="lg" className="form-control" required
                 value={candidate.password} onChange={onChange}></MDBInput>
 
 
             </div>
             <div>
-                <Link to="/" className="btn btn-outline-primary me-2 m-4">Cancel</Link>
-                <button type="submit" className="btn btn-primary m-4">Log In</button>
+                <Link to="/" className="btn btn-warning me-2 m-4">Cancel</Link>
+                <MDBBtn type="submit"  className="btn btn-primary m-4">Log In</MDBBtn>
             </div>
             {hasError && <div className="alert alert-danger m-4">Bad credentials...</div>}
         </form>
