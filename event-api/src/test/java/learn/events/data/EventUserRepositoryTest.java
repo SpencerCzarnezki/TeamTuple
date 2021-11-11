@@ -56,7 +56,6 @@ class EventUserRepositoryTest {
         user.setEmail("email@email.com");
         user.setFname("Name");
         user.setLname("Last");
-//        user.setPasswordHash("hash");
         eventUser.setUser(user);
 
         return eventUser;

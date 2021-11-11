@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
-import { findByEventId, findByLocationId, findResourcesByLocationId, deleteEvent } from "./services/api";
+import { findByEventId, findByLocationId, findResourcesByLocationId, updateEvent } from "./services/api";
 import { MDBIcon, MDBRow } from "mdb-react-ui-kit";
 import { findUserById } from "./services/user-api";
 import Resource from "./components/Resource";
@@ -31,17 +31,20 @@ function Event() {
     const [resources, setResource] = useState([]);
     const [eventUser, setEventUser] = useState(emptyEventUser);
     const [checkJoined, setCheckJoined] = useState(false);
-    const [totalAttendees, setTotalAttendees] = useState(0);
-
+    const [joinError, setJoinError] = useState(false);
     function onJoin() {
         const nextEventUser = { ...eventUser };
         nextEventUser.eventId = event.id;
         nextEventUser.userId = auth.user.id;
         setEventUser(nextEventUser);
-        console.log(nextEventUser);
-        addAUserToEvent(nextEventUser).then(window.location.reload(true))
-            .catch((err) => console.log(err));
 
+        if ((auth.user.id !== event.organizerId) && (event.attendees.length < event.capacity)) {
+            console.log("Find this one", event);
+            addAUserToEvent(nextEventUser).then(window.location.reload(true))
+                .catch((err) => console.log(err));
+        } else {
+            setJoinError(true);
+        }
 
 
     };
@@ -53,11 +56,14 @@ function Event() {
 
     function onDelete() {
         // deleteEvent(event.id).then(() => );
-        navigate("/confirmd");
+        navigate(`/confirmd/${event.id}`);
     }
 
     function onAccept() {
-
+        const nextEvent = { ...event };
+        nextEvent.status = true;
+        updateEvent(nextEvent).then(window.location.reload(true))
+            .catch(err => err.toString());
     }
 
     useEffect(() => {
@@ -85,11 +91,10 @@ function Event() {
         };
         console.log(auth);
         if (event.attendees && auth.user) {
-            const attendeeList = event.attendees;
             for (let x = 0; x < event.attendees.length; x++) {
                 console.log(event.attendees[x].user.userId);
                 console.log(auth.user.authorities);
-                if (event.attendees[x].user.userId == auth.user.id) {
+                if (event.attendees[x].user.userId === auth.user.id) {
                     let nextCheck = { ...checkJoined };
                     nextCheck = true;
                     setCheckJoined(nextCheck);
@@ -126,7 +131,7 @@ function Event() {
                         <div className="col">{location.address}, {location.city}, {location.state}, {location.zipcode}</div>
                     </div>
                     <div className="row">
-                        <div className="col"><strong>Number of available spots:</strong> </div>
+                        <div className="col"><strong>Number of spots filled:</strong> </div>
                         <div className="col"> {event.attendees && event.attendees.length}/{event.capacity}</div>
                     </div>
                     <div className="row">
@@ -161,15 +166,17 @@ function Event() {
                         <button type="button" className="btn btn-primary btn-lg m-2" onClick={onJoin}>Join Event</button>
                     </div>
                 } </div> : ""}
+
+            {joinError && <div className="bg-danger text-white" >Cannot Join Event</div>}
             <div>
 
                 <div>
                     {auth.user && auth.user.authorities[0] === 'ADMIN' &&
-                    <div>
-
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>
-                    </div>}
+                        <div>
+                            <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
+                            {!event.status &&
+                                <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>}
+                        </div>}
                 </div>
             </div>
 

@@ -59,16 +59,16 @@ async function addEvent(event) {
     }
     throw new Error("Could not add event");
 }
-async function updateEvent(event) {
+export async function updateEvent(event) {
     const update = makeFetchInit("PUT", event);
-    const response = await fetch(`${url}/${event.eventId}`, update);
+    const response = await fetch(`${url}/${event.id}`, update);
     if (response.status !== 204) {
         throw new Error("Could not update event");
     }
 }
 export async function saveEvent(event) {
     console.log(event);
-    return event.eventId > 0 ? updateEvent(event) : addEvent(event);
+    return event.id > 0 ? updateEvent(event) : addEvent(event);
 
 }
 
@@ -79,14 +79,14 @@ export async function deleteEvent(id) {
     }
 }
 
-async function addEventUser(event) {
-    const first = makeFetchInit("POST", event);
-    const response = await fetch(`${url}/user`, first);
-    if (response.status === 201) {
-        return response.json();
-    }
-    throw new Error("Could not add event");
-}
+// async function addEventUser(event) {
+//     const first = makeFetchInit("POST", event);
+//     const response = await fetch(`${url}/user`, first);
+//     if (response.status === 201) {
+//         return response.json();
+//     }
+//     throw new Error("Could not add event");
+// }
 export async function addResource(resource) {
     const first = makeFetchInit("POST", resource);
     const response = await fetch(`http://localhost:8080/api/resources`, first);
@@ -101,6 +101,12 @@ export async function findResourcesByLocationId(id) {
         return response.json();
     }
     throw new Error("Could not fetch resources");
+}
+export async function deleteResource(id) {
+    const response = await fetch(`http://localhost:8080/api/resources/${id}`, {method:"DELETE"});
+    if (response.status !== 204) {
+        throw new Error("Could not delete event");
+    }
 }
 
 

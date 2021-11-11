@@ -1,3 +1,4 @@
+import { MDBBtn, MDBInput } from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUser } from "./services/user-api";
@@ -41,42 +42,37 @@ function Register() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <h2>Register</h2>
-            <div className="mb-2">
-                <label htmlFor="fname" className="form-label">First Name</label>
-                <input type="text" id="fname" name="fname" className="form-control"
+        <form onSubmit={onSubmit} className="text-white m-3 ">
+            <h2 className="m-3">Register</h2>
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="text"  label="First Name" contrast id="fname" name="fname" className=" w-50"
                     value={user.fname} onChange={onChange} />
             </div>
-            <div className="mb-2">
-                <label htmlFor="lname" className="form-label">Last Name</label>
-                <input type="text" id="lname" name="lname" className="form-control"
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="text" contrast label="Last Name" id="lname" name="lname" className=" m-3"
                     value={user.lname} onChange={onChange} />
             </div>
-            <div className="mb-2">
-                <label htmlFor="userName" className="form-label">Username</label>
-                <input type="text" id="userName" name="userName" className="form-control" required
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="text" label="Username" contrast id="userName" name="userName" className=" m-3" required
                     value={user.userName} onChange={onChange} />
             </div>
-            <div className="mb-2">
-                <label htmlFor="email" className="form-label">Email Address</label>
-                <input type="text" id="email" name="email" className="form-control"
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="text" label="Email Address" contrast id="email" name="email" className=" m-3"
                     value={user.email} onChange={onChange} />
             </div>
-            <div className="mb-2">
-                <label htmlFor="name" className="form-label">Password</label>
-                <input type="password" id="password" name="password" className="form-control" required
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="password" label="Password" contrast id="password" name="password" className=" m-3" required
                     value={user.password} onChange={onChange} />
             </div>
-            <div className="mb-2">
-                <label htmlFor="name" className="form-label">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" required
+            <div className="mb-2 m-3 w-25">
+                <MDBInput type="password" contrast id="confirmPassword" label="Confirm Password" name="confirmPassword" className=" m-3" required
                     value={user.confirmPassword} onChange={onChange} />
             </div>
             {err && <div className="alert alert-danger">{err}</div>}
-            <div className="mb-2">
-                <button type="submit" className="btn btn-primary me-1">Save</button>
-                <Link to="/" className="btn btn-secondary">Cancel</Link>
+            <div className=""> 
+                <Link to="/" className="btn btn-secondary m-3">Cancel</Link>
+                <MDBBtn type="submit" className="btn btn-primary  m-3">Save</MDBBtn>
+               
             </div>
         </form>
     );

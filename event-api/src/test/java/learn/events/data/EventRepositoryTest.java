@@ -56,9 +56,8 @@ class EventRepositoryTest {
     }
     @Test
     void shouldFindByKeyWord(){
-        List<Event> events=repository.findByKeyWord("twist");
-        //Only individual tests for below
-//        assertEquals(1,events.size());
+        repository.findByKeyWord("twist");
+        List<Event> events;
         events = repository.findByKeyWord("meet");
         assertEquals(1,events.size());
 
