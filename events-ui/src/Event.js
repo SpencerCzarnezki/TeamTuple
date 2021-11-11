@@ -37,12 +37,12 @@ function Event() {
         nextEventUser.eventId = event.id;
         nextEventUser.userId = auth.user.id;
         setEventUser(nextEventUser);
-        
-        if((auth.user.id != event.organizerId) && (event.attendees.length < event.capacity)){
+
+        if ((auth.user.id !== event.organizerId) && (event.attendees.length < event.capacity)) {
             console.log("Find this one", event);
-        addAUserToEvent(nextEventUser).then(window.location.reload(true))
-            .catch((err) => console.log(err));
-        } else{
+            addAUserToEvent(nextEventUser).then(window.location.reload(true))
+                .catch((err) => console.log(err));
+        } else {
             setJoinError(true);
         }
 
@@ -60,10 +60,10 @@ function Event() {
     }
 
     function onAccept() {
-        const nextEvent = {...event};
+        const nextEvent = { ...event };
         nextEvent.status = true;
         updateEvent(nextEvent).then(window.location.reload(true))
-        .catch(err => err.toString());
+            .catch(err => err.toString());
     }
 
     useEffect(() => {
@@ -94,7 +94,7 @@ function Event() {
             for (let x = 0; x < event.attendees.length; x++) {
                 console.log(event.attendees[x].user.userId);
                 console.log(auth.user.authorities);
-                if (event.attendees[x].user.userId == auth.user.id) {
+                if (event.attendees[x].user.userId === auth.user.id) {
                     let nextCheck = { ...checkJoined };
                     nextCheck = true;
                     setCheckJoined(nextCheck);
@@ -167,16 +167,16 @@ function Event() {
                     </div>
                 } </div> : ""}
 
-                {joinError && <div className="bg-danger text-white" >Cannot Join Event</div>}
+            {joinError && <div className="bg-danger text-white" >Cannot Join Event</div>}
             <div>
 
                 <div>
                     {auth.user && auth.user.authorities[0] === 'ADMIN' &&
-                    <div>
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
-                        {!event.status &&
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>}
-                    </div>}
+                        <div>
+                            <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
+                            {!event.status &&
+                                <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>}
+                        </div>}
                 </div>
             </div>
 
