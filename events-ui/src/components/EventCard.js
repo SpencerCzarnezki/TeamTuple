@@ -36,7 +36,7 @@ function EventCard({ event }) {
 
         <MDBCol className="m-2">
             <MDBCard style={{ width: '300px' }} className="m-4 hover-shadow bg-image text-white  hover-zoom h-100 " background="dark" border="light" shadow="">
-                <MDBCardImage src={event.imageUrl} className=""></MDBCardImage>
+                <MDBCardImage src={event.imageUrl} className="" onClick={onClick}></MDBCardImage>
                 <MDBCardBody className="" onClick={onClick} back>
                     <MDBCardTitle>  <strong> {event.title} </strong> </MDBCardTitle>
                     <MDBCardText>{event.description}</MDBCardText>

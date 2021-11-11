@@ -101,10 +101,10 @@ public class LocationService {
             boolean holder2 = locations.stream()
                     .noneMatch(l -> l.getAddress().equalsIgnoreCase(location.getAddress()));
 
-            boolean holder3 = locations.stream()
-                    .noneMatch(l -> l.getId() == location.getId());
+//            boolean holder3 = locations.stream()
+//                    .noneMatch(l -> l.getId() == location.getId());
 
-            if((!holder1 && holder2) || (holder1 && !holder2) || (holder1 && holder2) || holder3) {
+            if((!holder1 && holder2) || (holder1 && !holder2) || (holder1 && holder2)) {
                 return true;
             }
 
