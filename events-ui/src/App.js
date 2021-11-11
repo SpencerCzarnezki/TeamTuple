@@ -9,7 +9,7 @@ import Event from "./Event";
 import SearchEvents from "./components/SearchEvents";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import { MDBBtn, MDBContainer, MDBFooter, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
+import { MDBBtn, MDBContainer, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav } from "mdb-react-ui-kit";
 import AuthContext from "./contexts/AuthContext";
 import { logout, refresh } from "./services/auth-api";
 import AddEvent from "./components/AddEvent";
@@ -167,9 +167,7 @@ function App() {
 
 
           <Route path="*" element={<ErrorPage />} />
-          <MDBFooter bgColor="dark" className='text-center text-lg-left'>
-            <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}><a>Test</a></div>
-          </MDBFooter>
+
 
 
         </Routes>

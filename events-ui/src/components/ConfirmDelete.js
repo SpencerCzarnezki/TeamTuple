@@ -16,7 +16,7 @@ function ConfirmDelete() {
             err = "Unauthorized";
         }
         navigate("/error", err.toString)
-    }, authContext, navigate)
+    }, [authContext, navigate])
 
     const onDelete = () => {
         deleteEvent(id)

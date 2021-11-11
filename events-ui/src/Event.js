@@ -103,7 +103,7 @@ function Event() {
         }
 
 
-    }, [eventId, location, event, user, resources])
+    }, [eventId, location, event, user, resources, auth, checkJoined, url])
 
     return (
         <div className="col w-auto">
@@ -181,7 +181,7 @@ function Event() {
             </div>
 
             <div className="flex-center md-6">
-                <iframe src={url} width="1275" height="450" frameborder="0" style={{ border: 0 }} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe src={url} title="googleMap" width="1275" height="450" frameborder="0" style={{ border: 0 }} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     );
