@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useContext, useCallback } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { deleteEvent } from "../services/api";
 import AuthContext from "../contexts/AuthContext";

@@ -1,7 +1,7 @@
-import { MDBCard, MDBCardHeader, MDBRipple, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBListGroup, MDBListGroupItem, MDBRow, MDBCol, MDBCardFooter } from "mdb-react-ui-kit";
+import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBListGroup, MDBListGroupItem, MDBCol, MDBCardFooter } from "mdb-react-ui-kit";
 import { React, useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { findByLocationId } from "../services/location-api";
 
 

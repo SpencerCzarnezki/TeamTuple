@@ -8,7 +8,6 @@ import { findEventIdsByUserId } from "../services/event-join-api";
 
 function MyEventsList() {
     const authContext = useContext(AuthContext);
-    const navigate = useNavigate();
     const [EventCards, setEvents] = useState([]);
     const [event, setEvent] = useState([]);
     const history = useNavigate();
