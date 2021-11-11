@@ -1,5 +1,4 @@
 function Resource({resources}){
-    {console.log(resources)}
     if(resources.length !== 0){
          return(
             <div>

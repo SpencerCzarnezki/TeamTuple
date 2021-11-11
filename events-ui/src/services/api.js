@@ -79,14 +79,14 @@ export async function deleteEvent(id) {
     }
 }
 
-async function addEventUser(event) {
-    const first = makeFetchInit("POST", event);
-    const response = await fetch(`${url}/user`, first);
-    if (response.status === 201) {
-        return response.json();
-    }
-    throw new Error("Could not add event");
-}
+// async function addEventUser(event) {
+//     const first = makeFetchInit("POST", event);
+//     const response = await fetch(`${url}/user`, first);
+//     if (response.status === 201) {
+//         return response.json();
+//     }
+//     throw new Error("Could not add event");
+// }
 export async function addResource(resource) {
     const first = makeFetchInit("POST", resource);
     const response = await fetch(`http://localhost:8080/api/resources`, first);

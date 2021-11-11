@@ -1,5 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCardImage, MDBCardOverlay, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCol, MDBRow } from "mdb-react-ui-kit";
-import React from "react";
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCol} from "mdb-react-ui-kit";
 function Homepage(){
     return(
         <div className="md-4"> 

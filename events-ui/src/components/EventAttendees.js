@@ -1,9 +1,6 @@
-import userEvent from "@testing-library/user-event";
 import { MDBIcon } from "mdb-react-ui-kit";
-import Event from "../Event";
 
 function EventAttendees({attendees}){
-    {console.log(attendees)}
     if(attendees.length !== 0){
          return(
             <div>

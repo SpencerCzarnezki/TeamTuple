@@ -1,11 +1,8 @@
-import { CommandBarBase, ContextualMenu, Link, Nav } from "@fluentui/react";
-import React, { useEffect, useState } from "react";
-import { Route, Router, Routes } from "react-router";
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
-import EventCard from "./components/EventCard";
 import Homepage from "./components/Homepage";
-import Search from "./components/SearchEvents";
 import Login from "./Login";
 import Register from "./Register";
 import Event from "./Event";

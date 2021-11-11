@@ -70,7 +70,7 @@ function SearchEvents() {
     return (
         <MDBContainer fluid>
         <form onSubmit={onSubmit} color="">
-            <div>Search</div>
+            <div className="input-group m-3 text-white">Search</div>
 
 
             <div className="input-group m-3" style={{ width: 500 }}>

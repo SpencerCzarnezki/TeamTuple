@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { findAllEvents, findByEventId } from "../services/api";
+import { findAllEvents } from "../services/api";
 import EventCard from "./EventCard";
 import AuthContext from "../contexts/AuthContext";
 import { useNavigate } from "react-router";
@@ -64,7 +64,7 @@ function AdminEventsList() {
     let aEvents = approvedEvents(EventCards);
 
     return (
-        <div>
+        <div className="text-white">
             <div className="m-2">
                 <h1 className="m-4">Approved Events</h1>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 m-2">
