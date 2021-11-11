@@ -46,7 +46,7 @@ function App() {
 
 
   return (
-    <div style={{backgroundColor:"#1d1f47", overflow:"hidden", boxSizing:"border-box"}}>
+    <div style={{backgroundColor:"#1d1f47"}}>
     <AuthContext.Provider value={authorization}>
       <BrowserRouter>
         <MDBNavbar expand="sm" dark bgColor="dark" sticky >

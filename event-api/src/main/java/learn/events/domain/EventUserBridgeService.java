@@ -35,6 +35,7 @@ public class EventUserBridgeService {
     public boolean deleteUserFromAllEventsByUserId(int userId){
         return repository.deleteUserFromAllEventsById(userId);
     }
+    //unused, deleteUserByKey in Event service does same function
     public boolean deleteOneUserFromOneEvent(int userId, int eventId){
         return repository.deleteOneUserFromOneEvent(userId,eventId);
     }
