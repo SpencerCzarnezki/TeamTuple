@@ -132,7 +132,7 @@ function Event() {
                         <div className="col">{location.address}, {location.city}, {location.state}, {location.zipcode}</div>
                     </div>
                     <div className="row">
-                        <div className="col"><strong>Number of available spots:</strong> </div>
+                        <div className="col"><strong>Number of spots filled:</strong> </div>
                         <div className="col"> {event.attendees && event.attendees.length}/{event.capacity}</div>
                     </div>
                     <div className="row">

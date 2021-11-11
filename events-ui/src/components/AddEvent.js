@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
-import { addResource, findByEventId, saveEvent, } from "../services/api";
+import { addResource, findByEventId, findResourcesByLocationId, saveEvent, deleteResource } from "../services/api";
 import { findByLocationId } from "../services/location-api";
 import { addLocation, findAllLocations, saveLocation } from "../services/location-api";
 const emptyEvent = {
@@ -88,8 +88,15 @@ function AddEvent() {
                 setEvent(event);
                 console.log(event);
                 if (event.eventLocationId) {
-                    findByLocationId(event.eventLocationId).then(location => setLocation(location))
-                        .catch((error => navigate("/NotFound", error.ToString)));
+                    findByLocationId(event.eventLocationId).then(location => {
+                        setLocation(location);
+                        findResourcesByLocationId(location.id).then(res => {
+                            setResource(res[0]);
+                            console.log(res);
+                        })
+                            .catch((error => error));
+                    }).catch((error => navigate("/NotFound", error.ToString)));
+
                 }
             }).catch((error => navigate("/NotFound", error.ToString)));
 
@@ -99,51 +106,76 @@ function AddEvent() {
     }, [id, navigate]);
 
 
- 
+
 
     function onSubmit(evt) {
         evt.preventDefault();
         let x = false;
         let newLocationId = "";
         findAllLocations().then(l => {
-             l.forEach(loc =>{
-                 if(loc.address === location.address && loc.title === location.title && location.city === loc.city
-                    && loc.state === location.state){
-                        x=true;
-                        newLocationId = loc.id;
-                 }
-             });
-             if(x){
-                 event.eventLocationId = newLocationId;
-                   const nextEvent = { ...event };
-            nextEvent.organizerId = authContext.user.id;
-                 saveEvent(nextEvent).then(() => navigate("/"));
-             }
-             else{
-             saveLocation(location)
-            .then(json => {
-                console.log(json);
-                const nextEvent = { ...event };
-                 const nextResource = { ...resource };
-                if(json != null){
-                    nextEvent.eventLocationId = json.id;
-                    nextResource.locationId = json.id;
-                } 
-              
-
-                console.log(nextResource.resource);
-                
-                if(nextResource.resource.length !== 0){
-                    addResource(nextResource);
+            l.forEach(loc => {
+                if (loc.address === location.address && loc.title === location.title && location.city === loc.city) {
+                    x = true;
+                    newLocationId = loc.id;
                 }
-                
-                console.log("Add Event ", authContext.user);
+
+            });
+            if (x) {
+                event.eventLocationId = newLocationId;
+                const nextEvent = { ...event };
                 nextEvent.organizerId = authContext.user.id;
+                let amenities;
+                findResourcesByLocationId(event.eventLocationId).then(a => {
+                    console.log(a);
+                    deleteResource(a[0].resourceId).catch((err) => navigate("/NotFound", console.log(err)));
+
+                    const nextResource = { ...resource };
+                    console.log(nextResource);
+                    nextResource.resourceId = 0;
+
+                    if (nextResource.resource.length !== 0) {
+                        addResource(nextResource).catch(err => err.toString());
+                    }
+
+                }).catch(a => {
+                    const nextResource = { ...resource };
+                    console.log(nextResource);
+                    nextResource.resourceId = 0;
+                    nextResource.locationId = event.eventLocationId;
+
+                    if (nextResource.resource.length !== 0) {
+                        addResource(nextResource).catch(err => err.toString());
+                    }
+                });
+
                 saveEvent(nextEvent).then(() => navigate("/"));
-            })
-            .catch((err) => navigate("/NotFound", console.log(err)));
-        }
+            }
+            else {
+                saveLocation(location)
+                    .then(json => {
+                        console.log(json);
+                        const nextEvent = { ...event };
+                        const nextResource = { ...resource };
+                        if (json != null) {
+                            nextEvent.eventLocationId = json.id;
+                            nextResource.locationId = json.id;
+                        }
+
+
+                        console.log(nextResource.resource);
+
+                        if (nextResource.resource.length !== 0) {
+                            addResource(nextResource);
+                        }
+
+                        console.log("Add Event ", authContext.user);
+                        nextEvent.organizerId = authContext.user.id;
+                        saveEvent(nextEvent).then(() => navigate("/"));
+                    })
+                    .catch((err) => navigate("/NotFound", console.log(err)));
+            }
         });
+
     }
     let headertitle = "Add an Event";
     let buttonname = "Add Event";

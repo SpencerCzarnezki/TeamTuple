@@ -102,6 +102,12 @@ export async function findResourcesByLocationId(id) {
     }
     throw new Error("Could not fetch resources");
 }
+export async function deleteResource(id) {
+    const response = await fetch(`http://localhost:8080/api/resources/${id}`, {method:"DELETE"});
+    if (response.status !== 204) {
+        throw new Error("Could not delete event");
+    }
+}
 
 
 
