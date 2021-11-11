@@ -12,7 +12,7 @@ public class KnownGoodStateNic {
 
     static boolean hasRun = false;
 
-    void set() {
+    public void set() {
         if (!hasRun) {
             hasRun = true;
             jdbcTemplate.update("call set_known_good_state();");

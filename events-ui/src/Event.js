@@ -38,7 +38,7 @@ function Event() {
         nextEventUser.userId = auth.user.id;
         setEventUser(nextEventUser);
         
-        if((auth.user.id != event.id) && (event.attendees.length < event.capacity)){
+        if((auth.user.id != event.organizerId) && (event.attendees.length < event.capacity)){
             console.log("Find this one", event);
         addAUserToEvent(nextEventUser).then(window.location.reload(true))
             .catch((err) => console.log(err));
