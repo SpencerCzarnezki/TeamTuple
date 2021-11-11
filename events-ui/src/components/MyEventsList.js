@@ -12,56 +12,31 @@ function MyEventsList() {
     const [EventCards, setEvents] = useState([]);
     const [event, setEvent] = useState([]);
     const history = useNavigate();
-    let myEvents = [];
+
     useEffect(() => {
         findAllEvents().then(result => setEvents(result))
             .catch((err) => {
                 if (err === 403) {
                     authContext.logout();
                     history("/login");
-
                 } else {
                     history("/error", err.toString());
-
                 }
 
             });
         if (authContext.user) {
             findEventIdsByUserId(authContext.user.id).then(eventUserKeys => {
                 const promises = [];
-                for (const userKey of eventUserKeys) {
-                    promises.push(findByEventId(userKey.eventId));
+                if (eventUserKeys.length !== 0) {
+                    for (const userKey of eventUserKeys) {
+                        promises.push(findByEventId(userKey.eventId));
+                    }
+                    Promise.all(promises).then(events => setEvent(events));
+                    console.log(event);
                 }
-                Promise.all(promises).then(events => setEvent(events));
-                console.log(event);
 
-
-                // for (let index = 0; index < eventUserKeys.length; index++) {
-                //    findByEventId(eventId[index].eventId).then(event => setEvent(event));
-                //      console.log(event);
-                //  }
-                // console.log(eventId);
-
-                // setEventIds(eventId.eventId);
-                //   eventIds.forEach(id => {  myEvents.push(findByEventId(id.eventId))});
-                //     console.log(eventId[0].eventId);
-
-
-
-
-            });
+            }).catch(err => err.toString());
         }
-
-
-
-
-
-
-
-
-
-
-
     }, [authContext, history]);
 
 
@@ -81,11 +56,9 @@ function MyEventsList() {
         return orgEvents;
     }
 
-
     function myAcceptedOrganizedEvents() {
         let orgEvents = [];
         // let uId = authContext.user.id;
-
 
         if (authContext.user && !EventCards.length == 0) {
 

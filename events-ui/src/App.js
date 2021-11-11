@@ -148,6 +148,7 @@ function App() {
           <Route path="/myevents" element={<MyEventsList />} />
           <Route path="/confirmd/:id" element={<ConfirmDelete />} />
           <Route path="/adminevents" element={<AdminEventsList />} />
+          <Route path="/edit/:id" element={<AddEvent />} />
 
 
           <Route path="*" element={<ErrorPage />} />

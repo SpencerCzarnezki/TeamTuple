@@ -1,10 +1,8 @@
-import { DocumentCard, DocumentCardDetails, DocumentCardLocation, DocumentCardStatus, DocumentCardTitle } from "@fluentui/react";
 import { MDBCard, MDBCardHeader, MDBRipple, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBListGroup, MDBListGroupItem, MDBRow, MDBCol, MDBCardFooter } from "mdb-react-ui-kit";
-import { useEffect, useState } from "react";
 import { React, useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { findByKeyWord } from "../services/api";
+
 
 function EventCard({ event }) {
     const navigate = useNavigate();
@@ -20,7 +18,7 @@ function EventCard({ event }) {
     }
 
     function onEdit() {
-
+        navigate(`/edit/${event.id}`);
     }
 
 
