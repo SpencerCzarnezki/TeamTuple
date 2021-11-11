@@ -36,7 +36,7 @@ function MyEventsList() {
 
             }).catch(err => err.toString());
         }
-    }, [authContext, history]);
+    }, [authContext, history, event]);
 
 
     function myPendingOrganizedEvents() {

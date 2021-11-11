@@ -1,6 +1,6 @@
 import { MDBContainer, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
-import { findAllEvents, findByCategory, findByEventKeyWord} from "../services/api";
+import { findAllEvents, findByCategory, findByEventKeyWord } from "../services/api";
 import EventCard from "./EventCard";
 
 
@@ -11,12 +11,15 @@ function SearchEvents() {
     const [category, setCategory] = useState('');
 
 
-    useEffect(() => {
 
+    useEffect(() => {
+        const emptyResult = (
+            <div>No Results</div>
+        );
         if (keyword.length === 0 && category.length === 0) {
             findAllEvents().then(events => {
                 const holder = events.filter(e => e.status === true);
-                
+
                 setEvents(holder);
             });
 
@@ -26,31 +29,29 @@ function SearchEvents() {
 
             findByEventKeyWord(keyword).then(events => {
                 const holder = events.filter(e => e.status === true);
-                setEvents(holder);        
+                setEvents(holder);
             })
                 .catch(err => emptyResult);
         }
 
-        if(category.length > 0) {
-            findByCategory(category).then(events =>  {
+        if (category.length > 0) {
+            findByCategory(category).then(events => {
                 const holder = events.filter(e => e.status === true);
 
 
 
                 setEvents(holder);
-            
-            
+
+
             })
-            .catch(err => emptyResult);
+                .catch(err => emptyResult);
         }
 
-     
+
 
     }, [keyword, category]);
 
-    const emptyResult = (
-        <div>No Results</div>
-    );
+
 
 
     function onSubmit(evt) {
@@ -69,30 +70,30 @@ function SearchEvents() {
 
     return (
         <MDBContainer fluid>
-        <form onSubmit={onSubmit} color="">
-            <div className="input-group m-3 text-white">Search</div>
+            <form onSubmit={onSubmit} color="">
+                <div className="input-group m-3 text-white">Search</div>
 
 
-            <div className="input-group m-3" style={{ width: 500 }}>
-                <div>
+                <div className="input-group m-3" style={{ width: 500 }}>
+                    <div>
 
-                    <MDBInput type="search" label="Search Keyword" contrast className="form-control text-white" value={keyword} onChange={onChange} id="keysearch" ></MDBInput>
+                        <MDBInput type="search" label="Search Keyword" contrast className="form-control text-white" value={keyword} onChange={onChange} id="keysearch" ></MDBInput>
+                    </div>
                 </div>
-            </div>
 
-            <div className="input-group m-3" style={{ width: 500 }}>
-                <div>
+                <div className="input-group m-3" style={{ width: 500 }}>
+                    <div>
 
-                    <MDBInput type="search" label="Search Category" className="form-control" value={category} onChange={onChangeCategory} id="categorysearch" contrast></MDBInput>
+                        <MDBInput type="search" label="Search Category" className="form-control" value={category} onChange={onChangeCategory} id="categorysearch" contrast></MDBInput>
+                    </div>
                 </div>
-            </div>
 
-            <MDBRow className="">
-                {events.map(e => <EventCard event={e} key={e.eventId} />)}
-            </MDBRow>
+                <MDBRow className="">
+                    {events.map(e => <EventCard event={e} key={e.eventId} />)}
+                </MDBRow>
 
-        </form>
-    </MDBContainer>
+            </form>
+        </MDBContainer>
     );
 
 }
