@@ -20,14 +20,11 @@ import AdminEventsList from "./components/AdminEventsList";
 
 function App() {
 
-
   const [user, setUser] = useState();
-  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     refresh().then(loginName => setUser(loginName))
-      .catch(() => setUser())
-      .finally(() => setInitialized(true));
+      .catch(() => setUser());
   }, []);
 
   const authorization = {
@@ -48,7 +45,7 @@ function App() {
       <BrowserRouter>
         <MDBNavbar expand="sm" dark bgColor="dark" sticky >
           <MDBContainer fluid>
-            <MDBNavbarBrand className="" href="/" ><img src="logo.png" className="float-left" height='50' className="" /></MDBNavbarBrand>
+            <MDBNavbarBrand className="" href="/" ><img src="logo.png" className="float-left" height='50' alt="site logo"/></MDBNavbarBrand>
             <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
               <MDBNavbarItem>
                 <MDBNavbarLink href="/" className="ms-3 m-1">

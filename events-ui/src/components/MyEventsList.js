@@ -44,7 +44,7 @@ function MyEventsList() {
         // let uId = authContext.user.id;
 
 
-        if (authContext.user && !EventCards.length == 0) {
+        if (authContext.user) {
 
             const holder = EventCards.filter(e => e.status === false);
             const yourPendingEvents = holder.filter(e => e.organizerId === authContext.user.id);
@@ -59,7 +59,7 @@ function MyEventsList() {
         let orgEvents = [];
         // let uId = authContext.user.id;
 
-        if (authContext.user && !EventCards.length == 0) {
+        if (authContext.user) {
 
             const holder2 = EventCards.filter(e => e.status === true);
             const yourAcceptedEvents = holder2.filter(e => e.organizerId === authContext.user.id);

@@ -122,7 +122,10 @@ function AddEvent() {
             if (x) {
                 event.eventLocationId = newLocationId;
                 const nextEvent = { ...event };
-                nextEvent.organizerId = authContext.user.id;
+                if (nextEvent.organizerId === authContext.user.id || nextEvent.organizerId === "") {
+                    nextEvent.organizerId = authContext.user.id;
+                }
+
                 findResourcesByLocationId(event.eventLocationId).then(a => {
                     console.log(a);
                     deleteResource(a[0].resourceId).catch((err) => navigate("/NotFound", console.log(err)));
@@ -167,7 +170,9 @@ function AddEvent() {
                         }
 
                         console.log("Add Event ", authContext.user);
-                        nextEvent.organizerId = authContext.user.id;
+                        if (nextEvent.organizerId === authContext.user.id || nextEvent.organizerId === "") {
+                            nextEvent.organizerId = authContext.user.id;
+                        }
                         saveEvent(nextEvent).then(() => navigate("/"));
                     })
                     .catch((err) => navigate("/NotFound", console.log(err)));
