@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import { addResource, findByEventId, findResourcesByLocationId, saveEvent, deleteResource } from "../services/api";
 import { findByLocationId } from "../services/location-api";
-import { addLocation, findAllLocations, saveLocation } from "../services/location-api";
+import { findAllLocations, saveLocation } from "../services/location-api";
 const emptyEvent = {
     "title": "",
     "description": "",
@@ -40,7 +40,6 @@ function AddEvent() {
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const [resource, setResource] = useState(emptyResource);
-    const [allLocations, setAllLocations] = useState([]);
 
     function onChange(evt) {
         const nextEvent = { ...event };
@@ -124,7 +123,6 @@ function AddEvent() {
                 event.eventLocationId = newLocationId;
                 const nextEvent = { ...event };
                 nextEvent.organizerId = authContext.user.id;
-                let amenities;
                 findResourcesByLocationId(event.eventLocationId).then(a => {
                     console.log(a);
                     deleteResource(a[0].resourceId).catch((err) => navigate("/NotFound", console.log(err)));

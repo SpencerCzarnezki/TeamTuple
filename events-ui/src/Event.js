@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
 import { findByEventId, findByLocationId, findResourcesByLocationId, updateEvent } from "./services/api";
@@ -91,7 +91,6 @@ function Event() {
         };
         console.log(auth);
         if (event.attendees && auth.user) {
-            const attendeeList = event.attendees;
             for (let x = 0; x < event.attendees.length; x++) {
                 console.log(event.attendees[x].user.userId);
                 console.log(auth.user.authorities);
