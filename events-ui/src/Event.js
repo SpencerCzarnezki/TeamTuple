@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import EventAttendees from "./components/EventAttendees";
 import AuthContext from "./contexts/AuthContext";
-import { findByEventId, findByLocationId, findResourcesByLocationId, deleteEvent } from "./services/api";
+import { findByEventId, findByLocationId, findResourcesByLocationId, updateEvent } from "./services/api";
 import { MDBIcon, MDBRow } from "mdb-react-ui-kit";
 import { findUserById } from "./services/user-api";
 import Resource from "./components/Resource";
@@ -31,7 +31,6 @@ function Event() {
     const [resources, setResource] = useState([]);
     const [eventUser, setEventUser] = useState(emptyEventUser);
     const [checkJoined, setCheckJoined] = useState(false);
-    const [totalAttendees, setTotalAttendees] = useState(0);
 
     function onJoin() {
         const nextEventUser = { ...eventUser };
@@ -53,11 +52,13 @@ function Event() {
 
     function onDelete() {
         // deleteEvent(event.id).then(() => );
-        navigate("/confirmd");
+        navigate(`/confirmd/${event.id}`);
     }
 
     function onAccept() {
-
+        const nextEvent = {...event};
+        nextEvent.status = true;
+        updateEvent(nextEvent);
     }
 
     useEffect(() => {
@@ -166,9 +167,9 @@ function Event() {
                 <div>
                     {auth.user && auth.user.authorities[0] === 'ADMIN' &&
                     <div>
-
                         <button type="button" className="btn btn-primary btn-lg m-2" onClick={onDelete}>Delete Event</button>
-                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>
+                        {!event.status &&
+                        <button type="button" className="btn btn-primary btn-lg m-2" onClick={onAccept}>Approve Event</button>}
                     </div>}
                 </div>
             </div>

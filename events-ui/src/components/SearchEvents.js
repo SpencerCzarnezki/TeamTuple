@@ -14,7 +14,12 @@ function SearchEvents() {
     useEffect(() => {
 
         if (keyword.length === 0 && category.length === 0) {
-            findAllEvents().then(events => setEvents(events));
+            findAllEvents().then(events => {
+                const holder = events.filter(e => e.status === true);
+                
+                console.log(holder);
+                setEvents(holder);
+            });
 
 
         }
