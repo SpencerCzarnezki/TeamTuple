@@ -102,7 +102,7 @@ function AddEvent() {
 
         }
         setLocation(location);
-    }, [id, navigate]);
+    }, [id, navigate, location]);
 
 
 
