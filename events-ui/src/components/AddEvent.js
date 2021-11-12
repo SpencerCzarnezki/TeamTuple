@@ -143,7 +143,8 @@ function AddEvent() {
                     }
                 });
 
-                saveEvent(nextEvent).then(() => navigate("/"));
+                saveEvent(nextEvent).then(() => navigate("/"))
+                .catch(err => err.toString());
             }
             else {
                 saveLocation(location)
@@ -171,7 +172,8 @@ function AddEvent() {
                         if (nextEvent.organizerId === authContext.user.id || nextEvent.organizerId === "") {
                             nextEvent.organizerId = authContext.user.id;
                         }
-                        saveEvent(nextEvent).then(() => navigate("/"));
+                        saveEvent(nextEvent).then(() => navigate("/"))
+                        .catch(err => err.toString());
                     })
                     .catch((err) => navigate("/NotFound", console.log(err)));
             }

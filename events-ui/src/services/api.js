@@ -60,6 +60,7 @@ async function addEvent(event) {
     throw new Error("Could not add event");
 }
 export async function updateEvent(event) {
+    event.attendees = [];
     const update = makeFetchInit("PUT", event);
     const response = await fetch(`${url}/${event.id}`, update);
     if (response.status !== 204) {
