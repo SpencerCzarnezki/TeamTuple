@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @ConditionalOnWebApplication
-@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/event/user")
 public class EventUserController {
     private final EventService eventService;

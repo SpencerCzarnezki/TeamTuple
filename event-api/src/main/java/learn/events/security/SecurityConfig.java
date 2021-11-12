@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/health_check").permitAll()
                 .antMatchers(HttpMethod.POST, "/authenticate", "/expire_token", "/user/create").permitAll()
                 .antMatchers(HttpMethod.POST, "/refresh_token").authenticated()
                 .antMatchers(HttpMethod.GET, "/meetup/**").authenticated()
@@ -74,8 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 registry.addMapping("/**")
                         .allowedMethods("DELETE", "GET", "POST", "PUT")
-                        .allowedOrigins("http://localhost:3000")
-                        .allowCredentials(true);
+                        .allowedOrigins("*");
             }
         };
     }

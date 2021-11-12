@@ -72,16 +72,6 @@ CREATE TABLE app_user_role (
         REFERENCES `role` (roleId)
 );
 
-delimiter //
-create procedure set_known_good_state()
-begin
-delete from app_user_role;
-delete from `role`;
-alter table `role` auto_increment=1;
-delete from `user`;
-alter table `user` auto_increment=1;
-
-
 
 insert into `user`(fname, lname, username, email, password_hash, disabled)
 values
@@ -101,6 +91,4 @@ insert into app_user_role values
 
 
 
-end //
 
-          delimiter ;
