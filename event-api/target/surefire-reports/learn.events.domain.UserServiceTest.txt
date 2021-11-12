@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: learn.events.domain.UserServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.604 s - in learn.events.domain.UserServiceTest

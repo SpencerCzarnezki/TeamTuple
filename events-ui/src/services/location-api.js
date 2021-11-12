@@ -1,3 +1,4 @@
+const url = process.env.REACT_APP_API_URL;
 
 function makeFetchInit(method, location) {
     return {
@@ -10,7 +11,7 @@ function makeFetchInit(method, location) {
     };
 }
 export async function findAllLocations() {
-    const response = await fetch("http://localhost:8080/api/location");
+    const response = await fetch(`${url}/api/location`);
     if (response.status === 200) {
         return response.json();
     }
@@ -18,7 +19,7 @@ export async function findAllLocations() {
 }
 
 export async function findByLocationId(locationId) {
-    const response = await fetch(`http://localhost:8080/api/location/${locationId}`);
+    const response = await fetch(`${url}/api/location/${locationId}`);
     if (response.status === 200) {
         return response.json();
     }
@@ -32,7 +33,7 @@ export async function saveLocation(location) {
 
 export async function addLocation(location) {
     const first = makeFetchInit("POST", location);
-    const response = await fetch(`http://localhost:8080/api/location`, first);
+    const response = await fetch(`${url}/api/location`, first);
     if (response.status === 201) {
         return response.json();
     } 
@@ -41,7 +42,7 @@ export async function addLocation(location) {
 
 export async function updateLocation(location) {
     const update = makeFetchInit("PUT", location);
-    const response = await fetch(`http://localhost:8080/api/location/${location.id}`, update);
+    const response = await fetch(`${url}/api/location/${location.id}`, update);
     if (response.status !== 204) {
         throw new Error("Could not update location");
     }

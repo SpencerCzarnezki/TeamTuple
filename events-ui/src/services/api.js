@@ -1,7 +1,7 @@
-const url = "http://localhost:8080/api/event"
+const url = process.env.REACT_APP_API_URL;
 
 export async function findAllEvents() {
-    const response = await fetch(url);
+    const response = await fetch(`${url}/api/event`);
     if (response.status === 200) {
         return response.json();
     }
@@ -11,7 +11,7 @@ export async function findAllEvents() {
 
 export async function findByEventKeyWord(keyword) {
 
-    const response = await fetch(`${url}/keyword/${keyword}`);
+    const response = await fetch(`${url}/api/event/keyword/${keyword}`);
     if (response.status === 200) {
         return response.json();
     }
@@ -19,7 +19,7 @@ export async function findByEventKeyWord(keyword) {
 }
 export async function findByEventId(eventId) {
 
-    const response = await fetch(`${url}/${eventId}`);
+    const response = await fetch(`${url}/api/event/${eventId}`);
     if (response.status === 200) {
         return response.json();
     }
@@ -27,14 +27,14 @@ export async function findByEventId(eventId) {
 
 }
 export async function findByCategory(category) {
-    const response = await fetch(`${url}/category/${category}`);
+    const response = await fetch(`${url}/api/event/category/${category}`);
     if (response.status === 200) {
         return response.json();
     }
     throw new Error("Could not fetch Events");
 }
 export async function findByLocationId(locationId) {
-    const response = await fetch(`http://localhost:8080/api/location/${locationId}`)
+    const response = await fetch(`${url}/api/location/${locationId}`)
     if (response.status === 200) {
         return response.json();
     }
@@ -53,7 +53,7 @@ function makeFetchInit(method, event) {
 
 async function addEvent(event) {
     const first = makeFetchInit("POST", event);
-    const response = await fetch(url, first);
+    const response = await fetch(`${url}/api/event`, first);
     if (response.status === 201) {
         return response.json();
     }
@@ -62,7 +62,7 @@ async function addEvent(event) {
 export async function updateEvent(event) {
     event.attendees = [];
     const update = makeFetchInit("PUT", event);
-    const response = await fetch(`${url}/${event.id}`, update);
+    const response = await fetch(`${url}/api/event/${event.id}`, update);
     if (response.status !== 204) {
         throw new Error("Could not update event");
     }
@@ -72,7 +72,7 @@ export async function saveEvent(event) {
 }
 
 export async function deleteEvent(id) {
-    const response = await fetch(`${url}/${id}`, { method: "DELETE" });
+    const response = await fetch(`${url}/api/event/${id}`, { method: "DELETE" });
     if (response.status !== 204) {
         throw new Error("Could not delete event");
     }
@@ -88,21 +88,21 @@ export async function deleteEvent(id) {
 // }
 export async function addResource(resource) {
     const first = makeFetchInit("POST", resource);
-    const response = await fetch(`http://localhost:8080/api/resources`, first);
+    const response = await fetch(`${url}/api/resources`, first);
     if (response.status === 201) {
         return response.json();
     }
     throw new Error("Could not add resource");
 }
 export async function findResourcesByLocationId(id) {
-    const response = await fetch(`http://localhost:8080/api/resources/amenities/${id}`)
+    const response = await fetch(`${url}/api/resources/amenities/${id}`)
     if (response.status === 200) {
         return response.json();
     }
     throw new Error("Could not fetch resources");
 }
 export async function deleteResource(id) {
-    const response = await fetch(`http://localhost:8080/api/resources/${id}`, { method: "DELETE" });
+    const response = await fetch(`${url}/api/resources/${id}`, { method: "DELETE" });
     if (response.status !== 204) {
         throw new Error("Could not delete event");
     }

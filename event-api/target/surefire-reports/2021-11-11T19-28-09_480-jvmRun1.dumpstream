@@ -1,0 +1,1458 @@
+# Created at 2021-11-11T19:28:18.749
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:397)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+
+# Created at 2021-11-11T19:28:19.613
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.617
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.640
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.643
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.794
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.797
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.910
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.914
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldNotFindByKeyWord,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.945
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldNotFindByKeyWord,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.952
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldFindByKeyWord,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.992
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldFindByKeyWord,null,null,null
+
+
+# Created at 2021-11-11T19:28:19.994
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.012
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.016
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldNotFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.043
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldNotFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.046
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldNotUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.072
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldNotUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.075
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldNotFindByOrganizer,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.089
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldNotFindByOrganizer,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.095
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldNotFindByCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.120
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldNotFindByCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.124
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldFindByCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.144
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldFindByCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.147
+Unexpected IOException: 5,1,learn.events.data.EventRepositoryTest,shouldFindByOrganizer,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.168
+Unexpected IOException: 6,1,learn.events.data.EventRepositoryTest,shouldFindByOrganizer,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.174
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.EventRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.178
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.EventUserBridgeRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.182
+Unexpected IOException with stream: 2021-11-11 19:28:20.181  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.data.EventUserBridgeRepositoryTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:20.186
+Unexpected IOException with stream: 2021-11-11 19:28:20.184  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.data.EventUserBridgeRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:20.189
+Unexpected IOException with stream: 2021-11-11 19:28:20.187  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.data.EventUserBridgeRepositoryTest]: EventUserBridgeRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:20.195
+Unexpected IOException with stream: 2021-11-11 19:28:20.193  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.data.EventUserBridgeRepositoryTest
+
+
+# Created at 2021-11-11T19:28:20.199
+Unexpected IOException with stream: 2021-11-11 19:28:20.198  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:20.201
+Unexpected IOException with stream: 2021-11-11 19:28:20.200  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@23564dd2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@54895681, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2dd0a0d0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6bf570c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1796b2d4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@935d3f9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@214b342f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5db0003d, org.springframework.test.context.event.EventPublishingTestExecutionListener@7f12094d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@589fb74d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@200d1a3d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7de147e9, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@12567179, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@37d699a1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7f42b194]
+
+
+# Created at 2021-11-11T19:28:20.238
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.669
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.672
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindByEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.683
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindByEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:20.687
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldDeleteAllUsersByEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.114
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldDeleteAllUsersByEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.118
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.217
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.221
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindByUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.485
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldFindByUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:21.504
+Unexpected IOException: 5,1,learn.events.data.EventUserBridgeRepositoryTest,shouldDeleteByBothIds,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.314
+Unexpected IOException: 6,1,learn.events.data.EventUserBridgeRepositoryTest,shouldDeleteByBothIds,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.316
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.EventUserBridgeRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.321
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.EventUserRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.324
+Unexpected IOException with stream: 2021-11-11 19:28:22.323  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.data.EventUserRepositoryTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:22.331
+Unexpected IOException with stream: 2021-11-11 19:28:22.330  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.data.EventUserRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:22.333
+Unexpected IOException with stream: 2021-11-11 19:28:22.332  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.data.EventUserRepositoryTest]: EventUserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:22.338
+Unexpected IOException with stream: 2021-11-11 19:28:22.337  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.data.EventUserRepositoryTest
+
+
+# Created at 2021-11-11T19:28:22.344
+Unexpected IOException with stream: 2021-11-11 19:28:22.342  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:22.347
+Unexpected IOException with stream: 2021-11-11 19:28:22.345  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@57a667c8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@712cd5d3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2094bf3d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1b17d8ab, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7f6b7426, org.springframework.test.context.support.DirtiesContextTestExecutionListener@687eb455, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6d969330, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4861cca9, org.springframework.test.context.event.EventPublishingTestExecutionListener@6c8f4bc7, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@714e861f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@28989415, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6eda012b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@781dbe44, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7d66a126, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1132baa3]
+
+
+# Created at 2021-11-11T19:28:22.360
+Unexpected IOException: 5,1,learn.events.data.EventUserRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.748
+Unexpected IOException: 6,1,learn.events.data.EventUserRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.751
+Unexpected IOException: 5,1,learn.events.data.EventUserRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.855
+Unexpected IOException: 6,1,learn.events.data.EventUserRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:22.858
+Unexpected IOException: 5,1,learn.events.data.EventUserRepositoryTest,shouldNotAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.019
+Unexpected IOException: 6,1,learn.events.data.EventUserRepositoryTest,shouldNotAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.020
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.EventUserRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.022
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.LocationMySQLRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.024
+Unexpected IOException with stream: 2021-11-11 19:28:23.023  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.data.LocationMySQLRepositoryTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:23.026
+Unexpected IOException with stream: 2021-11-11 19:28:23.026  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.data.LocationMySQLRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:23.027
+Unexpected IOException with stream: 2021-11-11 19:28:23.027  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.data.LocationMySQLRepositoryTest]: LocationMySQLRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:23.030
+Unexpected IOException with stream: 2021-11-11 19:28:23.029  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.data.LocationMySQLRepositoryTest
+
+
+# Created at 2021-11-11T19:28:23.033
+Unexpected IOException with stream: 2021-11-11 19:28:23.032  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:23.034
+Unexpected IOException with stream: 2021-11-11 19:28:23.033  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3e52ed5d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6a96d639, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@28e94c2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3d40498a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@14d1737a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@482a58c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3e74fd84, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@147efd9, org.springframework.test.context.event.EventPublishingTestExecutionListener@1e120628, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4e4894d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1de5cc88, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@23e2c1ca, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2d4fb0d8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@dc1fadd, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3ef3f661]
+
+
+# Created at 2021-11-11T19:28:23.039
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.057
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.059
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.160
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.162
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotFindId372,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.173
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotFindId372,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.175
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldFindByCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.186
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldFindByCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.188
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.242
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.245
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldFindId4,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.319
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldFindId4,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.321
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldFind4Locations,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.329
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldFind4Locations,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.331
+Unexpected IOException: 5,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotFindByCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.339
+Unexpected IOException: 6,1,learn.events.data.LocationMySQLRepositoryTest,shouldNotFindByCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.341
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.LocationMySQLRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.343
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.ResourcesMySQLRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.344
+Unexpected IOException with stream: 2021-11-11 19:28:23.344  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.data.ResourcesMySQLRepositoryTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:23.347
+Unexpected IOException with stream: 2021-11-11 19:28:23.346  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.data.ResourcesMySQLRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:23.348
+Unexpected IOException with stream: 2021-11-11 19:28:23.347  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.data.ResourcesMySQLRepositoryTest]: ResourcesMySQLRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:23.350
+Unexpected IOException with stream: 2021-11-11 19:28:23.350  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.data.ResourcesMySQLRepositoryTest
+
+
+# Created at 2021-11-11T19:28:23.354
+Unexpected IOException with stream: 2021-11-11 19:28:23.353  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:23.355
+Unexpected IOException with stream: 2021-11-11 19:28:23.355  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@305b43ca, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4601047, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@25e8e59, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3a0896b3, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@50a7c72b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@54c11750, org.springframework.test.context.transaction.TransactionalTestExecutionListener@221b77d7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5cd8d029, org.springframework.test.context.event.EventPublishingTestExecutionListener@32a8ca06, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6e8f2094, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1753475d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@d108406, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@799c8758, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6e00837f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@63e4484d]
+
+
+# Created at 2021-11-11T19:28:23.360
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.436
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.438
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldNotFindId188,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.447
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldNotFindId188,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.449
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.523
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldDelete,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.526
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFind4Resources,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.539
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFind4Resources,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.542
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFindId5,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.556
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFindId5,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.559
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldNotDeleteMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.570
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldNotDeleteMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.572
+Unexpected IOException: 5,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFindByDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.581
+Unexpected IOException: 6,1,learn.events.data.ResourcesMySQLRepositoryTest,shouldFindByDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.582
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.ResourcesMySQLRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.584
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.UserMySqlRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:23.586
+Unexpected IOException with stream: 2021-11-11 19:28:23.585  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.data.UserMySqlRepositoryTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:23.587
+Unexpected IOException with stream: 2021-11-11 19:28:23.587  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.data.UserMySqlRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:23.588
+Unexpected IOException with stream: 2021-11-11 19:28:23.588  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.data.UserMySqlRepositoryTest]: UserMySqlRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:23.590
+Unexpected IOException with stream: 2021-11-11 19:28:23.589  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.data.UserMySqlRepositoryTest
+
+
+# Created at 2021-11-11T19:28:23.592
+Unexpected IOException with stream: 2021-11-11 19:28:23.591  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:23.593
+Unexpected IOException with stream: 2021-11-11 19:28:23.593  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@163e8949, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6eede35e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@64c25a62, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@43e8f1c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@66a82a13, org.springframework.test.context.support.DirtiesContextTestExecutionListener@675ec28b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@11399548, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@610fbe1c, org.springframework.test.context.event.EventPublishingTestExecutionListener@46d0f89c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@570b2057, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@a457c2b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@16a6dc21, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5773d271, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@59f45950, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7871d261]
+
+
+# Created at 2021-11-11T19:28:23.597
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:24.996
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:24.998
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:26.921
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:26.922
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:29.278
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldFindById,null,null,null
+
+
+# Created at 2021-11-11T19:28:29.279
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldFindAllRoles2,null,null,null
+
+
+# Created at 2021-11-11T19:28:30.849
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldFindAllRoles2,null,null,null
+
+
+# Created at 2021-11-11T19:28:30.851
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldFindAllUsers3,null,null,null
+
+
+# Created at 2021-11-11T19:28:32.190
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldFindAllUsers3,null,null,null
+
+
+# Created at 2021-11-11T19:28:32.191
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:33.788
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:33.789
+Unexpected IOException: 5,1,learn.events.data.UserMySqlRepositoryTest,shouldFindByUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:35.082
+Unexpected IOException: 6,1,learn.events.data.UserMySqlRepositoryTest,shouldFindByUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:35.084
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.data.UserMySqlRepositoryTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:35.089
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.EventServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:35.091
+Unexpected IOException with stream: 2021-11-11 19:28:35.090  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.domain.EventServiceTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:35.093
+Unexpected IOException with stream: 2021-11-11 19:28:35.092  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.domain.EventServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:35.094
+Unexpected IOException with stream: 2021-11-11 19:28:35.093  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.domain.EventServiceTest]: EventServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:35.111
+Unexpected IOException with stream: 2021-11-11 19:28:35.111  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.domain.EventServiceTest
+
+
+# Created at 2021-11-11T19:28:35.114
+Unexpected IOException with stream: 2021-11-11 19:28:35.113  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:35.116
+Unexpected IOException with stream: 2021-11-11 19:28:35.115  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7196a8f1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6a6da47a, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@8f39224, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7f642bf, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@43e3a390, org.springframework.test.context.support.DirtiesContextTestExecutionListener@44aa91e2, org.springframework.test.context.transaction.TransactionalTestExecutionListener@50dc49e1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@650a1aff, org.springframework.test.context.event.EventPublishingTestExecutionListener@3babcaed, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2b9e69fb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@19bfbe28, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2c579202, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@49ced9c7, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@11c7a0b4, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@75ed125a]
+
+
+# Created at 2021-11-11T19:28:35.179
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:35.180
+Unexpected IOException with stream:   .   ____          _            __ _ _
+
+
+# Created at 2021-11-11T19:28:35.181
+Unexpected IOException with stream:  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+
+
+# Created at 2021-11-11T19:28:35.182
+Unexpected IOException with stream: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+
+
+# Created at 2021-11-11T19:28:35.182
+Unexpected IOException with stream:  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+
+
+# Created at 2021-11-11T19:28:35.183
+Unexpected IOException with stream:   '  |____| .__|_| |_|_| |_\__, | / / / /
+
+
+# Created at 2021-11-11T19:28:35.184
+Unexpected IOException with stream:  =========|_|==============|___/=/_/_/_/
+
+
+# Created at 2021-11-11T19:28:35.185
+Unexpected IOException with stream:  :: Spring Boot ::                (v2.5.4)
+
+
+# Created at 2021-11-11T19:28:35.186
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:35.191
+Unexpected IOException with stream: 2021-11-11 19:28:35.190  INFO 18092 --- [           main] learn.events.domain.EventServiceTest     : Starting EventServiceTest using Java 11.0.12 on DESKTOP-6TC905T with PID 18092 (started by Spencer Czarnezki in C:\Users\Spencer Czarnezki\Desktop\work\Capstone\event-api)
+
+
+# Created at 2021-11-11T19:28:35.193
+Unexpected IOException with stream: 2021-11-11 19:28:35.192  INFO 18092 --- [           main] learn.events.domain.EventServiceTest     : No active profile set, falling back to default profiles: default
+
+
+# Created at 2021-11-11T19:28:36.117
+Unexpected IOException with stream: 2021-11-11 19:28:36.116  INFO 18092 --- [           main] learn.events.domain.EventServiceTest     : Started EventServiceTest in 0.997 seconds (JVM running for 26.059)
+
+
+# Created at 2021-11-11T19:28:36.123
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddNegativeDuration,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.130
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddNegativeDuration,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.133
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.164
+Unexpected IOException with stream: []
+
+# Created at 2021-11-11T19:28:36.165
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:36.168
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.170
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddNullEvent,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.175
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddNullEvent,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.176
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddNullTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.180
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddNullTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.183
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddDuplicate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.186
+Unexpected IOException with stream: New Event
+
+
+# Created at 2021-11-11T19:28:36.188
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddDuplicate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.190
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.195
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldUpdate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.197
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddNullCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.201
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddNullCategory,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.204
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddNegativeCapacity,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.208
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddNegativeCapacity,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.209
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotUpdateInvalidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.216
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotUpdateInvalidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.218
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddPastDate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.223
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddPastDate,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.225
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddEmptyDateTime,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.230
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddEmptyDateTime,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.233
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotAddOrganizerAsAttendee,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.244
+Unexpected IOException with stream: 2021-11-11 19:28:36.244  INFO 18092 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+
+
+# Created at 2021-11-11T19:28:36.296
+Unexpected IOException with stream: 2021-11-11 19:28:36.295  INFO 18092 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+
+
+# Created at 2021-11-11T19:28:36.303
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotAddOrganizerAsAttendee,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.307
+Unexpected IOException: 5,1,learn.events.domain.EventServiceTest,shouldNotUpdateMissingEvent,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.314
+Unexpected IOException: 6,1,learn.events.domain.EventServiceTest,shouldNotUpdateMissingEvent,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.315
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.EventServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.318
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.EventUserBridgeServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:36.320
+Unexpected IOException with stream: 2021-11-11 19:28:36.319  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.domain.EventUserBridgeServiceTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:36.323
+Unexpected IOException with stream: 2021-11-11 19:28:36.322  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.domain.EventUserBridgeServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:36.324
+Unexpected IOException with stream: 2021-11-11 19:28:36.323  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.domain.EventUserBridgeServiceTest]: EventUserBridgeServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:36.327
+Unexpected IOException with stream: 2021-11-11 19:28:36.326  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.domain.EventUserBridgeServiceTest
+
+
+# Created at 2021-11-11T19:28:36.330
+Unexpected IOException with stream: 2021-11-11 19:28:36.329  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:36.332
+Unexpected IOException with stream: 2021-11-11 19:28:36.331  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ba06506, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@63dc3420, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@525b8922, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@145a821d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6caa4dc5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6ed51944, org.springframework.test.context.transaction.TransactionalTestExecutionListener@60c98f25, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@20c3b34b, org.springframework.test.context.event.EventPublishingTestExecutionListener@1eb906f3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@58e02359, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@74fc3fc7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@491893f8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1f408ab6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@46e388ec, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@53f495f0]
+
+
+# Created at 2021-11-11T19:28:36.373
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:36.375
+Unexpected IOException with stream:   .   ____          _            __ _ _
+
+
+# Created at 2021-11-11T19:28:36.375
+Unexpected IOException with stream:  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+
+
+# Created at 2021-11-11T19:28:36.376
+Unexpected IOException with stream: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+
+
+# Created at 2021-11-11T19:28:36.377
+Unexpected IOException with stream:  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+
+
+# Created at 2021-11-11T19:28:36.378
+Unexpected IOException with stream:   '  |____| .__|_| |_|_| |_\__, | / / / /
+
+
+# Created at 2021-11-11T19:28:36.379
+Unexpected IOException with stream:  =========|_|==============|___/=/_/_/_/
+
+
+# Created at 2021-11-11T19:28:36.379
+Unexpected IOException with stream:  :: Spring Boot ::                (v2.5.4)
+
+
+# Created at 2021-11-11T19:28:36.380
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:36.386
+Unexpected IOException with stream: 2021-11-11 19:28:36.385  INFO 18092 --- [           main] l.e.domain.EventUserBridgeServiceTest    : Starting EventUserBridgeServiceTest using Java 11.0.12 on DESKTOP-6TC905T with PID 18092 (started by Spencer Czarnezki in C:\Users\Spencer Czarnezki\Desktop\work\Capstone\event-api)
+
+
+# Created at 2021-11-11T19:28:36.387
+Unexpected IOException with stream: 2021-11-11 19:28:36.387  INFO 18092 --- [           main] l.e.domain.EventUserBridgeServiceTest    : No active profile set, falling back to default profiles: default
+
+
+# Created at 2021-11-11T19:28:37.230
+Unexpected IOException with stream: 2021-11-11 19:28:37.229  INFO 18092 --- [           main] l.e.domain.EventUserBridgeServiceTest    : Started EventUserBridgeServiceTest in 0.892 seconds (JVM running for 27.171)
+
+
+# Created at 2021-11-11T19:28:37.237
+Unexpected IOException: 5,1,learn.events.domain.EventUserBridgeServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.242
+Unexpected IOException with stream: 2021-11-11 19:28:37.241  INFO 18092 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+
+
+# Created at 2021-11-11T19:28:37.287
+Unexpected IOException with stream: 2021-11-11 19:28:37.286  INFO 18092 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+
+
+# Created at 2021-11-11T19:28:37.300
+Unexpected IOException with stream: []
+
+# Created at 2021-11-11T19:28:37.301
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:37.305
+Unexpected IOException: 6,1,learn.events.domain.EventUserBridgeServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.307
+Unexpected IOException: 5,1,learn.events.domain.EventUserBridgeServiceTest,shouldNotAddBadEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.314
+Unexpected IOException with stream: [EventId does not exist]
+
+# Created at 2021-11-11T19:28:37.315
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:37.318
+Unexpected IOException: 6,1,learn.events.domain.EventUserBridgeServiceTest,shouldNotAddBadEventId,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.320
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.EventUserBridgeServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.322
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.LocationServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:37.323
+Unexpected IOException with stream: 2021-11-11 19:28:37.323  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.domain.LocationServiceTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:37.325
+Unexpected IOException with stream: 2021-11-11 19:28:37.325  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.domain.LocationServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:37.326
+Unexpected IOException with stream: 2021-11-11 19:28:37.326  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.domain.LocationServiceTest]: LocationServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:37.330
+Unexpected IOException with stream: 2021-11-11 19:28:37.329  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.domain.LocationServiceTest
+
+
+# Created at 2021-11-11T19:28:37.332
+Unexpected IOException with stream: 2021-11-11 19:28:37.332  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:37.334
+Unexpected IOException with stream: 2021-11-11 19:28:37.333  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7fe87c0e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@8f4b803, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@42f9873e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@18483b8b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@24fc2c80, org.springframework.test.context.support.DirtiesContextTestExecutionListener@965bcbc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7ab1ad9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5ee6fdc4, org.springframework.test.context.event.EventPublishingTestExecutionListener@1bbb42b4, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f9f8d23, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@603d25db, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@95cecc5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@48b3b1b8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@b86cb18, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@29c244e]
+
+
+# Created at 2021-11-11T19:28:37.379
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:37.380
+Unexpected IOException with stream:   .   ____          _            __ _ _
+
+
+# Created at 2021-11-11T19:28:37.381
+Unexpected IOException with stream:  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+
+
+# Created at 2021-11-11T19:28:37.382
+Unexpected IOException with stream: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+
+
+# Created at 2021-11-11T19:28:37.383
+Unexpected IOException with stream:  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+
+
+# Created at 2021-11-11T19:28:37.384
+Unexpected IOException with stream:   '  |____| .__|_| |_|_| |_\__, | / / / /
+
+
+# Created at 2021-11-11T19:28:37.385
+Unexpected IOException with stream:  =========|_|==============|___/=/_/_/_/
+
+
+# Created at 2021-11-11T19:28:37.386
+Unexpected IOException with stream:  :: Spring Boot ::                (v2.5.4)
+
+
+# Created at 2021-11-11T19:28:37.387
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:37.411
+Unexpected IOException with stream: 2021-11-11 19:28:37.410  INFO 18092 --- [           main] learn.events.domain.LocationServiceTest  : Starting LocationServiceTest using Java 11.0.12 on DESKTOP-6TC905T with PID 18092 (started by Spencer Czarnezki in C:\Users\Spencer Czarnezki\Desktop\work\Capstone\event-api)
+
+
+# Created at 2021-11-11T19:28:37.416
+Unexpected IOException with stream: 2021-11-11 19:28:37.414  INFO 18092 --- [           main] learn.events.domain.LocationServiceTest  : No active profile set, falling back to default profiles: default
+
+
+# Created at 2021-11-11T19:28:38.147
+Unexpected IOException with stream: 2021-11-11 19:28:38.146  INFO 18092 --- [           main] learn.events.domain.LocationServiceTest  : Started LocationServiceTest in 0.808 seconds (JVM running for 28.089)
+
+
+# Created at 2021-11-11T19:28:38.153
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.162
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldNotUpdateMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.165
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.173
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.176
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectNullLocation,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.182
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectNullLocation,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.185
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.190
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.192
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullLocation,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.201
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullLocation,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.205
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectBlankAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.210
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectBlankAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.212
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectNullAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.216
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectNullAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.218
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.223
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.225
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.231
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.233
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.238
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankAddress,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.239
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.244
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectNullState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.246
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectInvalidZipcodes,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.250
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectInvalidZipcodes,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.252
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.257
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.259
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectDuplicates,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.266
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectDuplicates,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.268
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectNullState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.274
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectNullState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.276
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectEmptyState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.283
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectEmptyState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.285
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectInvalidZipcodes,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.290
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectInvalidZipcodes,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.292
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.305
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectBlankState,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.307
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectBlankCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.311
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectBlankCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.313
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectNullCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.318
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectNullCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.320
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectNonStateAbbreviations,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.326
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectNonStateAbbreviations,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.328
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,updateShouldRejectHugeTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.333
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,updateShouldRejectHugeTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.335
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.341
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.343
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldFindValidCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.350
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldFindValidCity,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.352
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,shouldUpdateExisting,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.359
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,shouldUpdateExisting,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.361
+Unexpected IOException: 5,1,learn.events.domain.LocationServiceTest,addShouldRejectHugeTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.366
+Unexpected IOException: 6,1,learn.events.domain.LocationServiceTest,addShouldRejectHugeTitle,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.368
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.LocationServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.370
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.ResourcesServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:38.372
+Unexpected IOException with stream: 2021-11-11 19:28:38.371  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.domain.ResourcesServiceTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:38.373
+Unexpected IOException with stream: 2021-11-11 19:28:38.373  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.domain.ResourcesServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:38.374
+Unexpected IOException with stream: 2021-11-11 19:28:38.374  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.domain.ResourcesServiceTest]: ResourcesServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:38.377
+Unexpected IOException with stream: 2021-11-11 19:28:38.376  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.domain.ResourcesServiceTest
+
+
+# Created at 2021-11-11T19:28:38.379
+Unexpected IOException with stream: 2021-11-11 19:28:38.378  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:38.380
+Unexpected IOException with stream: 2021-11-11 19:28:38.379  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7b332b23, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@66a472b9, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@428eb3d5, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5ddd84d2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3fd5d679, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7aa15a80, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4d065e1a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7c4ca87c, org.springframework.test.context.event.EventPublishingTestExecutionListener@6dbbdf92, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1dbeedff, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@62b786dc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7ba1cdbe, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@48d5ca17, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@226e07e7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7c31e410]
+
+
+# Created at 2021-11-11T19:28:38.426
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:38.427
+Unexpected IOException with stream:   .   ____          _            __ _ _
+
+
+# Created at 2021-11-11T19:28:38.428
+Unexpected IOException with stream:  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+
+
+# Created at 2021-11-11T19:28:38.429
+Unexpected IOException with stream: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+
+
+# Created at 2021-11-11T19:28:38.429
+Unexpected IOException with stream:  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+
+
+# Created at 2021-11-11T19:28:38.430
+Unexpected IOException with stream:   '  |____| .__|_| |_|_| |_\__, | / / / /
+
+
+# Created at 2021-11-11T19:28:38.431
+Unexpected IOException with stream:  =========|_|==============|___/=/_/_/_/
+
+
+# Created at 2021-11-11T19:28:38.432
+Unexpected IOException with stream:  :: Spring Boot ::                (v2.5.4)
+
+
+# Created at 2021-11-11T19:28:38.432
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:38.437
+Unexpected IOException with stream: 2021-11-11 19:28:38.436  INFO 18092 --- [           main] l.events.domain.ResourcesServiceTest     : Starting ResourcesServiceTest using Java 11.0.12 on DESKTOP-6TC905T with PID 18092 (started by Spencer Czarnezki in C:\Users\Spencer Czarnezki\Desktop\work\Capstone\event-api)
+
+
+# Created at 2021-11-11T19:28:38.438
+Unexpected IOException with stream: 2021-11-11 19:28:38.437  INFO 18092 --- [           main] l.events.domain.ResourcesServiceTest     : No active profile set, falling back to default profiles: default
+
+
+# Created at 2021-11-11T19:28:39.073
+Unexpected IOException with stream: 2021-11-11 19:28:39.072  INFO 18092 --- [           main] l.events.domain.ResourcesServiceTest     : Started ResourcesServiceTest in 0.687 seconds (JVM running for 29.014)
+
+
+# Created at 2021-11-11T19:28:39.080
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.088
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldAdd,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.090
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldDeleteExisting,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.096
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldDeleteExisting,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.097
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.102
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.103
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldNotDeleteMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.108
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldNotDeleteMissing,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.109
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,addShouldRejectInvalidLocationId,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.114
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,addShouldRejectInvalidLocationId,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.116
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldFindValidResourceDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.122
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldFindValidResourceDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.124
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,addShouldRejectNullResource,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.131
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,addShouldRejectNullResource,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.134
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,addShouldRejectNullDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.139
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,addShouldRejectNullDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.140
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,addShouldRejectBlankDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.145
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,addShouldRejectBlankDescription,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.147
+Unexpected IOException: 5,1,learn.events.domain.ResourcesServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.153
+Unexpected IOException: 6,1,learn.events.domain.ResourcesServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.154
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.ResourcesServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.156
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.UserServiceTest,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.158
+Unexpected IOException with stream: 2021-11-11 19:28:39.157  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [learn.events.domain.UserServiceTest], using SpringBootContextLoader
+
+
+# Created at 2021-11-11T19:28:39.160
+Unexpected IOException with stream: 2021-11-11 19:28:39.159  INFO 18092 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [learn.events.domain.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+
+
+# Created at 2021-11-11T19:28:39.160
+Unexpected IOException with stream: 2021-11-11 19:28:39.160  INFO 18092 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [learn.events.domain.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+
+
+# Created at 2021-11-11T19:28:39.162
+Unexpected IOException with stream: 2021-11-11 19:28:39.162  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration learn.events.App for test class learn.events.domain.UserServiceTest
+
+
+# Created at 2021-11-11T19:28:39.165
+Unexpected IOException with stream: 2021-11-11 19:28:39.164  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+
+
+# Created at 2021-11-11T19:28:39.166
+Unexpected IOException with stream: 2021-11-11 19:28:39.165  INFO 18092 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@120d6cbf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@70169464, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1115be8c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@64ed18ec, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1dfcf85a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@590dea35, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6550ce46, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@69f69078, org.springframework.test.context.event.EventPublishingTestExecutionListener@13b29b34, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@25589735, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@46994f26, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1bb172dd, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1cdd31a4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7dddfc35, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@71316cd7]
+
+
+# Created at 2021-11-11T19:28:39.210
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:39.211
+Unexpected IOException with stream:   .   ____          _            __ _ _
+
+
+# Created at 2021-11-11T19:28:39.212
+Unexpected IOException with stream:  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+
+
+# Created at 2021-11-11T19:28:39.213
+Unexpected IOException with stream: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+
+
+# Created at 2021-11-11T19:28:39.213
+Unexpected IOException with stream:  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+
+
+# Created at 2021-11-11T19:28:39.214
+Unexpected IOException with stream:   '  |____| .__|_| |_|_| |_\__, | / / / /
+
+
+# Created at 2021-11-11T19:28:39.215
+Unexpected IOException with stream:  =========|_|==============|___/=/_/_/_/
+
+
+# Created at 2021-11-11T19:28:39.215
+Unexpected IOException with stream:  :: Spring Boot ::                (v2.5.4)
+
+
+# Created at 2021-11-11T19:28:39.216
+Unexpected IOException with stream: 
+
+
+# Created at 2021-11-11T19:28:39.223
+Unexpected IOException with stream: 2021-11-11 19:28:39.222  INFO 18092 --- [           main] learn.events.domain.UserServiceTest      : Starting UserServiceTest using Java 11.0.12 on DESKTOP-6TC905T with PID 18092 (started by Spencer Czarnezki in C:\Users\Spencer Czarnezki\Desktop\work\Capstone\event-api)
+
+
+# Created at 2021-11-11T19:28:39.224
+Unexpected IOException with stream: 2021-11-11 19:28:39.223  INFO 18092 --- [           main] learn.events.domain.UserServiceTest      : No active profile set, falling back to default profiles: default
+
+
+# Created at 2021-11-11T19:28:39.948
+Unexpected IOException with stream: 2021-11-11 19:28:39.947  INFO 18092 --- [           main] learn.events.domain.UserServiceTest      : Started UserServiceTest in 0.778 seconds (JVM running for 29.889)
+
+
+# Created at 2021-11-11T19:28:39.953
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectNullUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.959
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectNullUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.961
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectNullUser,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.965
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectNullUser,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.967
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.974
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldFindAll,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.976
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectDuplicateUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.982
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectDuplicateUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.984
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectInvalidPassword,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.995
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectInvalidPassword,null,null,null
+
+
+# Created at 2021-11-11T19:28:39.997
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldFindValidUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.003
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldFindValidUsername,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.004
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.011
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldFindValidId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.014
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldFindAllValidRoles,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.020
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldFindAllValidRoles,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.022
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectShortPassword,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.027
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectShortPassword,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.029
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,updateShouldRejectNotSetUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.159
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,updateShouldRejectNotSetUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.161
+Unexpected IOException: 5,1,learn.events.domain.UserServiceTest,shouldRejectSetUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.166
+Unexpected IOException: 6,1,learn.events.domain.UserServiceTest,shouldRejectSetUserId,null,null,null
+
+
+# Created at 2021-11-11T19:28:40.167
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,learn.events.domain.UserServiceTest,null,null,null
+
+

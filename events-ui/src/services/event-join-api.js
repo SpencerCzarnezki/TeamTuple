@@ -1,7 +1,7 @@
-const url = "http://localhost:8080/api/event/user"
+const url = process.env.REACT_APP_API_URL;
 
 export async function findAllUserEvents() {
-    const response = await fetch(url);
+    const response = await fetch(`${url}/api/event/user`);
     if (response.status === 200) {
         return response.json();
     }
@@ -9,7 +9,7 @@ export async function findAllUserEvents() {
 }
 
 export async function findEventIdsByUserId(userId) {
-    const response = await fetch(`${url}/find/user/${userId}`);
+    const response = await fetch(`${url}/api/event/user/find/user/${userId}`);
     if (response.status === 200) {
         return response.json();
     }
@@ -29,7 +29,7 @@ function makeFetchInit(method, event) {
 }
 export async function addAUserToEvent(userEvent) {
     const first = makeFetchInit("POST", userEvent);
-    const response = await fetch(`${url}/add`, first);
+    const response = await fetch(`${url}/api/event/user/add`, first);
     if (response.status === 201) {
         return response.json();
     }
@@ -38,7 +38,7 @@ export async function addAUserToEvent(userEvent) {
 
 export async function leaveEvent(eventId, userId) {
     const init = { method: "DELETE" };
-    const response = await fetch(`${url}/${eventId}/${userId}`, init);
+    const response = await fetch(`${url}/api/event/user/${eventId}/${userId}`, init);
     if (response.status === 204) {
         return response.json();
     }
