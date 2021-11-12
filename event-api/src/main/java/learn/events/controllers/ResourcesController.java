@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @ConditionalOnWebApplication
-@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/resources")
 public class ResourcesController {
 
